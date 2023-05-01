@@ -3,29 +3,17 @@
 @import './scss/global.scss';
 .App {
   width: 100vw;
-  height: 100vh;
-}
 
 /*TODO later this will be removed*/
 body {
   margin: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: hsl(195, 37, 52, 100%);
-}
-main {
-  width: calc(100% - 10%);
-  min-height: calc(100% - 10%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5%;
 }
 h1 {
   color: white;
   font-size: 2em;
   font-family: 'Montserrat Bold';
-  word-wrap: break-word;
 }
 /*end TODO*/
