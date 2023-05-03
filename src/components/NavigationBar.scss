@@ -1,0 +1,21 @@
+@import '../scss/variables.scss';
+@import '../scss/global.scss';
+
+.nav-bar-container{
+    display: flex;
+    width: 100%;
+    height: $navbar-height;
+    margin-top: -$navbar-height;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $light;
+    box-shadow: 0px -4px 6px $button-shadow-color;
+    position: sticky;
+    bottom: 0;
+    z-index: 11;
+    button{
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+}

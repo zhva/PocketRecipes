@@ -1,5 +1,6 @@
 import './App.scss'
 import React from 'react'
+import { NavigationBar } from './components/NavigationBar'
 
 function App () {
   return (
@@ -8,6 +9,7 @@ function App () {
       </header>
       <main>
         <h1>PocketRecipes comming soon...</h1>
+        <NavigationBar/>
       </main>
     </div>
   )
