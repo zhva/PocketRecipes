@@ -1,0 +1,38 @@
+{
+    "rules": {
+      ".read": true,
+      ".write": true,
+      "users": {
+        "$uid" : {
+          ".read": true,
+          ".write": true,
+          "recipes": {
+            ".indexOn": ["timestamp"],
+            "$recipeId": {
+              "name": {
+                ".validate": "newData.isString() && newData.val().length <= 50"
+              },
+              "description": {
+                ".validate": "newData.isString() && newData.val().length <= 500"
+              },
+              "servings": {
+                ".validate": "newData.isNumber() && newData.val() >= 1"
+              },
+              "ingredients": {
+                ".validate": "newData.val() != null"
+              },
+              "preparation": {
+                ".validate": "newData.val() != null"
+              },
+              "visibility": {
+                ".validate": "newData.isBoolean()"
+              },
+              "timestamp": {
+                ".validate": "newData.isNumber()"
+              }
+            }
+          }
+        }
+      }
+    }
+}
