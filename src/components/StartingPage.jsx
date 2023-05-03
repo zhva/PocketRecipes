@@ -4,8 +4,12 @@ import { SubHeadline } from './SubHeadline'
 import { InfoText } from './InfoText'
 import { Button } from './Button'
 import { useNavigate } from 'react-router-dom'
+import { SignOutButton } from './SignoutButton'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../firebase'
 
 export const StartingPage = () => {
+  const [user] = useAuthState(auth)
   const navigate = useNavigate()
   return (
         <div className="starting-page-container">
@@ -25,7 +29,10 @@ export const StartingPage = () => {
             </InfoText>
             <div className='buttons-container'>
               <Button type='button'>Get Started</Button>
-              <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
+              { user
+                ? <SignOutButton></SignOutButton>
+                : <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
+              }
             </div>
         </div>
   )
