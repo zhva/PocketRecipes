@@ -20,7 +20,7 @@ const validationSchema = object().shape({
     .oneOf([ref('password'), null], 'The passwords do NOT match!')
 })
 
-export const Signup = () => {
+const useSigup = () => {
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false)
   const [isEmailTaken, setIsEmailTaken] = useState(false)
   const navigate = useNavigate()
@@ -45,6 +45,8 @@ export const Signup = () => {
     }
   })
 
+  const { errors } = formik
+
   const handleSubmit = async (event) => {
     event.preventDefault() // Prevent the form submission
     formik.handleSubmit()
@@ -61,9 +63,15 @@ export const Signup = () => {
     }
   }, [isSignUpSuccessful, isEmailTaken, navigate])
 
+  return { handleSubmit, handleChange: formik.handleChange, handleBlur: formik.handleBlur, values: formik.values, errors }
+}
+
+export const Signup = () => {
+  const { handleSubmit, handleChange, handleBlur, values, errors } = useSigup()
+
   return (
     <div className='signup-container content-container'>
-      <form onSubmit={formik.handleSubmit} className='form-signup'>
+      <form onSubmit={handleSubmit} className='form-signup'>
         <h1>Sign Up</h1>
         <h2>Welcome to PcketRecipes</h2>
         <div className='signup-inner-container'>
@@ -72,54 +80,54 @@ export const Signup = () => {
                 name="name"
                 label="Username"
                 placeholder="Username"
-                value={formik.values.name}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 variant="text"
             />
             <span className='formik-errors'>
-                {formik.errors.name}
+                {errors.name}
             </span>
             <TextInput
                 type="email"
                 name="email"
                 label="E-Mail"
                 placeholder="E-Mail"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 variant="email"
             />
             <span className='formik-errors'>
-                {formik.errors.email}
+                {errors.email}
             </span>
             <TextInput
                 type="password"
                 name="password"
                 label="Password"
                 placeholder="Password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 variant="password"
             />
             <span className='formik-errors'>
-                {formik.errors.password}
+                {errors.password}
             </span>
             <TextInput
                 type="password"
                 name="passwordRepeat"
                 label="Repeat Password"
                 placeholder="Repeat Password"
-                value={formik.values.passwordRepeat}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                value={values.passwordRepeat}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 variant="password"
             />
             <span className='formik-errors'>
-                {formik.errors.passwordRepeat}
+                {errors.passwordRepeat}
             </span>
-            <Button type="submit" variant="Sign up" onClick={handleSubmit}>Sign Up</Button>
+            <Button type="submit" variant="Sign up">Sign Up</Button>
             <a href={'/login'}>Already have an account?</a>
         </div>
       </form>
