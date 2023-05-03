@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TextInput } from './TextInput'
 import { Button } from './Button'
 import { useFormik } from 'formik'
 import { object, string, ref } from 'yup'
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail } from 'firebase/auth'
 import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,21 +21,45 @@ const validationSchema = object().shape({
 })
 
 export const Signup = () => {
-  const [signUp] = useCreateUserWithEmailAndPassword(auth)
   const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false)
+  const [isEmailTaken, setIsEmailTaken] = useState(false)
+  const navigate = useNavigate()
+
   const formik = useFormik({
     initialValues: { name: '', email: '', password: '', passwordRepeat: '' },
     validationSchema,
     onSubmit: async (values) => {
-      await signUp(values.email, values.password, values.name)
-      setIsSignUpSuccessful(true)
+      setIsEmailTaken(false) // Reset the email taken state
+      try {
+        const emailExists = await fetchSignInMethodsForEmail(auth, values.email)
+        if (emailExists.length) {
+          setIsEmailTaken(true)
+          return
+        }
+        await createUserWithEmailAndPassword(auth, values.email, values.password)
+        setIsSignUpSuccessful(true)
+        await signInWithEmailAndPassword(auth, values.email, values.password) // Auto sign-in after successful sign-up
+      } catch (error) {
+        console.error(error)
+      }
     }
   })
-  const navigate = useNavigate()
 
-  if (isSignUpSuccessful) {
-    navigate('/my-recipes')
+  const handleSubmit = async (event) => {
+    event.preventDefault() // Prevent the form submission
+    formik.handleSubmit()
+
+    if (isEmailTaken) {
+      setIsSignUpSuccessful(false)
+    }
   }
+
+  useEffect(() => {
+    if (isSignUpSuccessful && !isEmailTaken) {
+      setIsEmailTaken(false)
+      navigate('/my-recipes')
+    }
+  }, [isSignUpSuccessful, isEmailTaken, navigate])
 
   return (
     <div className='signup-container content-container'>
@@ -95,7 +119,7 @@ export const Signup = () => {
             <span className='formik-errors'>
                 {formik.errors.passwordRepeat}
             </span>
-            <Button type="submit" variant="Sign up">Sign Up</Button>
+            <Button type="submit" variant="Sign up" onClick={handleSubmit}>Sign Up</Button>
             <a href={'/login'}>Already have an account?</a>
         </div>
       </form>
