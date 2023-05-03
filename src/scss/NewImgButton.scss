@@ -1,0 +1,19 @@
+.label-image-upload {
+    display: inline-block;
+    background-color: hsl(0, 0, 100, 20%);
+    border: 1px solid $on-primary;
+    color: $on-primary;
+    padding: $button-vertical-padding $button-horizontal-padding;
+    border-radius: $controls-border-radius;
+    box-shadow: $button-shadow;
+    cursor: pointer;
+}
+label.label-image-upload .image-upload {
+    position: absolute;
+    top: -1000px;
+}
+
+.label-image-upload span {
+    font-family: $button-font-family;
+    font-size: $button-font-size;
+}
