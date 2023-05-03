@@ -1,0 +1,12 @@
+@import '../scss/variables.scss';
+@import '../scss/global.scss';
+
+.starting-page-container{
+    color: white;
+    width: calc(100% - 50px);
+    padding: 130px 25px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg);
+}
