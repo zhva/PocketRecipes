@@ -1,8 +1,31 @@
 @import './scss/reset.scss';
 @import './scss/variables.scss';
 @import './scss/global.scss';
+@import './scss/NavigationBar.scss';
+@import './scss/BackLink.scss';
+@import './scss/Button.scss';
+@import './scss/AddInput.scss';
+@import './scss/Card.scss';
+@import './scss/VisibilitySwitch.scss';
+@import './scss/RecipeInput.scss';
+@import './scss/RecipeHeadlines.scss';
+@import './scss/ImageUpload.scss';
+@import './scss/NewImgButton.scss';
+@import './scss/InfoText.scss';
+@import './scss/TextInput.scss';
+@import './scss/SubHeadline.scss';
+@import './scss/WelcomeHeadline.scss';
+
+@import './scss/CreateRecipe.scss';
+@import './scss/Login.scss';
+@import './scss/StartingPage.scss';
+@import './scss/Signup.scss';
+
 .App {
-  width: 100vw;
+  width: 100%;
+  max-width: 1024px;
+  min-width: 468px;
+  margin: 0 auto;
 }
 
 /*TODO later this will be removed*/

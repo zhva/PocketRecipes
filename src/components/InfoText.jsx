@@ -1,5 +1,4 @@
 import React from 'react'
-import './InfoText.scss'
 
 export const InfoText = (props) => {
   return (

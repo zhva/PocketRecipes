@@ -1,5 +1,4 @@
 import React from 'react'
-import './WelcomeHeadline.scss'
 
 export const WelcomeHeadline = () => {
   return (

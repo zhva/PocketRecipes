@@ -6,7 +6,6 @@ import { object, string, ref } from 'yup'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
-import './Signup.scss'
 
 const validationSchema = object().shape({
   name: string(),

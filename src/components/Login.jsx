@@ -3,7 +3,6 @@ import { Button } from './Button'
 import { TextInput } from './TextInput'
 import { useFormik } from 'formik'
 import { object, string } from 'yup'
-import './Login.scss'
 
 const validationSchema = object({
   email: string().email('Invalid email format'),

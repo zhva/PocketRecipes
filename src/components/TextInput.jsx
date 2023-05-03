@@ -1,5 +1,4 @@
 import React from 'react'
-import './TextInput.scss'
 
 export const TextInput = ({ value, label, name, placeholder, type, onChange }) => {
   return (

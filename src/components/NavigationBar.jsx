@@ -1,5 +1,4 @@
 import React from 'react'
-import './NavigationBar.scss'
 import feedIcon from '../icons/feed.svg'
 import myRecipesIcon from '../icons/my-recipes.svg'
 import createNewRecipeIcon from '../icons/create-new-recipe.svg'

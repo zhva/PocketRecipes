@@ -1,5 +1,4 @@
 import React from 'react'
-import './StartingPage.scss'
 import { WelcomeHeadline } from './WelcomeHeadline'
 import { SubHeadline } from './SubHeadline'
 import { InfoText } from './InfoText'
@@ -24,8 +23,10 @@ export const StartingPage = () => {
                 dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et
                 velit interdum, ac aliquet odio mattis interdum.
             </InfoText>
-            <Button type='button'>Get Started</Button>
-            <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
+            <div className='buttons-container'>
+              <Button type='button'>Get Started</Button>
+              <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
+            </div>
         </div>
   )
 }
