@@ -1,0 +1,44 @@
+.recipe-input-container {
+    width: 100%;
+    height: auto;
+    label {
+        width: 100%;
+        position: relative;
+        margin-bottom: 15px;
+    }
+    input {
+        resize: none;
+        box-sizing: border-box;
+        height: auto;
+        min-height: $edit-recipe-input-min-height;
+        max-height: $edit-recipe-input-max-height;
+        width: 100%;
+        border-radius: $nav-border-radius;
+        background-color: $on-primary;
+        box-shadow: $inside-shadow;
+        outline: none;
+        padding: $edit-recipe-input-padding;
+        overflow: hidden;
+        font-family: $text-font-family;
+        font-size: $text-font-size;
+        border: 0;
+        margin-bottom: 10px;
+    }
+    .delete-button {
+        position: absolute;
+        top: 50%;
+        left: calc(100% - 40px);
+        transform: translate(0, -50%);
+    }
+    .recipe-number {
+        position: absolute;
+        height: 100%;
+        width: $edit-recipe-number-width;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-family: $list-numbers-font-family;
+        font-size: $list-numbers-font-size;
+    }
+}
