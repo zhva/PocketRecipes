@@ -1,0 +1,8 @@
+.content-card{
+    background-color: $dark;
+    position: relative;
+    z-index: 10;
+    padding: $recipe-card-paddind;
+    border-radius: $cards-border-radius $cards-border-radius 0px 0px;
+    margin-top: -25px;
+}
