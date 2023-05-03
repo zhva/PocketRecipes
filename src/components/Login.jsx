@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from './Button'
 import { TextInput } from './TextInput'
 import { useFormik } from 'formik'
 import { object, string } from 'yup'
+import { auth } from '../firebase'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useNavigate } from 'react-router-dom'
 
 const validationSchema = object({
   email: string().email('Invalid email format'),
@@ -10,10 +13,25 @@ const validationSchema = object({
 })
 
 export const Login = () => {
+  const [logIn] = useSignInWithEmailAndPassword(auth)
+  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState('')
+
   const formik = useFormik({
     initialValues: { email: '', password: '' },
     validationSchema,
-    onSubmit: values => console.log(values)
+    onSubmit: async (values) => {
+      try {
+        const userCredential = await logIn(values.email, values.password)
+        if (userCredential.user) {
+          navigate('/my-recipes')
+        } else {
+          setErrorMessage('Incorrect email or password')
+        }
+      } catch (error) {
+        setErrorMessage('An error occurred while signing in')
+      }
+    }
   })
 
   return (
@@ -22,6 +40,7 @@ export const Login = () => {
         <h1>Log In</h1>
         <h2>Welcome to PcketRecipes</h2>
         <div className='login-inner-container'>
+          {errorMessage && <div className='formik-errors'>{errorMessage}</div>}
           <TextInput
             type='email'
             name='email'
