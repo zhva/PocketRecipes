@@ -6,6 +6,8 @@ import { StartingPage } from './components/StartingPage'
 import { Login } from './components/Login'
 import { Signup } from './components/Signup'
 import { CreateRecipe } from './components/CreateRecipe'
+import { MyRecipes } from './components/MyRecipes'
+import { HomeFeed } from './components/HomeFeed'
 
 function App () {
   const navigate = useNavigate()
@@ -15,9 +17,9 @@ function App () {
         <Route path="/" element={<StartingPage/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/feed" element={''} />
+        <Route path="/feed" element={<HomeFeed/>} />
         <Route path="/create-recipe" element={<CreateRecipe/>} />
-        <Route path="/my-recipes" element={''} />
+        <Route path="/my-recipes" element={<MyRecipes/>} />
       </Routes>
       <NavigationBar
         redirectToStartingPage = {() => navigate('/')}

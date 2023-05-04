@@ -1,0 +1,89 @@
+@import '../scss/variables.scss';
+@import '../scss/global.scss';
+
+
+.home-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 5%;
+    background: url("../images/recipeBG.png") center/cover no-repeat;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $dark-filter;
+        z-index: 0;
+      }
+    .home-heading-container {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5% 0;
+        h1 {
+            color: $on-primary;
+        }
+        span {
+            font-family: $h2-font-family;
+            font-size: $h2-font-size;
+            color: $on-primary;
+        }
+    }
+    .recipes-container {
+        position: relative;
+        width: calc(100% - 10%);
+        z-index: 1;
+        padding: 0 5%;
+        > div {
+            cursor: pointer;
+        }
+        //background-color: $on-primary;
+        h2 {
+            font-size: $h1-font-size;
+            text-align: center;
+            margin-bottom: 25px;
+            color: $on-primary;
+        }
+        .recipes-list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .first-recipe {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: $light;
+            border-radius: $cards-border-radius;
+            padding-bottom: 25px;
+            h3, span, p {
+                margin-left: 25px;
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+            h3 {
+                font-family: $recipe-card-heading-font-family;
+                font-size: $recipe-card-heading-font-size;
+                margin-top: 25px;
+                margin-bottom: 0px;
+            }
+            span {
+                font-family: $label-font-family;
+                font-size: $label-font-size;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
