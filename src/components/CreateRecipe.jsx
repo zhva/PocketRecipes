@@ -112,6 +112,7 @@ export const CreateRecipe = () => {
             <ImageUpload backLink='/path/to/backlink' setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64}/>
             <Card>
                 <div className='recipe-card-container'>
+                { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
                   <RecipeHeadlines
                     recipeName={values.name}
                     servings={values.servings}
