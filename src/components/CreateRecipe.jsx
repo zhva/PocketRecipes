@@ -7,10 +7,11 @@ import { Button } from './Button'
 import { AddInput } from './AddInput'
 import 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { database, storage } from '../firebase'
+import { database, storage, auth } from '../firebase'
 import { ref, push } from 'firebase/database'
 import { v4 as uuidv4 } from 'uuid'
 import { RecipeHeadlines } from './RecipeHeadlines'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 import { object, string, number, array, bool } from 'yup'
 
@@ -23,8 +24,9 @@ const validationSchema = object().shape({
   visibility: bool()
 })
 
-const useRecipe = (user) => {
+const useRecipe = () => {
   const [imageSrc, setImageSrc] = useState(null)
+  const [user /* , userLoading */] = useAuthState(auth)
 
   const formik = useFormik({
     initialValues: {
@@ -62,9 +64,9 @@ const useRecipe = (user) => {
     formik.setFieldValue(name, newValues)
   }
 
-  const uploadImage = async (user) => {
+  const uploadImage = async () => {
     if (!imageSrc) return null
-    const storageRef = sRef(storage, `users/${user.uid}/recipes/${imageSrc.file}`)
+    const storageRef = sRef(storage, `users/${user?.uid}/recipes/${imageSrc.file}`)
     try {
       await uploadBytes(storageRef, imageSrc.blob)
       return storageRef.fullPath
@@ -74,7 +76,10 @@ const useRecipe = (user) => {
   }
 
   const pushRecipe = async (data) => {
-    const recipesRef = ref(database, `users/${user.uid}/recipes`)
+    // const recipesRef = ref(database, `users/${user?.uid}/recipes`)
+    const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
+    console.log({userAuth: user.auth})
+    console.log({user: user.uid})
     try {
       const imageUrl = await uploadImage(imageSrc)
       const imageRef = await getDownloadURL(sRef(storage, imageUrl))
@@ -95,9 +100,8 @@ const useRecipe = (user) => {
   return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, setImageSrc, imageSrc, errors }
 }
 
-export const CreateRecipe = (user) => {
-  const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors } = useRecipe(user)
-  // const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
+export const CreateRecipe = () => {
+  const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors } = useRecipe()
 
   return (
     <div className='create-recipe-container'>
