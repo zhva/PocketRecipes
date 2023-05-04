@@ -1,12 +1,14 @@
-@import '../scss/variables.scss';
-@import '../scss/global.scss';
-
 .ingredients-preparation-list{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding-left: 18px;
+    gap: 15px;
     h2{
         margin-left: -18px;
+    }
+    span {
+        font-family: $link-font-family;
+        font-size: $link-font-size;
     }
 }

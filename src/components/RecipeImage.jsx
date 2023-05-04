@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const RecipeImage = (props) => {
+export const RecipeImage = (imageLink) => {
   return (
         <div className='img-container'>
-                <img src={props.image}></img>
+                <img src={imageLink.imageLink}></img>
         </div>
   )
 }

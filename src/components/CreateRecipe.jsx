@@ -12,6 +12,7 @@ import { ref, push } from 'firebase/database'
 import { v4 as uuidv4 } from 'uuid'
 import { RecipeHeadlines } from './RecipeHeadlines'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useNavigate } from 'react-router-dom'
 
 import { object, string, number, array, bool } from 'yup'
 
@@ -27,6 +28,7 @@ const validationSchema = object().shape({
 const useRecipe = () => {
   const [imageSrc, setImageSrc] = useState(null)
   const [user /* , userLoading */] = useAuthState(auth)
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -49,7 +51,7 @@ const useRecipe = () => {
       }
       try {
         pushRecipe(recipeData, imageSrc.blob)
-        console.log(recipeData)
+        navigate('/my-recipes')
       } catch (error) {
         console.log(error)
       }
@@ -57,7 +59,15 @@ const useRecipe = () => {
   })
   const { errors } = formik
 
-  const handleAdd = (name) => formik.setFieldValue(name, [...formik.values[name], { id: uuidv4(), name: '' }])
+  const handleAdd = (name) => {
+    const values = formik.values[name]
+    const lastValue = values[values.length - 1]
+
+    if (!lastValue || lastValue.name.trim() !== "") {
+      formik.setFieldValue(name, [...values, { id: uuidv4(), name: '' }])
+    }
+  }
+
 
   const handleDelete = (id, name) => {
     const newValues = formik.values[name].filter((value) => value.id !== id)
@@ -76,10 +86,7 @@ const useRecipe = () => {
   }
 
   const pushRecipe = async (data) => {
-    // const recipesRef = ref(database, `users/${user?.uid}/recipes`)
     const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
-    console.log({userAuth: user.auth})
-    console.log({user: user.uid})
     try {
       const imageUrl = await uploadImage(imageSrc)
       const imageRef = await getDownloadURL(sRef(storage, imageUrl))
@@ -90,7 +97,6 @@ const useRecipe = () => {
       }
       // await update(recipesRef, recipeData)
       await push(recipesRef, recipeData)
-      console.log(recipeData)
     } catch (error) {
       console.log(error)
     }
@@ -109,6 +115,7 @@ export const CreateRecipe = () => {
             <ImageUpload backLink='/path/to/backlink' setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64}/>
             <Card>
                 <div className='recipe-card-container'>
+                { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
                   <RecipeHeadlines
                     recipeName={values.name}
                     servings={values.servings}
