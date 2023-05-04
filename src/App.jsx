@@ -22,7 +22,7 @@ function App () {
         <Route path="/feed" element={<HomeFeed/>} />
         <Route path="/create-recipe" element={<CreateRecipe/>} />
         <Route path="/my-recipes/:recipeId" element={<Recipe></Recipe>} />
-        <Route path="/my-recipes/" element={<MyRecipes></MyRecipes>} />
+        <Route path="/my-recipes" element={<MyRecipes></MyRecipes>} />
         <Route path="/edit/:recipeId" element={<CreateRecipe/>} />
       </Routes>
       <NavigationBar

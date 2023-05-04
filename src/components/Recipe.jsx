@@ -18,7 +18,7 @@ export const Recipe = (props) => {
     const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
     const [recipe, loading] = useObjectVal(recipeRef)
 
-    if (recipe || !loading)
+    if (recipe && !loading)
     {
         return (
             <div className='recipe-container'>
