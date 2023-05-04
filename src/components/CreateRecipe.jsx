@@ -47,12 +47,12 @@ const useRecipe = () => {
   useEffect(() => {
     if (!loading && recipe) {
       recipeValues = {
-        name: recipe.name || '',
-        description: recipe.description || '',
-        servings: recipe.servings || null,
-        ingredients: recipe.ingredients || [],
-        preparations: recipe.preparations || [],
-        visibility: recipe.visibility || false
+        name: recipe.name,
+        description: recipe.description,
+        servings: recipe.servings,
+        ingredients: recipe.ingredients,
+        preparations: recipe.preparations,
+        visibility: recipe.visibility
       }
       if(Object.keys(params).length !== 0 && params.constructor === Object){
         formik.setValues(recipeValues)
