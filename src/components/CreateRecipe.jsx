@@ -157,7 +157,7 @@ const useRecipe = () => {
 export const CreateRecipe = () => {
   const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors, recipe, loading } = useRecipe()
 
-  if (!loading && recipe){
+  if (!loading || recipe){
     return (
       <div className='create-recipe-container'>
           <form onSubmit={ handleSubmit }>
