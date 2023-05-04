@@ -15,8 +15,8 @@ import { RecipeButtons } from './RecipeButtons'
 export const Recipe = (props) => {
     const params = useParams()
     const [user] = useAuthState(auth)
-    const recipeRef = ref(database, `users/${user?.uid}/recipes/${'-NU_qxG4ecAlnFKzRNNU'}`)
-    const [recipe, loading, error] = useObjectVal(recipeRef)
+    const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
+    const [recipe, loading] = useObjectVal(recipeRef)
 
     if (recipe || !loading)
     {
@@ -24,7 +24,7 @@ export const Recipe = (props) => {
             <div className='recipe-container'>
                 <RecipeImage
                     image={RecipeBackground}
-                    imageLink={recipe.imageLink}/>
+                    imageLink={recipe.imageLink && recipe.imageLink}/>
                 <Card>
                     <RecipeHeadlines recipeName={recipe.name}/>
                      <RecipeButtons/>
