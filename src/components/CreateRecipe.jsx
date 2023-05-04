@@ -23,21 +23,18 @@ const validationSchema = object().shape({
   servings: number(),
   ingredients: array().required('Ingredients are required!'),
   preparations: array().required('Required!'),
-  visibility: bool()
+  visibility: bool(),
+  // imageSrc: mixed().nullable().required('Image is required!')
 })
 
 const useRecipe = () => {
   const [imageSrc, setImageSrc] = useState(null)
   const navigate = useNavigate()
-  
+
   const params = useParams()
   const [user] = useAuthState(auth)
   const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
   const [recipe, loading] = useObjectVal(recipeRef)
-
-  console.log({recipe})
-  console.log({params})
-  console.log({recipeRef})
 
   let recipeValues = {
     name: '',
@@ -45,7 +42,8 @@ const useRecipe = () => {
     servings: null,
     ingredients: [],
     preparations: [],
-    visibility: false
+    visibility: false,
+    imageSrc: null
   }
 
   useEffect(() => {
@@ -56,22 +54,12 @@ const useRecipe = () => {
         servings: recipe.servings || null,
         ingredients: recipe.ingredients || [],
         preparations: recipe.preparations || [],
-        visibility: recipe.visibility || false
+        visibility: recipe.visibility || false,
+        imageSrc: recipe.imageSrc || null
       }
       formik.setValues(recipeValues)
     }
   }, [loading, recipe])
-
-  // if (!loading && recipe){
-  //   recipeValues = {
-  //     name: recipe.name,
-  //     description: recipe.description,
-  //     servings: recipe.servings,
-  //     ingredients: recipe.ingredients,
-  //     preparations: recipe.preparations,
-  //     visibility: recipe.visibility
-  //   }
-  // }
 
   const formik = useFormik({
     initialValues: recipeValues,
@@ -83,7 +71,8 @@ const useRecipe = () => {
         servings: values.servings,
         ingredients: values.ingredients,
         preparations: values.preparations,
-        visibility: values.visibility
+        visibility: values.visibility,
+        imageSrc: values.imageSrc
       }
       try {
         pushRecipe(recipeData, imageSrc.blob)
@@ -150,10 +139,11 @@ export const CreateRecipe = () => {
     return (
       <div className='create-recipe-container'>
           <form onSubmit={ handleSubmit }>
-              <ImageUpload backLink='/path/to/backlink' setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64}/>
+              <ImageUpload setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64} />
               <Card>
                   <div className='recipe-card-container'>
-                  { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
+                  {/* { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> } */}
+                  { errors && <div className='formik-errors'>{ errors.imageSrc }</div> }
                     <RecipeHeadlines
                       recipeName={values.name}
                       servings={values.servings}
@@ -166,6 +156,7 @@ export const CreateRecipe = () => {
                       <textarea
                             name='description'
                             id='descriptionId'
+                            value = {recipe && recipe.description}
                             onChange={handleChange}/>
                       { errors && <div className='formik-errors'>{ errors.description }</div> }
                     </div>
