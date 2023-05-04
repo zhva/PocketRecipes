@@ -12,6 +12,7 @@ import { ref, push } from 'firebase/database'
 import { v4 as uuidv4 } from 'uuid'
 import { RecipeHeadlines } from './RecipeHeadlines'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useNavigate } from 'react-router-dom'
 
 import { object, string, number, array, bool } from 'yup'
 
@@ -27,6 +28,7 @@ const validationSchema = object().shape({
 const useRecipe = () => {
   const [imageSrc, setImageSrc] = useState(null)
   const [user /* , userLoading */] = useAuthState(auth)
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -49,6 +51,7 @@ const useRecipe = () => {
       }
       try {
         pushRecipe(recipeData, imageSrc.blob)
+        navigate('/my-recipes')
       } catch (error) {
         console.log(error)
       }
