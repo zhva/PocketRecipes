@@ -3,22 +3,34 @@ import deleteIcon from '../icons/deleteIcon.svg'
 import shareIcon from '../icons/shareIcon.svg'
 import editIcon from '../icons/editIcon.svg'
 import { useNavigate } from 'react-router-dom'
+import { ref, remove } from 'firebase/database'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth, database } from '../firebase'
 
 export const RecipeButtons = (recipeId) => {
     const navigate = useNavigate()
-    console.log({recipeId})
-    console.log({params: recipeId.params})
-    console.log({recipeId: recipeId.recipeId})
+    const [user] = useAuthState(auth)
+    const deleteRecipe = () => {
+        const recipeRef = ref(database, `users/${user?.uid}/recipes/${recipeId.recipeId}`)
+        remove(recipeRef)
+            .then(() => {
+                navigate('/my-recipes')
+            })
+            .catch((error) => {
+                console.error('Error deleting recipe:', error)
+            })
+
+    }
     return(
         <div className="edit-buttons-container">
-            <button>
-                <img className="edit-button" src={deleteIcon} onClick={() => {}}></img>
+            <button onClick={() => {deleteRecipe()}}>
+                <img src={deleteIcon}></img>
             </button>
             <button>
                 <img src={shareIcon} onClick={() => {}}></img>
             </button>
-            <button>
-                <img src={editIcon} onClick={() => {navigate(`/edit/${recipeId.recipeId}`)}}></img>
+            <button onClick={() => {navigate(`/edit/${recipeId.recipeId}`)}}>
+                <img className="edit-button" src={editIcon}></img>
             </button>
         </div>
     )
