@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import { ImageUpload } from './ImageUpload'
 import { Card } from './Card'
@@ -48,16 +48,30 @@ const useRecipe = () => {
     visibility: false
   }
 
-  if (!loading && recipe){
-    recipeValues = {
-      name: recipe.name,
-      description: recipe.description,
-      servings: recipe.servings,
-      ingredients: recipe.ingredients,
-      preparations: recipe.preparations,
-      visibility: recipe.visibility
+  useEffect(() => {
+    if (!loading && recipe) {
+      recipeValues = {
+        name: recipe.name || '',
+        description: recipe.description || '',
+        servings: recipe.servings || null,
+        ingredients: recipe.ingredients || [],
+        preparations: recipe.preparations || [],
+        visibility: recipe.visibility || false
+      }
+      formik.setValues(recipeValues)
     }
-  }
+  }, [loading, recipe])
+
+  // if (!loading && recipe){
+  //   recipeValues = {
+  //     name: recipe.name,
+  //     description: recipe.description,
+  //     servings: recipe.servings,
+  //     ingredients: recipe.ingredients,
+  //     preparations: recipe.preparations,
+  //     visibility: recipe.visibility
+  //   }
+  // }
 
   const formik = useFormik({
     initialValues: recipeValues,
@@ -132,6 +146,7 @@ export const CreateRecipe = () => {
   const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors, recipe, loading } = useRecipe()
 
   if (recipe || !loading){
+    console.log({values})
     return (
       <div className='create-recipe-container'>
           <form onSubmit={ handleSubmit }>
