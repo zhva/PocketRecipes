@@ -10,8 +10,7 @@ export const HomeFeed = () => {
   const [user] = useAuthState(auth)
   // Get a reference to the document
   const recipeRef = ref(database, `users/${user?.uid}/recipes`)
-  const [recipes, loading, error] = useObjectVal(recipeRef)
-  console.log(error)
+  const [recipes, loading] = useObjectVal(recipeRef)
 
   return (
     <div className='home-container'>

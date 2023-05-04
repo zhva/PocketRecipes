@@ -25,7 +25,6 @@ export const MyRecipes = () => {
       <div className='recipes-list-container' >
         {loading && <p>Loading recipes...</p>}
         {!loading && recipes && Object.entries(recipes ?? {}).map(([key, recipe]) => {
-            console.log({key})
           return (
             <div key={key}>
               <RecipeCard

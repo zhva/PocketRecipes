@@ -28,7 +28,7 @@ export const StartingPage = () => {
                 velit interdum, ac aliquet odio mattis interdum.
             </InfoText>
             <div className='buttons-container'>
-              <Button type='button'>Get Started</Button>
+              <Button type='button' onClick={() => navigate('/feed')}>Get Started</Button>
               { user
                 ? <SignOutButton></SignOutButton>
                 : <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
