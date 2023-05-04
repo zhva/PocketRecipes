@@ -54,7 +54,8 @@ const useRecipe = () => {
         servings: recipe.servings,
         ingredients: recipe.ingredients,
         preparations: recipe.preparations,
-        visibility: recipe.visibility
+        visibility: recipe.visibility,
+        imageSrc: recipe.imageLink
       }
       if(Object.keys(params).length !== 0 && params.constructor === Object){
         formik.setValues(recipeValues)
@@ -114,8 +115,6 @@ const useRecipe = () => {
       console.log(error)
     }
   }
-
-  console.log(params)
 
   const updateRecipe = async (data) => {
     const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes/${params.recipeId}`) : null
