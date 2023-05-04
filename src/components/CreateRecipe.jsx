@@ -8,7 +8,7 @@ import { AddInput } from './AddInput'
 import 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { database, storage, auth } from '../firebase'
-import { ref, push } from 'firebase/database'
+import { ref, push, update } from 'firebase/database'
 import { v4 as uuidv4 } from 'uuid'
 import { RecipeHeadlines } from './RecipeHeadlines'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -49,17 +49,18 @@ const useRecipe = () => {
   useEffect(() => {
     if (!loading && recipe) {
       recipeValues = {
-        name: recipe.name || '',
-        description: recipe.description || '',
-        servings: recipe.servings || null,
-        ingredients: recipe.ingredients || [],
-        preparations: recipe.preparations || [],
-        visibility: recipe.visibility || false,
-        imageSrc: recipe.imageLink || null
+        name: recipe.name,
+        description: recipe.description,
+        servings: recipe.servings,
+        ingredients: recipe.ingredients,
+        preparations: recipe.preparations,
+        visibility: recipe.visibility
       }
-      formik.setValues(recipeValues)
+      if(Object.keys(params).length !== 0 && params.constructor === Object){
+        formik.setValues(recipeValues)
+      }
     }
-  }, [loading, recipe])
+  }, [recipe])
 
   const formik = useFormik({
     initialValues: recipeValues,
@@ -75,7 +76,11 @@ const useRecipe = () => {
         imageSrc: values.imageSrc
       }
       try {
-        pushRecipe(recipeData, imageSrc.blob)
+        if(Object.keys(params).length === 0 && params.constructor === Object){
+          pushRecipe(recipeData, imageSrc.blob)
+        } else {
+          updateRecipe(recipeData, imageSrc.blob)
+        }
         navigate('/my-recipes')
       } catch (error) {
         console.log(error)
@@ -108,6 +113,26 @@ const useRecipe = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  console.log(params)
+
+  const updateRecipe = async (data) => {
+    const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes/${params.recipeId}`) : null
+    try {
+      const imageUrl = await uploadImage(imageSrc)
+      const imageRef = await getDownloadURL(sRef(storage, imageUrl))
+      const recipeData = {
+        ...data,
+        imageLink: imageRef,
+        timestamp: new Date().getTime()
+      }
+      await update(recipesRef, recipeData)
+    } catch (error) {
+      console.log(error)
+    }
+
+    return recipesRef
   }
 
   const pushRecipe = async (data) => {
