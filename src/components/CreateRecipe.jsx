@@ -12,7 +12,8 @@ import { ref, push } from 'firebase/database'
 import { v4 as uuidv4 } from 'uuid'
 import { RecipeHeadlines } from './RecipeHeadlines'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useObjectVal } from 'react-firebase-hooks/database'
 
 import { object, string, number, array, bool } from 'yup'
 
@@ -27,18 +28,39 @@ const validationSchema = object().shape({
 
 const useRecipe = () => {
   const [imageSrc, setImageSrc] = useState(null)
-  const [user /* , userLoading */] = useAuthState(auth)
   const navigate = useNavigate()
+  
+  const params = useParams()
+  const [user] = useAuthState(auth)
+  const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
+  const [recipe, loading] = useObjectVal(recipeRef)
+
+  console.log({recipe})
+  console.log({params})
+  console.log({recipeRef})
+
+  let recipeValues = {
+    name: '',
+    description: '',
+    servings: null,
+    ingredients: [],
+    preparations: [],
+    visibility: false
+  }
+
+  if (!loading && recipe){
+    recipeValues = {
+      name: recipe.name,
+      description: recipe.description,
+      servings: recipe.servings,
+      ingredients: recipe.ingredients,
+      preparations: recipe.preparations,
+      visibility: recipe.visibility
+    }
+  }
 
   const formik = useFormik({
-    initialValues: {
-      name: '',
-      description: '',
-      servings: null,
-      ingredients: [],
-      preparations: [],
-      visibility: false
-    },
+    initialValues: recipeValues,
     validationSchema,
     onSubmit: async (values) => {
       const recipeData = {
@@ -103,61 +125,63 @@ const useRecipe = () => {
 
     return recipesRef
   }
-  return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, setImageSrc, imageSrc, errors }
+  return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, setImageSrc, imageSrc, errors, recipe, loading }
 }
 
 export const CreateRecipe = () => {
-  const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors } = useRecipe()
+  const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors, recipe, loading } = useRecipe()
 
-  return (
-    <div className='create-recipe-container'>
-        <form onSubmit={ handleSubmit }>
-            <ImageUpload backLink='/path/to/backlink' setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64}/>
-            <Card>
-                <div className='recipe-card-container'>
-                { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
-                  <RecipeHeadlines
-                    recipeName={values.name}
-                    servings={values.servings}
-                    handleChange={handleChange}
-                    mode={'create'}/>
-                  { errors && <div className='formik-errors'>{ errors.name }</div> }
-                  { errors && <div className='formik-errors'>{ errors.servings }</div> }
-                  <div className='recipe-description'>
-                    <label htmlFor="descriptionId"></label>
-                    <textarea
-                          name='description'
-                          id='descriptionId'
-                          onChange={handleChange}/>
-                    { errors && <div className='formik-errors'>{ errors.description }</div> }
+  if (recipe || !loading){
+    return (
+      <div className='create-recipe-container'>
+          <form onSubmit={ handleSubmit }>
+              <ImageUpload backLink='/path/to/backlink' setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64}/>
+              <Card>
+                  <div className='recipe-card-container'>
+                  { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
+                    <RecipeHeadlines
+                      recipeName={values.name}
+                      servings={values.servings}
+                      handleChange={handleChange}
+                      mode={'create'}/>
+                    { errors && <div className='formik-errors'>{ errors.name }</div> }
+                    { errors && <div className='formik-errors'>{ errors.servings }</div> }
+                    <div className='recipe-description'>
+                      <label htmlFor="descriptionId"></label>
+                      <textarea
+                            name='description'
+                            id='descriptionId'
+                            onChange={handleChange}/>
+                      { errors && <div className='formik-errors'>{ errors.description }</div> }
+                    </div>
+                    <div className='ingredients-list-container'>
+                        <AddInput
+                          items={values && values.ingredients}
+                          name='ingredients'
+                          handleAdd={handleAdd}
+                          handleChange={handleChange}
+                          handleDelete={handleDelete}>
+                        </AddInput>
+                        { errors && <div className='formik-errors'>{ errors.ingredients }</div> }
+                    </div>
+                    <div className='preparations-list-container'>
+                        <AddInput
+                          items={values && values.preparations}
+                          name='preparations'
+                          handleAdd={handleAdd}
+                          handleChange={handleChange}
+                          handleDelete={handleDelete}>
+                        </AddInput>
+                        { errors && <div className='formik-errors'>{ errors.preparations }</div> }
+                    </div>
+                    <VisibilitySwitch/>
+                    <div className='btn-container'>
+                        <Button type='submit'>Save</Button>
+                    </div>
                   </div>
-                  <div className='ingredients-list-container'>
-                      <AddInput
-                        items={values && values.ingredients}
-                        name='ingredients'
-                        handleAdd={handleAdd}
-                        handleChange={handleChange}
-                        handleDelete={handleDelete}>
-                      </AddInput>
-                      { errors && <div className='formik-errors'>{ errors.ingredients }</div> }
-                  </div>
-                  <div className='preparations-list-container'>
-                      <AddInput
-                        items={values && values.preparations}
-                        name='preparations'
-                        handleAdd={handleAdd}
-                        handleChange={handleChange}
-                        handleDelete={handleDelete}>
-                      </AddInput>
-                      { errors && <div className='formik-errors'>{ errors.preparations }</div> }
-                  </div>
-                  <VisibilitySwitch/>
-                  <div className='btn-container'>
-                      <Button type='submit'>Save</Button>
-                  </div>
-                </div>
-            </Card>
-        </form>
-    </div>
-  )
+              </Card>
+          </form>
+      </div>
+    )
+  }
 }

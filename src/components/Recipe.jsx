@@ -27,7 +27,9 @@ export const Recipe = (props) => {
                     imageLink={recipe.imageLink && recipe.imageLink}/>
                 <Card>
                     <RecipeHeadlines recipeName={recipe.name}/>
-                     <RecipeButtons/>
+                    <div className='recipe-button-container'>
+                     <RecipeButtons recipeId={params.recipeId}/>
+                    </div>
                     <div className='description-container'>
                         <p>{recipe.description}</p>
                     </div>

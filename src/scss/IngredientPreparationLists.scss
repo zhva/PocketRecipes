@@ -11,4 +11,7 @@
         font-family: $link-font-family;
         font-size: $link-font-size;
     }
+    ol{
+        list-style-position: outside;
+    }
 }
