@@ -14,9 +14,6 @@ export const MyRecipes = () => {
   const [recipes, loading] = useObjectVal(recipeRef)
   const navigate = useNavigate()
 
-  const recipeId = Object.keys(recipes ?? {})[0]
-  console.log(recipeId)
-
   return (
     <div className='home-container'>
       <div className='home-heading-container'>
@@ -36,7 +33,7 @@ export const MyRecipes = () => {
                 title={recipe.name}
                 author=''
                 description={recipe.description}
-                onClick = {() => navigate(`/my-recipes/${recipeId}`)} //  diese id wird später definiert
+                onClick = {() => navigate(`/my-recipes/${key}`)} //  diese id wird später definiert
               />
             </div>
           )
