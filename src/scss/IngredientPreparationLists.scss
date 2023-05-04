@@ -1,0 +1,9 @@
+.ingredients-preparation-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 18px;
+    h2{
+        margin-left: -18px;
+    }
+}
