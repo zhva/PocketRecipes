@@ -1,0 +1,10 @@
+.recipe-container{
+    width: 100%;
+    position: relative;
+    h1 {
+        color: $text-color;
+    }
+    .description-container {
+        margin-bottom: 25px;
+    }
+}
