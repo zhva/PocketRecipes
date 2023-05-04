@@ -10,6 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, database } from '../firebase'
 import { ref } from 'firebase/database'
 import { useParams } from 'react-router-dom'
+import { RecipeButtons } from './RecipeButtons'
 
 export const Recipe = (props) => {
     const params = useParams()
@@ -26,6 +27,7 @@ export const Recipe = (props) => {
                     imageLink={recipe.imageLink}/>
                 <Card>
                     <RecipeHeadlines recipeName={recipe.name}/>
+                     <RecipeButtons/>
                     <div className='description-container'>
                         <p>{recipe.description}</p>
                     </div>

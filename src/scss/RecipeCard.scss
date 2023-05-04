@@ -1,0 +1,41 @@
+@import '../scss/variables.scss';
+@import '../scss/global.scss';
+
+
+.card-container {
+    // border: $border;
+    background-color: $light;
+    border-radius: $cards-border-radius;
+    display: flex;
+    flex-direction: row;
+    max-height: $card-container-height;
+    overflow: hidden;
+    .recipe-card-image-container {
+        height: inherit;
+        flex: 1;
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    .recipe-card-info-container {
+        flex: 2;
+        padding: $card-info-padding;
+        h3 {
+            font-family: $recipe-card-heading-font-family;
+            font-size: $recipe-card-heading-font-size;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        span {
+            font-family: $label-font-family;
+            font-size: $label-font-size;
+        }
+        p {
+            margin-top: 10px;
+        }
+    }
+}
