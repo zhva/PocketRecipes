@@ -1,0 +1,18 @@
+.edit-buttons-container{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+
+    button{
+        height: 40px;
+        width: 40px;
+        border-radius: 30px;
+        background-color: $primary;
+        border: none;
+        box-shadow: $button-shadow;
+    }
+    .edit-button{
+        height: 18px;
+        width: 18px;
+    }
+}
