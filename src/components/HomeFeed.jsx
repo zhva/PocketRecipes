@@ -26,9 +26,9 @@ export const HomeFeed = () => {
           return (
             <div className='first-recipe' key={key}>
               <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink} />
-              <h3>{JSON.stringify(recipe.name)}</h3>
+              <h3>{recipe.name}</h3>
               <span>userX</span>
-              <p>{JSON.stringify(recipe.description)}</p>
+              <p>{recipe.description}</p>
             </div>
           )
         })}
