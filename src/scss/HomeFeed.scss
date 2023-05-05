@@ -7,6 +7,7 @@
     width: 100%;
     padding-bottom: 5%;
     background: url("../images/recipeBG.png") center/cover no-repeat;
+    height: 100vh;
     &:before {
         content: '';
         position: absolute;
@@ -54,6 +55,7 @@
             display: flex;
             flex-direction: column;
             gap: 25px;
+            padding-bottom: 75px;
         }
         .first-recipe {
             width: 100%;
