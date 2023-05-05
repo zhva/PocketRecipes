@@ -68,12 +68,12 @@ ol {
    background-color: $light-transparent;
 }
 .popup-container {
-    width: 100vw;
+    width: calc(100% - 10%);
     height: 100vh;
     padding: 5%;
     background-color: $dark-filter;
     .popup-inner-container {
-        height: calc(100vh - 5%);
+        height: calc(100vh - 10%);
         padding: 20px;
         background-color: $light;
         border-radius: $controls-border-radius;
