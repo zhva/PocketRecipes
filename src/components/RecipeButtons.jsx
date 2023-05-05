@@ -10,6 +10,7 @@ import { auth, database } from '../firebase'
 export const RecipeButtons = (recipeId) => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
+
     const deleteRecipe = () => {
         const recipeRef = ref(database, `users/${user?.uid}/recipes/${recipeId.recipeId}`)
         remove(recipeRef)

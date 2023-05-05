@@ -13,6 +13,7 @@ export const StartingPage = () => {
   const navigate = useNavigate()
   return (
         <div className="starting-page-container">
+          <div>
             <WelcomeHeadline />
             <SubHeadline>Store all your favourite recipes in one place.</SubHeadline>
             <InfoText>
@@ -33,6 +34,7 @@ export const StartingPage = () => {
                 ? <SignOutButton></SignOutButton>
                 : <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
               }
+            </div>
             </div>
         </div>
   )
