@@ -7,7 +7,6 @@
     width: 100%;
     padding-bottom: 5%;
     background: url("../images/recipeBG.png") center/cover no-repeat;
-    min-height: 100vh;
     height: auto;
     &:before {
         content: '';
@@ -67,7 +66,6 @@
             background-color: $light;
             border-radius: $cards-border-radius;
             padding-bottom: 25px;
-            max-height: 50vh;
             h3, span, p {
                 margin-left: 25px;
             }
@@ -76,6 +74,7 @@
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
+                max-height: 50vh;
             }
             h3 {
                 font-family: $recipe-card-heading-font-family;
