@@ -6,14 +6,14 @@
     padding: $button-vertical-padding 10px;
     border-radius: $controls-border-radius;
     box-shadow: $button-shadow;
+    text-align: center;
     cursor: pointer;
-}
-label.label-image-upload .image-upload {
-    position: absolute;
-    top: -1000px;
-}
-
-.label-image-upload span {
-    font-family: $button-font-family;
-    font-size: $button-font-size;
+    span {
+        font-family: $button-font-family;
+        font-size: $button-font-size;
+    }
+    .image-upload {
+        position: absolute;
+        top: -1000px;
+    }
 }

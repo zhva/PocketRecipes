@@ -5,8 +5,8 @@
 .home-container {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     padding-bottom: 5%;
-    background: url("../images/recipeBG.png") center/cover no-repeat;
     height: auto;
     &:before {
         content: '';

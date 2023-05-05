@@ -150,7 +150,7 @@ const useRecipe = () => {
     }
     return recipesRef
   }
-  return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, setImageSrc, imageSrc, errors, recipe, loading }
+  return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, setImageSrc, imageSrc, errors, recipe, loading}
 }
 
 export const CreateRecipe = () => {
@@ -163,7 +163,7 @@ export const CreateRecipe = () => {
               <ImageUpload setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64 || values.imageSrc && values.imageSrc} />
               <Card>
                   <div className='recipe-card-container'>
-                  {/* { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> } */}
+                  { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
                   { errors && <div className='formik-errors'>{ errors.imageSrc }</div> }
                   <h1>Recipe name</h1>
                     <RecipeHeadlines
