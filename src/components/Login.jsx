@@ -40,44 +40,46 @@ const useLogin = () => {
 export const Login = () => {
   const { handleChange, handleSubmit, handleBlur, values, errors, errorMessage } = useLogin()
   return (
-    <div className='login-container content-container'>
-      <form onSubmit={handleSubmit} className='form-login'>
-        <h1>Log In</h1>
-        <h2>Welcome to PcketRecipes</h2>
-        <div className='login-inner-container'>
-          {errorMessage && <div className='formik-errors'>{errorMessage}</div>}
-          <TextInput
-            type='email'
-            name='email'
-            label='E-Mail'
-            id='eimal'
-            className="text-input"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            placeholder="E-Mail"
-          />
-          <span className='formik-errors'>
-            {errors.email}
-          </span>
-          <TextInput
-            type='password'
-            name='password'
-            label='Password'
-            id='password'
-            className="text-input"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-            placeholder="Password"
-          />
-          <span className='formik-errors'>
-            {errors.password}
-          </span>
-          <Button type="submit" variant="Log in">Log in</Button>
-          <a href={'/signup'}>Don&apos;t have an account yet?</a>
-        </div>
-      </form>
+    <div className='login-page'>
+      <div className='login-container content-container'>
+        <form onSubmit={handleSubmit} className='form-login'>
+          <h1>Log In</h1>
+          <h2>Welcome to PocketRecipes</h2>
+          <div className='login-inner-container'>
+            {errorMessage && <div className='formik-errors'>{errorMessage}</div>}
+            <TextInput
+              type='email'
+              name='email'
+              label='E-Mail'
+              id='eimal'
+              className="text-input"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              placeholder="E-Mail"
+            />
+            <span className='formik-errors'>
+              {errors.email}
+            </span>
+            <TextInput
+              type='password'
+              name='password'
+              label='Password'
+              id='password'
+              className="text-input"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder="Password"
+            />
+            <span className='formik-errors'>
+              {errors.password}
+            </span>
+            <Button type="submit" variant="Log in">Log in</Button>
+            <a href={'/signup'}>Don&apos;t have an account yet?</a>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
