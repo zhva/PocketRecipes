@@ -1,6 +1,14 @@
-.signup-container {
-    max-width: inherit;
-    h1 {
-        color: $text-color;
+.signup-page {
+    width: 100%;
+    max-width: $page-max-width;
+    min-height: 100vh;
+    background-image: url(../images/BG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .signup-container {
+        max-width: inherit;
+        h1 {
+            color: $text-color;
+        }
     }
 }

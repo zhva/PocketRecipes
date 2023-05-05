@@ -70,67 +70,69 @@ export const Signup = () => {
   const { handleSubmit, handleChange, handleBlur, values, errors } = useSigup()
 
   return (
-    <div className='signup-container content-container'>
-      <form onSubmit={handleSubmit} className='form-signup'>
-        <h1>Sign Up</h1>
-        <h2>Welcome to PcketRecipes</h2>
-        <div className='signup-inner-container'>
-            <TextInput
-                type="text"
-                name="name"
-                label="Username"
-                placeholder="Username"
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                variant="text"
-            />
-            <span className='formik-errors'>
-                {errors.name}
-            </span>
-            <TextInput
-                type="email"
-                name="email"
-                label="E-Mail"
-                placeholder="E-Mail"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                variant="email"
-            />
-            <span className='formik-errors'>
-                {errors.email}
-            </span>
-            <TextInput
-                type="password"
-                name="password"
-                label="Password"
-                placeholder="Password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                variant="password"
-            />
-            <span className='formik-errors'>
-                {errors.password}
-            </span>
-            <TextInput
-                type="password"
-                name="passwordRepeat"
-                label="Repeat Password"
-                placeholder="Repeat Password"
-                value={values.passwordRepeat}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                variant="password"
-            />
-            <span className='formik-errors'>
-                {errors.passwordRepeat}
-            </span>
-            <Button type="submit" variant="Sign up">Sign Up</Button>
-            <a href={'/login'}>Already have an account?</a>
-        </div>
-      </form>
+    <div className='signup-page'>
+      <div className='signup-container content-container'>
+        <form onSubmit={handleSubmit} className='form-signup'>
+          <h1>Sign Up</h1>
+          <h2>Welcome to PocketRecipes</h2>
+          <div className='signup-inner-container'>
+              <TextInput
+                  type="text"
+                  name="name"
+                  label="Username"
+                  placeholder="Username"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  variant="text"
+              />
+              <span className='formik-errors'>
+                  {errors.name}
+              </span>
+              <TextInput
+                  type="email"
+                  name="email"
+                  label="E-Mail"
+                  placeholder="E-Mail"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  variant="email"
+              />
+              <span className='formik-errors'>
+                  {errors.email}
+              </span>
+              <TextInput
+                  type="password"
+                  name="password"
+                  label="Password"
+                  placeholder="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  variant="password"
+              />
+              <span className='formik-errors'>
+                  {errors.password}
+              </span>
+              <TextInput
+                  type="password"
+                  name="passwordRepeat"
+                  label="Repeat Password"
+                  placeholder="Repeat Password"
+                  value={values.passwordRepeat}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  variant="password"
+              />
+              <span className='formik-errors'>
+                  {errors.passwordRepeat}
+              </span>
+              <Button type="submit" variant="Sign up">Sign Up</Button>
+              <a href={'/login'}>Already have an account?</a>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
