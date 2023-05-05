@@ -44,7 +44,7 @@ export const Login = () => {
       <div className='login-container content-container'>
         <form onSubmit={handleSubmit} className='form-login'>
           <h1>Log In</h1>
-          <h2>Welcome to PcketRecipes</h2>
+          <h2>Welcome to PocketRecipes</h2>
           <div className='login-inner-container'>
             {errorMessage && <div className='formik-errors'>{errorMessage}</div>}
             <TextInput
