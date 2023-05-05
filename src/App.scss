@@ -19,6 +19,8 @@
 @import './scss/IngredientPreparationLists.scss';
 @import './scss/Popup.scss';
 
+
+@import './scss/HomeFeed.scss';
 @import './scss/Recipe.scss';
 @import './scss/CreateRecipe.scss';
 @import './scss/Login.scss';
@@ -38,7 +40,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100vh;
-  background: url("./images/recipeBG.png") center/cover no-repeat, hsl(195, 37, 52, 100%);
+  background-color: hsl(195, 37, 52, 100%);
   background-repeat:  no-repeat;
   background-size: cover;
 }
