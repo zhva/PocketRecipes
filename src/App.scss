@@ -27,8 +27,8 @@
 
 .App {
   width: 100%;
-  max-width: 1024px;
-  min-width: 390px;
+  max-width: $page-max-width;
+  min-width: $page-min-width;
   margin: 0 auto;
 }
 
