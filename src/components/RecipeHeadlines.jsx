@@ -15,7 +15,7 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode }) =>
                 </label>
                 )
               : <h1>{recipeName}</h1>}
-            <p>Servings: people
+            <p>Servings: 
               {mode === 'create'
                 ? (
                   <label htmlFor='recipeServings'>
@@ -27,7 +27,7 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode }) =>
                       onChange={handleChange}/>
                 </label>
                   )
-                : <span>{servings}</span>}</p>
+                : <span>{servings}</span>} portion(s)</p>
         </div>
   )
 }
