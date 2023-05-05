@@ -7,7 +7,8 @@
     width: 100%;
     padding-bottom: 5%;
     background: url("../images/recipeBG.png") center/cover no-repeat;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     &:before {
         content: '';
         position: absolute;
