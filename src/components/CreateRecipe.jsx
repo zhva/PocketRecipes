@@ -165,6 +165,7 @@ export const CreateRecipe = () => {
                   <div className='recipe-card-container'>
                   {/* { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> } */}
                   { errors && <div className='formik-errors'>{ errors.imageSrc }</div> }
+                  <h1>Recipe name</h1>
                     <RecipeHeadlines
                       recipeName={values.name}
                       servings={values.servings}
@@ -173,6 +174,7 @@ export const CreateRecipe = () => {
                     { errors && <div className='formik-errors'>{ errors.name }</div> }
                     { errors && <div className='formik-errors'>{ errors.servings }</div> }
                     <div className='recipe-description'>
+                      <h1>Description</h1>
                       <label htmlFor="descriptionId"></label>
                       <textarea
                             name='description'
@@ -182,6 +184,7 @@ export const CreateRecipe = () => {
                       { errors && <div className='formik-errors'>{ errors.description }</div> }
                     </div>
                     <div className='ingredients-list-container'>
+                        <h1>Ingredients</h1>
                         <AddInput
                           items={values && values.ingredients}
                           name='ingredients'
@@ -192,6 +195,7 @@ export const CreateRecipe = () => {
                         { errors && <div className='formik-errors'>{ errors.ingredients }</div> }
                     </div>
                     <div className='preparations-list-container'>
+                        <h1>Preparations</h1>
                         <AddInput
                           items={values && values.preparations}
                           name='preparations'

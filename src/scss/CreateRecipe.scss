@@ -20,7 +20,22 @@
             width: 100%;
         }
     }
+}
 
+.ingredients-list-container{
+    h1{
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+}
+
+.preparations-list-container{
+    h1{
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
 }
 
 .recipe-description {
@@ -44,5 +59,8 @@
         border: 0;
         word-wrap: break-word;
     }
-
+    h1{
+        text-align: center;
+        padding-bottom: 20px;
+    }
 }
