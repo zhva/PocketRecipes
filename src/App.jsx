@@ -1,7 +1,7 @@
 import './App.scss'
 import React from 'react'
 import { NavigationBar } from './components/NavigationBar'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { StartingPage } from './components/StartingPage'
 import { Login } from './components/Login'
 import { Signup } from './components/Signup'
@@ -12,7 +12,6 @@ import { MyRecipes } from './components/MyRecipes'
 
 
 function App () {
-  const navigate = useNavigate()
   return (
     <div className="App">
       <Routes>
@@ -26,10 +25,10 @@ function App () {
         <Route path="/edit/:recipeId" element={<CreateRecipe/>} />
       </Routes>
       <NavigationBar
-        redirectToStartingPage = {() => navigate('/')}
-        redirectToMyRecipes = {() => navigate('/my-recipes')}
-        redirectToFeed = {() => navigate('/feed')}
-        redirectToNewRecipe = {() => navigate('/create-recipe')}/>
+        startingPageRoute = {'/'}
+        myRecipesRoute = {'/my-recipes'}
+        feedRoute = {'/feed'}
+        newRecipeRoute = {'/create-recipe'}/>
     </div>
   )
 }
