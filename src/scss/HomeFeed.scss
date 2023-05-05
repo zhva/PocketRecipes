@@ -67,6 +67,7 @@
             background-color: $light;
             border-radius: $cards-border-radius;
             padding-bottom: 25px;
+            max-height: 50vh;
             h3, span, p {
                 margin-left: 25px;
             }
