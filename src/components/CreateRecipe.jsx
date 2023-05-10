@@ -179,8 +179,10 @@ export const CreateRecipe = () => {
                       <textarea
                             name='description'
                             id='descriptionId'
-                            value = {recipe && recipe.description}
-                            onChange={handleChange}/>
+                            onChange={handleChange}
+                            defaultValue={recipe && recipe.description}>
+                            {}
+                      </textarea>
                       { errors && <div className='formik-errors'>{ errors.description }</div> }
                     </div>
                     <div className='ingredients-list-container'>
