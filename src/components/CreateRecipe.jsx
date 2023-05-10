@@ -21,10 +21,9 @@ const validationSchema = object().shape({
   name: string().max(50, 'Too long!').required('Name is required!'),
   description: string().max(500, 'Too long!').required('Description is required!'),
   servings: number(),
-  ingredients: array().required('Ingredients are required!'),
-  preparations: array().required('Required!'),
-  visibility: bool(),
-  // imageSrc: mixed().nullable().required('Image is required!')
+  ingredients: array().min(1, 'At least one ingredient is required!'),
+  preparations: array().min(1, 'At least one preparation is required!'),
+  visibility: bool()
 })
 
 const useRecipe = () => {
@@ -47,7 +46,7 @@ const useRecipe = () => {
   }
 
   useEffect(() => {
-    if (!loading && recipe) {
+    if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
       recipeValues = {
         name: recipe.name,
         description: recipe.description,
@@ -57,10 +56,8 @@ const useRecipe = () => {
         visibility: recipe.visibility,
         imageSrc: recipe.imageLink
       }
-      if(Object.keys(params).length !== 0 && params.constructor === Object){
-        formik.setValues(recipeValues)
-      }
     }
+    formik.setValues(recipeValues)
   }, [recipe])
 
   const formik = useFormik({
@@ -78,9 +75,9 @@ const useRecipe = () => {
       }
       try {
         if(Object.keys(params).length === 0 && params.constructor === Object){
-          pushRecipe(recipeData, imageSrc.blob)
+          pushRecipe(recipeData, imageSrc && imageSrc.blob)
         } else {
-          updateRecipe(recipeData, imageSrc.blob)
+          updateRecipe(recipeData, imageSrc && imageSrc.blob)
         }
         navigate('/my-recipes')
       } catch (error) {
@@ -118,13 +115,21 @@ const useRecipe = () => {
 
   const updateRecipe = async (data) => {
     const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes/${params.recipeId}`) : null
+    let recipeData= {}
     try {
-      const imageUrl = await uploadImage(imageSrc)
-      const imageRef = await getDownloadURL(sRef(storage, imageUrl))
-      const recipeData = {
-        ...data,
-        imageLink: imageRef,
-        timestamp: new Date().getTime()
+      if (!imageSrc) {
+        recipeData = {
+          ...data,
+          timestamp: new Date().getTime()
+        }
+      } else {
+        const imageUrl = await uploadImage(imageSrc)
+        const imageRef = await getDownloadURL(sRef(storage, imageUrl))
+        recipeData = {
+          ...data,
+          imageLink: imageRef,
+          timestamp: new Date().getTime()
+        }
       }
       await update(recipesRef, recipeData)
     } catch (error) {
@@ -135,16 +140,19 @@ const useRecipe = () => {
   }
 
   const pushRecipe = async (data) => {
+    if (!imageSrc) return
     const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
     try {
-      const imageUrl = await uploadImage(imageSrc)
-      const imageRef = await getDownloadURL(sRef(storage, imageUrl))
-      const recipeData = {
-        ...data,
-        imageLink: imageRef,
-        timestamp: new Date().getTime()
+      if(imageSrc) {
+        const imageUrl = await uploadImage(imageSrc)
+        const imageRef = await getDownloadURL(sRef(storage, imageUrl))
+        const recipeData = {
+          ...data,
+          imageLink: imageRef,
+          timestamp: new Date().getTime()
+        }
+        await push(recipesRef, recipeData)
       }
-      await push(recipesRef, recipeData)
     } catch (error) {
       console.log(error)
     }
@@ -163,7 +171,7 @@ export const CreateRecipe = () => {
               <ImageUpload setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64 || values.imageSrc && values.imageSrc} />
               <Card>
                   <div className='recipe-card-container'>
-                  { !imageSrc && <div className='formik-errors'>{ 'Image is required' }</div> }
+                  {!imageSrc && !values.imageSrc && <div className='formik-errors'>Image is required</div>}
                   { errors && <div className='formik-errors'>{ errors.imageSrc }</div> }
                   <h1>Recipe name</h1>
                     <RecipeHeadlines
@@ -209,7 +217,8 @@ export const CreateRecipe = () => {
                     </div>
                     <VisibilitySwitch/>
                     <div className='btn-container'>
-                        <Button type='submit'>Save</Button>
+                      <Button type='submit'>Save</Button>
+                      {console.log(errors)}
                     </div>
                   </div>
               </Card>
