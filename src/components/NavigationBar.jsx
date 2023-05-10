@@ -18,7 +18,6 @@ const toggleActive = (id) => {
 
 export const NavigationBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeRoute}) => {
   const location = useLocation()
-  console.log({location})
   const navigate = useNavigate()
 
   const activeButtonId = (() => {
