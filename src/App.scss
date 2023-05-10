@@ -42,10 +42,14 @@ body {
   width: 100%;
   height: 100vh;
   // background-color: hsl(195, 37, 52, 100%);
-  background-image: url('./images/BG_utensils.png');
-  background-repeat:  repeat;
-  background-size: 30%;
-  position: relative;
+  // background-image: url('./images/BG_utensils.png');
+  // background-repeat:  repeat;
+  // background-size: 30%;
+  // position: relative;
+  background-image: url('./images/side-BG.svg'), url('./images/side-BG.svg');
+  background-position-x: left, 106%;
+  background-repeat: repeat-y;
+  background-size: 20%;
 }
 
 h1 {

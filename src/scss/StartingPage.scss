@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-image: linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg);
+    background-image: $app-backgroung-image;
     background-repeat: no-repeat;
     background-size: cover;
     .buttons-container {
