@@ -5,9 +5,11 @@
         width: 100%;
         position: relative;
         margin-bottom: 15px;
+        display: inline-block;
+        height: auto;
     }
-    input {
-        resize: none;
+    textarea {
+        resize: vertical;
         box-sizing: border-box;
         height: auto;
         min-height: $edit-recipe-input-min-height;
@@ -24,7 +26,6 @@
         font-family: $text-font-family;
         font-size: $text-font-size;
         border: 0;
-        margin-bottom: 10px;
     }
     .delete-button {
         position: absolute;
