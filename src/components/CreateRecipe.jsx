@@ -18,11 +18,11 @@ import { useObjectVal } from 'react-firebase-hooks/database'
 import { object, string, number, array, bool } from 'yup'
 
 const validationSchema = object().shape({
-  name: string().max(50, 'Too long!').required('Name is required!'),
-  description: string().max(500, 'Too long!').required('Description is required!'),
-  servings: number(),
-  ingredients: array().min(1, 'At least one ingredient is required!'),
-  preparations: array().min(1, 'At least one preparation is required!'),
+  name: string().max(50, 'Too long.').required('Name is required.'),
+  description: string().max(500, 'Too long.').required('Description is required.'),
+  servings: number().min(1).max(100).required('Servings cann not be empty.'),
+  ingredients: array().min(1, 'At least one ingredient is required.'),
+  preparations: array().min(1, 'At least one preparation step is required.'),
   visibility: bool()
 })
 
@@ -95,7 +95,6 @@ const useRecipe = () => {
       formik.setFieldValue(name, [...values, { id: uuidv4(), name: '' }])
     }
   }
-
 
   const handleDelete = (id, name) => {
     const newValues = formik.values[name].filter((value) => value.id !== id)
