@@ -15,11 +15,10 @@
     }
     .image-container {
         width: 100%;
-        min-height: 60vh;
         img {
             object-fit: cover;
-            width: inherit;
-            height: inherit;
+            width: 100%;
+            min-height: 60vh;
         }
     }
 }
