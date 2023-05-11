@@ -75,11 +75,15 @@ const useRecipe = () => {
       }
       try {
         if(Object.keys(params).length === 0 && params.constructor === Object){
-          pushRecipe(recipeData, imageSrc && imageSrc.blob)
+          if(imageSrc)
+          {
+            pushRecipe(recipeData, imageSrc && imageSrc.blob)
+            navigate('/my-recipes')
+          }
         } else {
           updateRecipe(recipeData, imageSrc && imageSrc.blob)
+          navigate('/my-recipes')
         }
-        navigate('/my-recipes')
       } catch (error) {
         console.log(error)
       }
@@ -134,7 +138,6 @@ const useRecipe = () => {
     } catch (error) {
       console.log(error)
     }
-
     return recipesRef
   }
 
@@ -217,7 +220,6 @@ export const CreateRecipe = () => {
                     <VisibilitySwitch/>
                     <div className='btn-container'>
                       <Button type='submit'>Save</Button>
-                      {console.log(errors)}
                     </div>
                   </div>
               </Card>
