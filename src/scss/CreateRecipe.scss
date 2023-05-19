@@ -1,3 +1,8 @@
+.create-recipe-container {
+    .image-container {
+        min-height: 50vh;
+    }
+}
 .recipe-card-container {
     min-height: 100vh;
     display: flex;
@@ -43,11 +48,11 @@
     width: 100%;
     height: auto;
     > textarea {
-        resize: none;
+        resize: vertical;
         box-sizing: border-box;
         height: auto;
         min-height: 100px;
-        max-height: 500px;
+        max-height: 300px;
         width: 100%;
         border-radius: $nav-border-radius;
         background-color: $on-primary;

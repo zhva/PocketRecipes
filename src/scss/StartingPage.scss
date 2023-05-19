@@ -15,9 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-image: linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    @include app-backgroung-image();
     .buttons-container {
         display: flex;
         flex-direction: column;

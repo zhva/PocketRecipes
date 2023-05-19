@@ -15,13 +15,15 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode }) =>
                 </label>
                 )
               : <h1>{recipeName}</h1>}
-            <p>Servings: 
+            <p>Servings:
               {mode === 'create'
                 ? (
                   <label htmlFor='recipeServings'>
                     <input
                       value={servings || ''}
                       type='number'
+                      min = '1'
+                      max={100}
                       name='servings'
                       id='recipeServings'
                       onChange={handleChange}/>
