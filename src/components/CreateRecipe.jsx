@@ -5,6 +5,7 @@ import { Card } from './Card'
 import { VisibilitySwitch } from './VisibilitySwitch'
 import { Button } from './Button'
 import { AddInput } from './AddInput'
+import { RecipeDescription } from './RecipeDescription'
 import 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { database, storage, auth } from '../firebase'
@@ -183,18 +184,10 @@ export const CreateRecipe = () => {
                       mode={'create'}/>
                     { errors && <div className='formik-errors'>{ errors.name }</div> }
                     { errors && <div className='formik-errors'>{ errors.servings }</div> }
-                    <div className='recipe-description'>
-                      <h1>Description</h1>
-                      <label htmlFor="descriptionId"></label>
-                      <textarea
-                            name='description'
-                            id='descriptionId'
-                            onChange={handleChange}
-                            defaultValue={recipe && recipe.description}>
-                            {}
-                      </textarea>
-                      { errors && <div className='formik-errors'>{ errors.description }</div> }
-                    </div>
+                    <RecipeDescription
+                      description = {recipe && recipe.description}
+                      descriptionErrors = {errors && errors.description}
+                      handleChange = {handleChange} />
                     <div className='ingredients-list-container'>
                         <h1>Ingredients</h1>
                         <AddInput

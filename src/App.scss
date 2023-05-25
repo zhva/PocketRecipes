@@ -18,6 +18,8 @@
 @import './scss/RecipeImage.scss';
 @import './scss/IngredientPreparationLists.scss';
 @import './scss/Popup.scss';
+@import './scss/RecipeCard.scss';
+@import './scss/RecipeDescription.scss';
 
 
 @import './scss/HomeFeed.scss';
@@ -46,7 +48,6 @@ body {
 
 
 h1 {
-  color: white;
   font-size: 2em;
   font-family: 'Montserrat Bold';
 }
