@@ -161,11 +161,12 @@ const useRecipe = () => {
     }
     return recipesRef
   }
-  return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, setImageSrc, imageSrc, errors, recipe, loading}
+  return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, submitCount: formik.submitCount, setImageSrc, imageSrc, errors, recipe, loading}
 }
 
 export const CreateRecipe = () => {
-  const { handleAdd, handleChange, handleDelete, values, handleSubmit, setImageSrc, imageSrc, errors, recipe, loading } = useRecipe()
+  const { handleAdd, handleChange, handleDelete, values, handleSubmit, submitCount, setImageSrc, imageSrc, errors, recipe, loading } = useRecipe()
+  const isSubmitted = submitCount > 0
 
   if (!loading || recipe){
     return (
@@ -174,7 +175,8 @@ export const CreateRecipe = () => {
               <ImageUpload
                 setImageSrc={setImageSrc}
                 imageSrc={imageSrc && imageSrc.base64 || values.imageSrc && values.imageSrc}
-                valuesImageSrc = { values.imageSrc && values.imageSrc} />
+                valuesImageSrc={values.imageSrc && values.imageSrc}
+                submitCount={submitCount}/>
               <Card>
                   <div className='recipe-card-container'>
                   <h1>Recipe name</h1>
@@ -183,11 +185,11 @@ export const CreateRecipe = () => {
                       servings={values.servings}
                       handleChange={handleChange}
                       mode={'create'}
-                      nameErrors = {errors && errors.name}
-                      servingsErrors = {errors && errors.servings}/>
+                      nameErrors = {isSubmitted && errors && errors.name}
+                      servingsErrors = {isSubmitted && errors && errors.servings}/>
                     <RecipeDescription
                       description = {recipe && recipe.description}
-                      descriptionErrors = {errors && errors.description}
+                      descriptionErrors = {isSubmitted && errors && errors.description}
                       handleChange = {handleChange} />
                     <div className='ingredients-list-container'>
                         <h1>Ingredients</h1>
@@ -197,7 +199,7 @@ export const CreateRecipe = () => {
                           handleAdd={handleAdd}
                           handleChange={handleChange}
                           handleDelete={handleDelete}
-                          errors={errors && errors.ingredients}>
+                          errors={isSubmitted && errors && errors.ingredients}>
                         </AddInput>
                     </div>
                     <div className='preparations-list-container'>
@@ -208,7 +210,7 @@ export const CreateRecipe = () => {
                           handleAdd={handleAdd}
                           handleChange={handleChange}
                           handleDelete={handleDelete}
-                          errors={errors && errors.preparations}>
+                          errors={isSubmitted && errors && errors.preparations}>
                         </AddInput>
                     </div>
                     <VisibilitySwitch/>
