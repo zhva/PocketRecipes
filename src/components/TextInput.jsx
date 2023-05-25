@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TextInput = ({ value, label, name, placeholder, type, onChange }) => {
+export const TextInput = ({ value, label, name, placeholder, type, onChange, errors }) => {
   return (
     <div className='text-input-container'>
       { label && <label htmlFor="input-field">{label}</label> }
@@ -12,6 +12,9 @@ export const TextInput = ({ value, label, name, placeholder, type, onChange }) =
         placeholder={placeholder}
         onChange={onChange}
       />
+      <span className='formik-errors'>
+        {errors && errors}
+      </span>
     </div>
   )
 }

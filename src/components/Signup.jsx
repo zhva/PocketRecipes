@@ -8,7 +8,8 @@ import { auth } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 
 const validationSchema = object().shape({
-  name: string(),
+  name: string()
+    .required('Name is a required field'),
   email: string()
     .email('Invalid email format')
     .required('Email is a required field'),
@@ -63,11 +64,12 @@ const useSigup = () => {
     }
   }, [isSignUpSuccessful, isEmailTaken, navigate])
 
-  return { handleSubmit, handleChange: formik.handleChange, handleBlur: formik.handleBlur, values: formik.values, errors }
+  return { handleSubmit, handleChange: formik.handleChange, handleBlur: formik.handleBlur, values: formik.values, submitCount: formik.submitCount, errors }
 }
 
 export const Signup = () => {
-  const { handleSubmit, handleChange, handleBlur, values, errors } = useSigup()
+  const { handleSubmit, handleChange, handleBlur, values, submitCount, errors } = useSigup()
+  const isSubmitted = submitCount > 0
 
   return (
     <div className='signup-page'>
@@ -79,55 +81,47 @@ export const Signup = () => {
               <TextInput
                   type="text"
                   name="name"
-                  label="Username"
+                  label="Username*"
                   placeholder="Username"
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   variant="text"
+                  errors={isSubmitted && errors && errors.name}
               />
-              <span className='formik-errors'>
-                  {errors.name}
-              </span>
               <TextInput
                   type="email"
                   name="email"
-                  label="E-Mail"
+                  label="E-Mail*"
                   placeholder="E-Mail"
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   variant="email"
+                  errors={isSubmitted && errors && errors.email}
               />
-              <span className='formik-errors'>
-                  {errors.email}
-              </span>
               <TextInput
                   type="password"
                   name="password"
-                  label="Password"
+                  label="Password*"
                   placeholder="Password"
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   variant="password"
+                  errors={isSubmitted && errors && errors.password}
               />
-              <span className='formik-errors'>
-                  {errors.password}
-              </span>
               <TextInput
                   type="password"
                   name="passwordRepeat"
-                  label="Repeat Password"
+                  label="Repeat Password*"
                   placeholder="Repeat Password"
                   value={values.passwordRepeat}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   variant="password"
+                  errors={isSubmitted && errors && errors.passwordRepeat}
               />
-              <span className='formik-errors'>
-                  {errors.passwordRepeat}
-              </span>
               <Button type="submit" variant="Sign up">Sign Up</Button>
               <a href={'/login'}>Already have an account?</a>
           </div>
