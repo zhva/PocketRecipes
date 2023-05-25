@@ -171,19 +171,20 @@ export const CreateRecipe = () => {
     return (
       <div className='create-recipe-container'>
           <form onSubmit={ handleSubmit }>
-              <ImageUpload setImageSrc={setImageSrc} imageSrc={imageSrc && imageSrc.base64 || values.imageSrc && values.imageSrc} />
+              <ImageUpload
+                setImageSrc={setImageSrc}
+                imageSrc={imageSrc && imageSrc.base64 || values.imageSrc && values.imageSrc}
+                valuesImageSrc = { values.imageSrc && values.imageSrc} />
               <Card>
                   <div className='recipe-card-container'>
-                  {!imageSrc && !values.imageSrc && <div className='formik-errors'>Image is required</div>}
-                  { errors && <div className='formik-errors'>{ errors.imageSrc }</div> }
                   <h1>Recipe name</h1>
                     <RecipeHeadlines
                       recipeName={values.name}
                       servings={values.servings}
                       handleChange={handleChange}
-                      mode={'create'}/>
-                    { errors && <div className='formik-errors'>{ errors.name }</div> }
-                    { errors && <div className='formik-errors'>{ errors.servings }</div> }
+                      mode={'create'}
+                      nameErrors = {errors && errors.name}
+                      servingsErrors = {errors && errors.servings}/>
                     <RecipeDescription
                       description = {recipe && recipe.description}
                       descriptionErrors = {errors && errors.description}
@@ -195,9 +196,9 @@ export const CreateRecipe = () => {
                           name='ingredients'
                           handleAdd={handleAdd}
                           handleChange={handleChange}
-                          handleDelete={handleDelete}>
+                          handleDelete={handleDelete}
+                          errors={errors && errors.ingredients}>
                         </AddInput>
-                        { errors && <div className='formik-errors'>{ errors.ingredients }</div> }
                     </div>
                     <div className='preparations-list-container'>
                         <h1>Preparations</h1>
@@ -206,9 +207,9 @@ export const CreateRecipe = () => {
                           name='preparations'
                           handleAdd={handleAdd}
                           handleChange={handleChange}
-                          handleDelete={handleDelete}>
+                          handleDelete={handleDelete}
+                          errors={errors && errors.preparations}>
                         </AddInput>
-                        { errors && <div className='formik-errors'>{ errors.preparations }</div> }
                     </div>
                     <VisibilitySwitch/>
                     <div className='btn-container'>
