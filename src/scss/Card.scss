@@ -6,4 +6,8 @@
     padding: $recipe-card-paddind;
     border-radius: $cards-border-radius $cards-border-radius 0px 0px;
     margin-top: -25px;
+    .recipe-headline h1,
+    .ingredients-preparation-list h2 {
+        text-align: left;
+    }
 }
