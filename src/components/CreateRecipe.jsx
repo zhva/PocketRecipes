@@ -22,8 +22,8 @@ const validationSchema = object().shape({
   name: string().max(50, 'Too long.').required('Name is required.'),
   description: string().max(500, 'Too long.').required('Description is required.'),
   servings: number().min(1).max(100).required('Servings cann not be empty.'),
-  ingredients: array().min(1, 'At least one ingredient is required.'),
-  preparations: array().min(1, 'At least one preparation step is required.'),
+  ingredients: array().min(1, 'At least one ingredient is required.').max(50,'Max number of ingredients is 50.' ),
+  preparations: array().min(1, 'At least one preparation step is required.').max(50, 'Max number of preparation steps is 50.'),
   visibility: bool()
 })
 
