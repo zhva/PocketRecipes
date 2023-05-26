@@ -11,34 +11,38 @@ import { ref } from 'firebase/database'
 import { useParams } from 'react-router-dom'
 import { RecipeButtons } from '../generic/RecipeButtons'
 
-export const Recipe = (props) => {
+export const Recipe = () => {
     const params = useParams()
     const [user] = useAuthState(auth)
     const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
     const [recipe, loading] = useObjectVal(recipeRef)
 
-    if (recipe && !loading)
-    {
+    console.log(recipe)
+    if (recipe && !loading) {
+        const { imageLink, description, ingredients, name, preparations, servings } = recipe;
+
         return (
             <div className='recipe-container'>
-                <RecipeImage
-                    imageLink={recipe.imageLink && recipe.imageLink}/>
+                <RecipeImage imageLink={imageLink} />
                 <Card>
-                    <RecipeHeadlines servings={recipe.servings} recipeName={recipe.name}/>
+                    <RecipeHeadlines servings={servings} recipeName={name} />
                     <div className='recipe-button-container'>
-                     <RecipeButtons recipeId={params.recipeId}/>
+                        <RecipeButtons recipeId={params.recipeId} />
                     </div>
                     <div className='description-container'>
-                        <p>{recipe.description}</p>
+                        <p>{description}</p>
                     </div>
                     <IngredientPreparationLists
-                        ingredients = {recipe.ingredients}
-                        preparationSteps = {recipe.preparations}/>
+                        ingredients={ingredients}
+                        preparationSteps={preparations}
+                    />
                     <div className='btn-container'>
-                        <Button type = {'submit'}>Share Recipe</Button>
+                        <Button type='submit'>Share Recipe</Button>
                     </div>
                 </Card>
             </div>
-        )
+        );
     }
-}
+
+    return null;
+};
