@@ -1,0 +1,26 @@
+.recipe-description {
+    width: 100%;
+    height: auto;
+    > textarea {
+        resize: vertical;
+        box-sizing: border-box;
+        height: auto;
+        min-height: 100px;
+        max-height: 300px;
+        width: 100%;
+        border-radius: $nav-border-radius;
+        background-color: $on-primary;
+        box-shadow: $inside-shadow;
+        outline: none;
+        padding: 20px;
+        overflow: hidden;
+        font-family: $text-font-family;
+        font-size: $text-font-size;
+        border: 0;
+        word-wrap: break-word;
+    }
+    h1{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+}

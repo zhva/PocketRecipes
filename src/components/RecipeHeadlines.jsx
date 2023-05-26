@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode }) => {
+export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode, nameErrors, servingsErrors }) => {
   return (
         <div className='recipe-headline'>
             {mode === 'create'
@@ -15,6 +15,7 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode }) =>
                 </label>
                 )
               : <h1>{recipeName}</h1>}
+            { nameErrors && <div className='formik-errors'>{ nameErrors }</div> }
             <p>Servings:
               {mode === 'create'
                 ? (
@@ -22,14 +23,15 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode }) =>
                     <input
                       value={servings || ''}
                       type='number'
-                      min = '1'
-                      max={100}
+                      min = {0}
+                      max={101}
                       name='servings'
                       id='recipeServings'
                       onChange={handleChange}/>
                 </label>
                   )
                 : <span>{servings}</span>} portion(s)</p>
+                { servingsErrors && <div className='formik-errors'>{ servingsErrors }</div> }
         </div>
   )
 }
