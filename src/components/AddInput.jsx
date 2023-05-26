@@ -6,13 +6,15 @@ export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, e
     <div>
       <div>
         {items && items.map((item, index) => {
+          const itemError = errors && errors[index] && errors[index].name
           return (
             <RecipeInput
               key={item.id}
               name={`${name}.${index}.name`}
               handleChange={handleChange}
               handleDelete={() => handleDelete(item.id, name)}
-              value={item.name}>
+              value={item.name}
+              inputError={itemError}>
             </RecipeInput>
           )
         })}
@@ -23,7 +25,7 @@ export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, e
         onClick={() => handleAdd(name)}>
         +
       </button>
-      { errors && <div className='formik-errors'>{ errors }</div> }
+      {errors && typeof errors === 'string' && <div className='formik-errors'>{errors}</div>}
     </div>
   )
 }

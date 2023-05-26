@@ -23,8 +23,8 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode, name
                     <input
                       value={servings || ''}
                       type='number'
-                      min = '1'
-                      max={100}
+                      min = {0}
+                      max={101}
                       name='servings'
                       id='recipeServings'
                       onChange={handleChange}/>

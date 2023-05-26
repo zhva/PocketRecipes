@@ -9,8 +9,8 @@ export const RecipeDescription = ({ description, descriptionErrors, handleChange
             name='description'
             id='descriptionId'
             onChange={handleChange}
-            defaultValue={description}>
-            {}
+            defaultValue={description}
+            maxLength={1001}>
         </textarea>
         { descriptionErrors && <div className='formik-errors'>{ descriptionErrors }</div> }
     </div>

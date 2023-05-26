@@ -18,12 +18,41 @@ import { useObjectVal } from 'react-firebase-hooks/database'
 
 import { object, string, number, array, bool } from 'yup'
 
+const ingredientSchema = object({
+  id: string()
+    .required(),
+  name: string()
+    .max(400, 'Ingredient must be 400 characters or less.')
+    .required('Ingredient must not be empty.')
+});
+
+const preparationSchema = object({
+  id: string()
+    .required(),
+  name: string()
+    .max(400, 'Preparation step must be 400 characters or less.')
+    .required('Preparation step must not be empty.')
+});
+
 const validationSchema = object().shape({
-  name: string().max(50, 'Too long.').required('Name is required.'),
-  description: string().max(500, 'Too long.').required('Description is required.'),
-  servings: number().min(1).max(100).required('Servings cann not be empty.'),
-  ingredients: array().min(1, 'At least one ingredient is required.').max(50,'Max number of ingredients is 50.' ),
-  preparations: array().min(1, 'At least one preparation step is required.').max(50, 'Max number of preparation steps is 50.'),
+  name: string()
+    .max(50, 'Too long.')
+    .required('Name is required.'),
+  description: string()
+    .max(1000, 'Too long.')
+    .required('Description is required.'),
+  servings: number()
+    .min(1, 'The min number of servings is 1.')
+    .max(100, 'The max number of servings is 100.')
+    .required('Servings cann not be empty.'),
+  ingredients: array()
+    .of(ingredientSchema)
+    .min(1, 'At least one ingredient is required.')
+    .max(50,'Max number of ingredients is 50.' ),
+  preparations: array()
+    .of(preparationSchema)
+    .min(1, 'At least one preparation step is required.')
+    .max(50, 'Max number of preparation steps is 50.'),
   visibility: bool()
 })
 
@@ -94,11 +123,7 @@ const useRecipe = () => {
 
   const handleAdd = (name) => {
     const values = formik.values[name]
-    const lastValue = values[values.length - 1]
-
-    if (!lastValue || lastValue.name.trim() !== "") {
-      formik.setFieldValue(name, [...values, { id: uuidv4(), name: '' }])
-    }
+    formik.setFieldValue(name, [...values, { id: uuidv4(), name: '' }])
   }
 
   const handleDelete = (id, name) => {
