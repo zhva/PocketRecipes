@@ -4,16 +4,20 @@ import React from 'react'
  * Primary UI component for user interaction
  */
 
-export const Button = (props) => {
-  const backgroundColor = props.children === 'Get Started' ? 'rgb(225,215,198)' : 'rgb(87,155,178)'
+export const Button = ({ variant = 'default', type, onClick, children }) => {
+  let className = 'custom-button'
+
+  if (variant === 'secondary') {
+    className += ' secondary'
+  }
 
   return (
     <button
-      style={{ backgroundColor }}
-      type={props.type}
-      onClick={props.onClick}
-      className="custom-button">
-      { props.children }
+      type={type}
+      onClick={onClick}
+      className={className}
+    >
+      {children}
     </button>
   )
 }
