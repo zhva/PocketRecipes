@@ -9,14 +9,18 @@ import { useNavigate } from 'react-router-dom'
 
 const validationSchema = object().shape({
   name: string()
+    .max(100, 'The name is too long')
     .required('Name is a required field'),
   email: string()
     .email('Invalid email format')
+    .max(100, 'The email is too long')
     .required('Email is a required field'),
   password: string()
     .min(8, 'Password must be at least 8 characters')
+    .max(100, 'The password is too long')
     .required('Password is a required filed'),
   passwordRepeat: string()
+    .max(100, 'The password is too long')
     .required('Please confirm your password')
     .oneOf([ref('password'), null], 'The passwords do NOT match!')
 })
