@@ -1,12 +1,12 @@
 import React from 'react'
-import { WelcomeHeadline } from './WelcomeHeadline'
-import { SubHeadline } from './SubHeadline'
-import { InfoText } from './InfoText'
-import { Button } from './Button'
+import { WelcomeHeadline } from '../generic/WelcomeHeadline'
+import { SubHeadline } from '../generic/SubHeadline'
+import { InfoText } from '../generic/InfoText'
+import { Button } from '../generic/Button'
 import { useNavigate } from 'react-router-dom'
-import { SignOutButton } from './SignoutButton'
+import { SignOutButton } from '../generic/SignoutButton'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 
 export const StartingPage = () => {
   const [user] = useAuthState(auth)

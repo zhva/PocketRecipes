@@ -1,16 +1,15 @@
 import React from 'react'
-import RecipeBackground from '../images/pasta1.png'
-import { Button } from './Button'
-import { RecipeImage } from './RecipeImage'
-import { RecipeHeadlines } from './RecipeHeadlines'
-import { IngredientPreparationLists } from './IngredientPreparationLists'
-import { Card } from './Card'
+import { Button } from '../generic/Button'
+import { RecipeImage } from '../generic/RecipeImage'
+import { RecipeHeadlines } from '../generic/RecipeHeadlines'
+import { IngredientPreparationLists } from '../generic/IngredientPreparationLists'
+import { Card } from '../generic/Card'
 import { useObjectVal } from 'react-firebase-hooks/database'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, database } from '../firebase'
+import { auth, database } from '../../firebase'
 import { ref } from 'firebase/database'
 import { useParams } from 'react-router-dom'
-import { RecipeButtons } from './RecipeButtons'
+import { RecipeButtons } from '../generic/RecipeButtons'
 
 export const Recipe = (props) => {
     const params = useParams()
@@ -23,7 +22,6 @@ export const Recipe = (props) => {
         return (
             <div className='recipe-container'>
                 <RecipeImage
-                    image={RecipeBackground}
                     imageLink={recipe.imageLink && recipe.imageLink}/>
                 <Card>
                     <RecipeHeadlines servings={recipe.servings} recipeName={recipe.name}/>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { TextInput } from './TextInput'
-import { Button } from './Button'
+import { TextInput } from '../generic/TextInput'
+import { Button } from '../generic/Button'
 import { useFormik } from 'formik'
 import { object, string, ref } from 'yup'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail } from 'firebase/auth'
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
 
 const validationSchema = object().shape({

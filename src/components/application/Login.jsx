@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Button } from './Button'
-import { TextInput } from './TextInput'
+import { Button } from '../generic/Button'
+import { TextInput } from '../generic/TextInput'
 import { useFormik } from 'formik'
 import { object, string } from 'yup'
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
 
