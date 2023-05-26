@@ -47,11 +47,11 @@ const validationSchema = object().shape({
     .required('Servings cann not be empty.'),
   ingredients: array()
     .of(ingredientSchema)
-    .min(1, 'At least one ingredient is required.')
+    .min(1, 'At least 1 ingredient is required.')
     .max(50,'Max number of ingredients is 50.' ),
   preparations: array()
     .of(preparationSchema)
-    .min(1, 'At least one preparation step is required.')
+    .min(1, 'At least 1 preparation step is required.')
     .max(50, 'Max number of preparation steps is 50.'),
   visibility: bool()
 })
@@ -65,7 +65,24 @@ const useRecipe = () => {
   const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
   const [recipe, loading] = useObjectVal(recipeRef)
 
-  let recipeValues = {
+
+  useEffect(() => {
+    if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
+      initialValues = {
+        name: recipe.values.name,
+        description: recipe.values.description,
+        servings: recipe.values.servings,
+        ingredients: recipe.values.ingredients,
+        preparations: recipe.values.preparations,
+        visibility: recipe.values.visibility,
+        imageSrc: recipe.imageLink
+      };
+      setImageSrc(initialValues.imageSrc)
+    }
+    formik.setValues(initialValues)
+  }, [recipe])
+
+  let initialValues = {
     name: '',
     description: '',
     servings: null,
@@ -75,34 +92,11 @@ const useRecipe = () => {
     imageSrc: null
   }
 
-  useEffect(() => {
-    if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
-      recipeValues = {
-        name: recipe.name,
-        description: recipe.description,
-        servings: recipe.servings,
-        ingredients: recipe.ingredients,
-        preparations: recipe.preparations,
-        visibility: recipe.visibility,
-        imageSrc: recipe.imageLink
-      }
-    }
-    formik.setValues(recipeValues)
-  }, [recipe])
-
   const formik = useFormik({
-    initialValues: recipeValues,
+    initialValues: initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      const recipeData = {
-        name: values.name,
-        description: values.description,
-        servings: values.servings,
-        ingredients: values.ingredients,
-        preparations: values.preparations,
-        visibility: values.visibility,
-        imageSrc: values.imageSrc
-      }
+      const recipeData = {values}
       try {
         if(Object.keys(params).length === 0 && params.constructor === Object){
           if(imageSrc)
@@ -142,23 +136,26 @@ const useRecipe = () => {
     }
   }
 
-  const updateRecipe = async (data) => {
-    const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes/${params.recipeId}`) : null
-    let recipeData= {}
+  const updateRecipe = async (data, imageBlob) => {
+    const recipesRef = user?.uid
+      ? ref(database, `users/${user.uid}/recipes/${params.recipeId}`)
+      : null
+    let recipeData = {}
     try {
-      if (!imageSrc) {
+      if (!imageBlob) {
         recipeData = {
-          ...data,
-          timestamp: new Date().getTime()
+          ...data.values,
+          timestamp: new Date().getTime(),
+          imageLink: recipe?.imageLink
         }
       } else {
-        const imageUrl = await uploadImage(imageSrc)
+        const imageUrl = await uploadImage(imageBlob)
         const imageRef = await getDownloadURL(sRef(storage, imageUrl))
         recipeData = {
-          ...data,
+          ...data.values,
           imageLink: imageRef,
           timestamp: new Date().getTime()
-        }
+        };
       }
       await update(recipesRef, recipeData)
     } catch (error) {
@@ -168,6 +165,7 @@ const useRecipe = () => {
   }
 
   const pushRecipe = async (data) => {
+
     if (!imageSrc) return
     const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
     try {
@@ -186,6 +184,7 @@ const useRecipe = () => {
     }
     return recipesRef
   }
+
   return { handleAdd, handleDelete, handleChange: formik.handleChange, values: formik.values, handleSubmit: formik.handleSubmit, submitCount: formik.submitCount, setImageSrc, imageSrc, errors, recipe, loading}
 }
 
@@ -213,7 +212,7 @@ export const CreateRecipe = () => {
                       nameErrors = {isSubmitted && errors && errors.name}
                       servingsErrors = {isSubmitted && errors && errors.servings}/>
                     <RecipeDescription
-                      description = {recipe && recipe.description}
+                      description = {values && values.description}
                       descriptionErrors = {isSubmitted && errors && errors.description}
                       handleChange = {handleChange} />
                     <div className='ingredients-list-container'>

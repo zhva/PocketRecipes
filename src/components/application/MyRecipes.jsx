@@ -28,10 +28,10 @@ export const MyRecipes = () => {
             <div key={key}>
               <RecipeCard
                 imageSrc={recipe.imageLink && recipe.imageLink}
-                title={recipe.name}
+                title={recipe.values.name}
                 author=''
-                description={recipe.description}
-                onClick = {() => navigate(`/my-recipes/${key}`)} //  diese id wird später definiert
+                description={recipe.values.description}
+                onClick = {() => navigate(`/my-recipes/${key}`)}
               />
             </div>
           )
