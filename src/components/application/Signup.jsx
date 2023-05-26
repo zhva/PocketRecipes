@@ -3,9 +3,10 @@ import { TextInput } from '../generic/TextInput'
 import { Button } from '../generic/Button'
 import { useFormik } from 'formik'
 import { object, string, ref } from 'yup'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail } from 'firebase/auth'
-import { auth } from '../../firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail} from 'firebase/auth'
+import { auth, database } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
+import { set, ref as sref } from 'firebase/database'
 
 const validationSchema = object().shape({
   name: string()
@@ -34,18 +35,23 @@ const useSigup = () => {
     initialValues: { name: '', email: '', password: '', passwordRepeat: '' },
     validationSchema,
     onSubmit: async (values) => {
-      setIsEmailTaken(false) // Reset the email taken state
+      setIsEmailTaken(false); // Reset the email taken state
       try {
-        const emailExists = await fetchSignInMethodsForEmail(auth, values.email)
+        const emailExists = await fetchSignInMethodsForEmail(auth, values.email);
         if (emailExists.length) {
-          setIsEmailTaken(true)
-          return
+          setIsEmailTaken(true);
+          return;
         }
-        await createUserWithEmailAndPassword(auth, values.email, values.password)
-        setIsSignUpSuccessful(true)
-        await signInWithEmailAndPassword(auth, values.email, values.password) // Auto sign-in after successful sign-up
+        const { user } = await createUserWithEmailAndPassword(auth, values.email, values.password);
+        setIsSignUpSuccessful(true);
+
+        // Save the user's name to the database
+        const nameRef = sref(database, `users/${user.uid}/name`);
+        await set(nameRef, values.name);
+
+        await signInWithEmailAndPassword(auth, values.email, values.password); // Auto sign-in after successful sign-up
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     }
   })

@@ -40,7 +40,6 @@ export const HomeFeed = () => {
                 title={recipe.values.name}
                 author=''
                 description={recipe.values.description}
-                // onClick = {handleClick(recipe.id)}
               />
             </div>
           )
