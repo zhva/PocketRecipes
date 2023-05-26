@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import feedIcon from '../icons/feed.svg'
-import myRecipesIcon from '../icons/my-recipes.svg'
-import createNewRecipeIcon from '../icons/create-new-recipe.svg'
-import startingPageIconBlack from '../icons/starting-page.svg'
+import feedIcon from '../../icons/feed.svg'
+import myRecipesIcon from '../../icons/my-recipes.svg'
+import createNewRecipeIcon from '../../icons/create-new-recipe.svg'
+import startingPageIconBlack from '../../icons/starting-page.svg'
 
 const toggleActive = (id) => {
   const buttons = document.querySelectorAll('.nav-bar-container button')

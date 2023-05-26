@@ -6,6 +6,9 @@
         "$uid" : {
           ".read": "auth.uid === $uid",
           ".write": "auth.uid === $uid",
+          "name": {
+            ".validate": "newData.isString() && newData.val().length <= 100"
+          },
           "recipes": {
             ".indexOn": ["timestamp"],
             "$recipeId": {
