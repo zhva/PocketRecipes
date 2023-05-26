@@ -25,7 +25,7 @@ export const HomeFeed = () => {
           return (
             <div className='first-recipe' key={key}>
               <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink} />
-              <h3>{recipe.name}</h3>
+              <h3>{recipe.values.name}</h3>
               <span>userX</span>
               <p>{recipe.description}</p>
             </div>
@@ -37,9 +37,9 @@ export const HomeFeed = () => {
             <div key={key}>
               <RecipeCard
                 imageSrc={recipe.imageLink && recipe.imageLink}
-                title={recipe.name}
+                title={recipe.values.name}
                 author=''
-                description={recipe.description}
+                description={recipe.values.description}
                 // onClick = {handleClick(recipe.id)}
               />
             </div>
