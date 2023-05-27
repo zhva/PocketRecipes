@@ -84,11 +84,13 @@ nav > ul li:last-child {
     padding-bottom: 50px;
 }
 
-nav > ul li a {
-    text-decoration: none;
+nav > ul li button {
     font-size: 1.45rem;
     display: inline;
     color: black;
+    background: none;
+    border: none;
+    font-family: $text-font-family;
 }
 
 nav > ul.transition {

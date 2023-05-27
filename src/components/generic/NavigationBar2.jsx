@@ -45,14 +45,14 @@ export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeR
             </div>
         </div>
       <ul className={isOpen ? "transition" : ""}>
-        <li><a onClick={() => {closeMenu(); navigate(startingPageRoute)}} href="">Home</a></li>
-        <li><a onClick={() => {closeMenu(); navigate(myRecipesRoute)}} href="">My Recipes</a></li>
-        <li><a onClick={() => {closeMenu(); navigate(feedRoute)}} href="">Feed</a></li>
-        <li><a onClick={() => {closeMenu(); navigate(newRecipeRoute)}} href="">Create Recipe</a></li>
+        <li><button onClick={() => {closeMenu(); navigate(startingPageRoute)}}>Home</button></li>
+        <li><button onClick={() => {closeMenu(); navigate(myRecipesRoute)}}>My Recipes</button></li>
+        <li><button onClick={() => {closeMenu(); navigate(feedRoute)}}>Feed</button></li>
+        <li><button onClick={() => {closeMenu(); navigate(newRecipeRoute)}}>Create Recipe</button></li>
         {user ? 
-            <li><a onClick={() => {closeMenu(); handleSignOut()}} href="">Logout</a></li>
+            <li><button onClick={() => {closeMenu(); handleSignOut()}}>Logout</button></li>
             : 
-            <li><a onClick={() => {closeMenu(); navigate('/login') }} href="">Login</a></li>
+            <li><button onClick={() => {closeMenu(); navigate('/login') }}>Login</button></li>
         }
       </ul>
     </nav>
