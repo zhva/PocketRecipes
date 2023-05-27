@@ -1,9 +1,11 @@
 .edit-buttons-container{
-    display: flex;
-    width: 40%;
-    justify-content: space-around;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr repeat(3, auto);
+    justify-content: end;
+    gap: 20px;
 
-    button{
+    > button {
         height: 40px;
         width: 40px;
         border-radius: 30px;
@@ -11,8 +13,12 @@
         border: none;
         box-shadow: $button-shadow;
     }
-    .edit-button{
+    .edit-button {
         height: 18px;
         width: 18px;
+    }
+    .recipe-delete {
+        background-color: $action;
+        line-height: 40px;
     }
 }

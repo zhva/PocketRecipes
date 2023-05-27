@@ -1,6 +1,6 @@
 import React from 'react'
 import arrow from '../../icons/Arrow.svg'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 export const Popup = ({ title, children, linkText, redirectLink, linkText2, redirectLink2}) => {
   const navigate = useNavigate()
