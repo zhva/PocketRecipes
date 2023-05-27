@@ -1,6 +1,6 @@
 import './App.scss'
 import React from 'react'
-import { NavBar } from './components/NavigationBar2'
+import { NavBar } from './components/generic/NavigationBar2'
 import { Routes, Route } from 'react-router-dom'
 import { StartingPage } from './components/application/StartingPage'
 import { Login } from './components/application/Login'
