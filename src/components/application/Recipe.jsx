@@ -36,9 +36,6 @@ export const Recipe = () => {
                         ingredients={ingredients}
                         preparationSteps={preparations}
                     />
-                    <div className='btn-container'>
-                        <Button type='submit'>Share Recipe</Button>
-                    </div>
                 </Card>
             </div>
         );
