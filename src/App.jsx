@@ -65,7 +65,8 @@ function App () {
         startingPageRoute = {'/'}
         myRecipesRoute = {'/my-recipes'}
         feedRoute = {'/feed'}
-        newRecipeRoute = {'/create-recipe'}/>
+        newRecipeRoute = {'/create-recipe'}
+        user={user}/>
     </div>
   )
 }
