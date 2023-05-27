@@ -29,14 +29,21 @@ export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeR
 
   return (
     <nav>
-      <button 
-        className={`hamburger ${isOpen ? "opened" : "closed"}`} 
-        onClick={toggleMenu}
-      >
-        <span className="line line-1"></span>
-        <span className="line line-2"></span>
-        <span className="line line-3"></span>
-      </button>
+        <div className='navbar-container'>
+            <div>
+                <h1>Pocket<br></br>Recipes</h1>
+            </div>
+            <div>
+                <button
+                    className={`hamburger ${isOpen ? "opened" : "closed"}`}
+                    onClick={toggleMenu}
+                    >
+                    <span className="line line-1"></span>
+                    <span className="line line-2"></span>
+                    <span className="line line-3"></span>
+                </button>
+            </div>
+        </div>
       <ul className={isOpen ? "transition" : ""}>
         <li><a onClick={() => {closeMenu(); navigate(startingPageRoute)}} href="">Home</a></li>
         <li><a onClick={() => {closeMenu(); navigate(myRecipesRoute)}} href="">My Recipes</a></li>
