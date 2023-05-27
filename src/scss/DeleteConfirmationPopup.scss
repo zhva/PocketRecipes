@@ -1,0 +1,30 @@
+.delete-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 10%);
+    padding: 5%;
+    background-color: $dark-filter;
+    .delete-popup-inner-container {
+        padding: 20px;
+        height: 50vh;
+        background-color: $light;
+        border-radius: $controls-border-radius;
+        border: $border;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        > p {
+            text-align: center;
+            padding-top: $delete-confirmation-text-padding-top;
+            padding-bottom: $delete-confirmation-text-padding-bottom;
+        }
+    }
+    .confirmation-buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
