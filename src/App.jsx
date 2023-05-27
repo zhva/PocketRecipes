@@ -15,44 +15,48 @@ import { auth } from './firebase'
 
 
 function App() {
-  const [user] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth)
 
-  return (
-    <div className="App">
-    <NavBar
-      startingPageRoute = {'/'}
-      myRecipesRoute = {'/my-recipes'}
-      feedRoute = {'/feed'}
-      newRecipeRoute = {'/create-recipe'}
-      user={user}/>
-    <Routes>
-      <Route path="/" element={<StartingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/feed" element={<HomeFeed />} />
-      <Route path="/create-recipe" element={
-        <ProtectedRoute isAllowed={user}>
-          <CreateRecipe />
-        </ProtectedRoute>
+  if(!loading) {
+    return (
+      <div className="App">
+      <NavBar
+        startingPageRoute = {'/'}
+        myRecipesRoute = {'/my-recipes'}
+        feedRoute = {'/feed'}
+        newRecipeRoute = {'/create-recipe'}
+        user={user}/>
+      <Routes>
+        <Route path="/" element={<StartingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/feed" element={<HomeFeed />} />
+        <Route path="/create-recipe" element={
+          <ProtectedRoute isAllowed={user}>
+            <CreateRecipe />
+          </ProtectedRoute>
+          }/>
+        <Route path="/my-recipes/:recipeId" element={
+          <ProtectedRoute isAllowed={user}>
+            <Recipe />
+          </ProtectedRoute>
+          }/>
+        <Route path="/my-recipes" element={
+          <ProtectedRoute isAllowed={user}>
+            <MyRecipes />
+          </ProtectedRoute>
         }/>
-      <Route path="/my-recipes/:recipeId" element={
-        <ProtectedRoute isAllowed={user}>
-          <Recipe />
-        </ProtectedRoute>
+        <Route path="/edit/:recipeId" element={
+          <ProtectedRoute isAllowed={user}>
+            <CreateRecipe />
+          </ProtectedRoute>
         }/>
-      <Route path="/my-recipes" element={
-        <ProtectedRoute isAllowed={user}>
-          <MyRecipes />
-        </ProtectedRoute>
-      }/>
-      <Route path="/edit/:recipeId" element={
-        <ProtectedRoute isAllowed={user}>
-          <CreateRecipe />
-        </ProtectedRoute>
-      }/>
-    </Routes>
-    </div>
-  )
+      </Routes>
+      </div>
+    )
+  } else {
+    return <div className='loading'>Loading...</div>
+  }
 }
 
 export default  App
