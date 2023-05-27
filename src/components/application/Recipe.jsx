@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '../generic/Button'
 import { RecipeImage } from '../generic/RecipeImage'
 import { RecipeHeadlines } from '../generic/RecipeHeadlines'
 import { IngredientPreparationLists } from '../generic/IngredientPreparationLists'
