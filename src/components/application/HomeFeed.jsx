@@ -1,10 +1,9 @@
 import React from 'react'
-import '../scss/HomeFeed.scss'
 import { useObjectVal } from 'react-firebase-hooks/database'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, database } from '../firebase'
+import { auth, database } from '../../firebase'
 import { ref } from 'firebase/database'
-import { RecipeCard } from './RecipeCard'
+import { RecipeCard } from '../generic/RecipeCard'
 
 export const HomeFeed = () => {
   const [user] = useAuthState(auth)
@@ -26,7 +25,7 @@ export const HomeFeed = () => {
           return (
             <div className='first-recipe' key={key}>
               <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink} />
-              <h3>{recipe.name}</h3>
+              <h3>{recipe.values.name}</h3>
               <span>userX</span>
               <p>{recipe.description}</p>
             </div>
@@ -38,10 +37,9 @@ export const HomeFeed = () => {
             <div key={key}>
               <RecipeCard
                 imageSrc={recipe.imageLink && recipe.imageLink}
-                title={recipe.name}
+                title={recipe.values.name}
                 author=''
-                description={recipe.description}
-                // onClick = {handleClick(recipe.id)}
+                description={recipe.values.description}
               />
             </div>
           )

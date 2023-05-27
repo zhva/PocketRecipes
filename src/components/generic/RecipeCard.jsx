@@ -1,5 +1,4 @@
 import React from 'react'
-import '../scss/RecipeCard.scss'
 
 export const RecipeCard = ({ title, author, description, imageSrc, onClick }) => {
   return (

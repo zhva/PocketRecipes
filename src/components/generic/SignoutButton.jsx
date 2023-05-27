@@ -1,5 +1,5 @@
 import React from 'react'
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 import { useSignOut } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
 import { Button } from './Button'

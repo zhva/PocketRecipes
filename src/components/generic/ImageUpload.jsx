@@ -2,7 +2,8 @@ import React from 'react'
 import { BackLink } from './BackLink'
 import { NewImgButton } from './NewImgButton'
 
-export const ImageUpload = ({ imageSrc, setImageSrc }) => {
+export const ImageUpload = ({ imageSrc, setImageSrc, valuesImageSrc, submitCount }) => {
+  const isSubmitted = submitCount > 0
   const handleLoadImage = (event) => {
     const file = event.target.files[0]
 
@@ -33,6 +34,7 @@ export const ImageUpload = ({ imageSrc, setImageSrc }) => {
       <BackLink className='back-btn' />
       <div className='button-upload-container'>
         <NewImgButton handleChange={handleLoadImage}></NewImgButton>
+        {isSubmitted && !imageSrc && !valuesImageSrc && <div className='formik-errors'>Image is required</div>}
       </div>
     </div>
   )

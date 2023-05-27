@@ -19,6 +19,8 @@
 @import './scss/IngredientPreparationLists.scss';
 @import './scss/Popup.scss';
 @import './scss/NavigationBar2.scss';
+@import './scss/RecipeCard.scss';
+@import './scss/RecipeDescription.scss';
 
 
 @import './scss/HomeFeed.scss';
@@ -34,20 +36,13 @@
   max-width: $page-max-width;
   min-width: $page-min-width;
   margin: 0 auto;
+  z-index: 5;
 }
-
-/*TODO later this will be removed*/
 body {
   margin: 0;
   width: 100%;
   height: 100vh;
-  background-color: hsl(195, 37, 52, 100%);
-  background-repeat:  no-repeat;
-  background-size: cover;
+  background-image: url('./images/BG_utensils.png');
+  background-repeat:  repeat;
+  background-size: 20%;
 }
-h1 {
-  color: white;
-  font-size: 2em;
-  font-family: 'Montserrat Bold';
-}
-/*end TODO*/

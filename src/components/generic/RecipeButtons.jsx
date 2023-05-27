@@ -1,11 +1,11 @@
 import { React } from 'react'
-import deleteIcon from '../icons/deleteIcon.svg'
-import shareIcon from '../icons/shareIcon.svg'
-import editIcon from '../icons/editIcon.svg'
+import deleteIcon from '../../icons/deleteIcon.svg'
+import shareIcon from '../../icons/shareIcon.svg'
+import editIcon from '../../icons/editIcon.svg'
 import { useNavigate } from 'react-router-dom'
 import { ref, remove } from 'firebase/database'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, database } from '../firebase'
+import { auth, database } from '../../firebase'
 
 export const RecipeButtons = (recipeId) => {
     const navigate = useNavigate()

@@ -1,5 +1,5 @@
 import React from 'react'
-import arrow from '../icons/Arrow.svg'
+import arrow from '../../icons/Arrow.svg'
 import { useNavigate } from 'react-router-dom'
 
 /**
