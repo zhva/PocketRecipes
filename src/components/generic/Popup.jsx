@@ -2,7 +2,7 @@ import React from 'react'
 import arrow from '../../icons/Arrow.svg'
 import { useNavigate } from 'react-router-dom';
 
-export const Popup = ({ title, children, linkText, linkText2}) => {
+export const Popup = ({ title, children, linkText, redirectLink, linkText2, redirectLink2}) => {
   const navigate = useNavigate()
   return (
     <div className='popup-container'>
@@ -10,17 +10,19 @@ export const Popup = ({ title, children, linkText, linkText2}) => {
           <h1>{title}</h1>
           <p>{children}</p>
           <div className='backlink-container'>
-            <button onClick= {() => navigate(`/login`)}>
+            <button onClick= {() => navigate(redirectLink)}>
               <img src={arrow} alt="back arow"/>
               {<span>{linkText}</span>}
             </button>
           </div>
+          {linkText2 && (
           <div className='backlink-container'>
-            <button onClick= {() => navigate(`/signup`)}>
+            <button onClick= {() => navigate(redirectLink2)}>
               <img src={arrow} alt="back arow"/>
               {<span>{linkText2}</span> }
             </button>
           </div>
+          )}
       </div>
     </div>
   )
