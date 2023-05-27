@@ -2,6 +2,12 @@
     p {
         margin-bottom: 53px;
     }
+    span {
+        color: $primary;
+        font-family: $link-font-family;
+        font-size: $link-font-size;
+        cursor: pointer;
+    }
     .backlink-container {
         margin-top: 17px;
     }
