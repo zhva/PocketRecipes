@@ -11,7 +11,9 @@ nav {
     align-items: center;
     padding: 25px 25px;
     h1{
-        color: white;
+        color: black;
+        text-align: left;
+        margin: 0;
     }
 }
 
@@ -23,10 +25,11 @@ nav {
     z-index: 1000;
     padding: 0;
     position: relative;
+    margin-top: 10px;
 }
 
 .hamburger .line {
-    background-color: white;
+    background-color: black;
     width: 24px;
     height: 2px;
     position: absolute;
@@ -62,7 +65,7 @@ nav > ul {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    background-color: $primary;
+    background-color: whitesmoke;
     transform: translateX(100%);
 }
 
@@ -78,7 +81,7 @@ nav > ul li a {
     text-decoration: none;
     font-size: 1.45rem;
     display: inline;
-    color: white;
+    color: black;
 }
 
 nav > ul.transition {
