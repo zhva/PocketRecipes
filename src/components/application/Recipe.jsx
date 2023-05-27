@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '../generic/Button'
 import { RecipeImage } from '../generic/RecipeImage'
 import { RecipeHeadlines } from '../generic/RecipeHeadlines'
 import { IngredientPreparationLists } from '../generic/IngredientPreparationLists'
@@ -36,9 +35,6 @@ export const Recipe = () => {
                         ingredients={ingredients}
                         preparationSteps={preparations}
                     />
-                    <div className='btn-container'>
-                        <Button type='submit'>Share Recipe</Button>
-                    </div>
                 </Card>
             </div>
         );
