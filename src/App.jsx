@@ -1,6 +1,6 @@
 import './App.scss'
 import React from 'react'
-import { NavigationBar } from './components/generic/NavigationBar'
+import { NavBar } from './components/NavigationBar2'
 import { Routes, Route } from 'react-router-dom'
 import { StartingPage } from './components/application/StartingPage'
 import { Login } from './components/application/Login'
@@ -18,6 +18,12 @@ function App () {
   const [user] = useAuthState(auth)
   return (
     <div className="App">
+      <NavBar
+        startingPageRoute = {'/'}
+        myRecipesRoute = {'/my-recipes'}
+        feedRoute = {'/feed'}
+        newRecipeRoute = {'/create-recipe'}
+        user={user}/>
       <Routes>
         <Route path="/" element={<StartingPage/>} />
         <Route path="/login" element={<Login/>} />
@@ -60,11 +66,6 @@ function App () {
         )}
         <Route path="/edit/:recipeId" element={<CreateRecipe/>} />
       </Routes>
-      <NavigationBar
-        startingPageRoute = {'/'}
-        myRecipesRoute = {'/my-recipes'}
-        feedRoute = {'/feed'}
-        newRecipeRoute = {'/create-recipe'}/>
     </div>
   )
 }
