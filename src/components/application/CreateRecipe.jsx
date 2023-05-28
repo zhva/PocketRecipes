@@ -144,7 +144,7 @@ const useRecipe = () => {
     try {
       if (!imageBlob) {
         recipeData = {
-          ...data.values,
+          ...data,
           timestamp: new Date().getTime(),
           imageLink: recipe?.imageLink
         }
