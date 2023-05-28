@@ -44,13 +44,15 @@ export const RecipeButtons = ({recipeId, path}) => {
                 imageLink: recipe.imageLink,
                 timestamp: new Date().getTime(),
                 values: {
-                    ...recipe.values
+                    ...recipe.values,
+                    visibility: false
                 }
             }
             console.log({recipeData})
 
             try {
                 await push(recipesRef, recipeData)
+
             } catch (error) {
                 console.log(error)
             }
@@ -81,7 +83,7 @@ export const RecipeButtons = ({recipeId, path}) => {
                 <img src={shareIcon} alt="Share"></img>
             </button>
             {path === 'my-recipes' && (
-                <button type="button" className="edit-button" onClick={() => {navigate(`/edit/${recipeId.recipeId}`)}}>
+                <button type="button" className="edit-button" onClick={() => {navigate(`/edit/${recipeId}`)}}>
                     <img src={editIcon} alt="Edit"></img>
                 </button>
             )}
