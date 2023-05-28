@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const VisibilitySwitch = ({ HandleChange }) => {
+export const VisibilitySwitch = ({ handleVisibilityChange, checked, name }) => {
   return (
     <div className='visibility-switch-container'>
       <span>Visibility in Homefeed</span>
@@ -8,7 +8,9 @@ export const VisibilitySwitch = ({ HandleChange }) => {
         <input
           type="checkbox"
           id="visibility-switch"
-          onChange={HandleChange}
+          name={name}
+          onChange={handleVisibilityChange}
+          checked={checked}
         />
         <label htmlFor="visibility-switch"></label>
       </div>

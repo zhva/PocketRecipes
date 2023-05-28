@@ -13,12 +13,21 @@ import { RecipeButtons } from '../generic/RecipeButtons'
 export const Recipe = () => {
     const params = useParams()
     const [user] = useAuthState(auth)
-    const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
+    const path = window.location.pathname
+    const pathParts = path.split('/')
+    let recipeRef = null
+
+    if(pathParts[1] === 'my-recipes') {
+        recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
+    } else if(pathParts[1] === 'feed') {
+        recipeRef = ref(database, `feed/recipes/${params.recipeId}`)
+    }
+
     const [recipe, loading] = useObjectVal(recipeRef)
 
     if (recipe && !loading) {
-        const { imageLink, values } = recipe;
-        const { description, ingredients, name, preparations, servings } = values;
+        const { imageLink, values } = recipe
+        const { description, ingredients, name, preparations, servings } = values
 
         return (
             <div className='recipe-container'>
@@ -26,7 +35,7 @@ export const Recipe = () => {
                 <Card>
                     <RecipeHeadlines servings={servings} recipeName={name} />
                     <div className='recipe-button-container'>
-                        <RecipeButtons recipeId={params.recipeId} />
+                        <RecipeButtons recipeId={params.recipeId} path={pathParts[1]}/>
                     </div>
                     <div className='description-container'>
                         <p>{description}</p>
@@ -37,7 +46,7 @@ export const Recipe = () => {
                     />
                 </Card>
             </div>
-        );
+        )
     }
 
     return null;
