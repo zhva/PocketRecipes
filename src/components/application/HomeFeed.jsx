@@ -41,7 +41,7 @@ export const HomeFeed = () => {
               <RecipeCard
                 imageSrc={recipe.imageLink && recipe.imageLink}
                 title={recipe.values.name}
-                author=''
+                author={recipe.author}
                 description={recipe.values.description}
                 onClick = {() => navigate(`/feed/${key}`)}
               />
