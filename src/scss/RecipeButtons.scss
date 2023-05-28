@@ -22,3 +22,7 @@
         line-height: 40px;
     }
 }
+.feed-buttons-container {
+    grid-template-columns: 1fr;
+    justify-items: flex-end;
+}

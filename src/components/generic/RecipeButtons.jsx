@@ -8,7 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, database } from '../../firebase'
 import { DeleteConfirmationPopup } from './DeleteConfirmationPopup'
 
-export const RecipeButtons = (recipeId) => {
+export const RecipeButtons = ({recipeId, path}) => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
     const [showPopup, setShowPopup] = useState(false)
@@ -32,7 +32,7 @@ export const RecipeButtons = (recipeId) => {
     }
 
     return(
-        <div className="edit-buttons-container">
+        <div className={`edit-buttons-container ${path === 'feed' ? 'feed-buttons-container' : ''}`}>
             {showPopup &&
                 <DeleteConfirmationPopup
                     title="Confirm Delete"
@@ -40,15 +40,20 @@ export const RecipeButtons = (recipeId) => {
                     onClose={handleClosePopup}>
                         Do you really want to delete this recipe?
                 </DeleteConfirmationPopup>}
-            <button className='recipe-delete' onClick={handleDelete}>
-                <img src={deleteIcon}></img>
-            </button>
+            {path === 'my-recipes' && (
+                <button className='recipe-delete' onClick={handleDelete}>
+                    <img src={deleteIcon} alt="Delete"></img>
+                </button>
+            )}
             <button>
-                <img src={shareIcon} onClick={() => {}}></img>
+                <img src={shareIcon} onClick={() => {}} alt="Share"></img>
             </button>
-            <button onClick={() => {navigate(`/edit/${recipeId.recipeId}`)}}>
-                <img className="edit-button" src={editIcon}></img>
-            </button>
+            {path === 'my-recipes' && (
+                <button onClick={() => {navigate(`/edit/${recipeId.recipeId}`)}}>
+                    <img className="edit-button" src={editIcon} alt="Edit"></img>
+                </button>
+            )}
         </div>
+
     )
 }
