@@ -1,5 +1,5 @@
 .recipe-headline{
-    padding-bottom: 20px;
+    padding-bottom: $main-padding;
     width: 100%;
     label {
         width: 100%;
@@ -15,7 +15,7 @@
         background-color: $on-primary;
         box-shadow: $inside-shadow;
         outline: none;
-        padding: 10px;
+        padding: $create-recipe-input-padding;
         overflow: hidden;
         font-family: $text-font-family;
         font-size: $text-font-size;
@@ -31,22 +31,22 @@
         margin-left: 10px;
     }
 }
-.servings {
-    display: inline-block;
-    border-radius: $controls-border-radius;
-    box-shadow: $inside-shadow;
-    height: 39px;
-    min-width: 70px;
-    background: $on-primary;
-    outline: none;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 39px;
-    margin-left: 15px;
-}
-h1.servings {
-    width: fit-content;
-    padding: 5px 25px;
-}
+// .servings {
+//     display: inline-block;
+//     border-radius: $controls-border-radius;
+//     box-shadow: $inside-shadow;
+//     height: 39px;
+//     min-width: 70px;
+//     background: $on-primary;
+//     outline: none;
+//     text-align: center;
+//     vertical-align: middle;
+//     line-height: 39px;
+//     margin-left: 15px;
+// }
+// h1.servings {
+//     width: fit-content;
+//     padding: 5px 25px;
+// }
 
 

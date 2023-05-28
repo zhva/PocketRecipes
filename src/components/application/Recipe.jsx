@@ -38,6 +38,7 @@ export const Recipe = () => {
                         <RecipeButtons recipeId={params.recipeId} path={pathParts[1]}/>
                     </div>
                     <div className='description-container'>
+                        <h2>Description</h2>
                         <p>{description}</p>
                     </div>
                     <IngredientPreparationLists

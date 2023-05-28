@@ -3,19 +3,19 @@
     width: 100%;
     grid-template-columns: 1fr repeat(2, auto);
     justify-content: end;
-    gap: 20px;
+    gap: 25px;
 
     > button {
-        height: 40px;
-        width: 40px;
-        border-radius: 30px;
+        height: $recipe-button-height;
+        width: $recipe-button-width;
+        border-radius: $recipe-button-radius;
         background-color: $primary;
         border: none;
         box-shadow: $button-shadow;
     }
     .edit-button {
-        height: 18px;
-        width: 18px;
+        height: $edit-button-height;
+        width: $edit-button-width;
     }
     .recipe-delete {
         background-color: $action;

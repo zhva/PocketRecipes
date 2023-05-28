@@ -5,14 +5,14 @@
         resize: vertical;
         box-sizing: border-box;
         height: auto;
-        min-height: 100px;
-        max-height: 300px;
+        min-height: $text-area-min-height;
+        max-height: $text-area-max-height;
         width: 100%;
         border-radius: $nav-border-radius;
         background-color: $on-primary;
         box-shadow: $inside-shadow;
         outline: none;
-        padding: 20px;
+        padding: $main-padding;
         overflow: hidden;
         font-family: $text-font-family;
         font-size: $text-font-size;
@@ -21,6 +21,6 @@
     }
     h1{
         text-align: center;
-        padding-bottom: 20px;
+        padding-bottom: $main-padding;
     }
 }

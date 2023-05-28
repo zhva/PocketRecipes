@@ -4,17 +4,17 @@
     width: calc(100% - 10%);
     justify-content: space-between;
     align-items: center;
-    height: 39px;
+    height: $visibility-switch-height;
     border-radius: $nav-border-radius;
     box-shadow: $button-shadow;
     background-color: $on-primary;
     span {
         font-family: $text-font-family;
         font-size: $text-font-size;
-        margin-left: 15px;
+        margin-left: $visibility-switch-padding;
     }
     div {
-        margin-right: 15px;
+        margin-right: $visibility-switch-padding;
     }
 
     input[type="checkbox"] {

@@ -9,7 +9,7 @@
     }
     .button-upload-container {
         position: absolute;
-        top: 50%;
+        top: calc(50% + $card-margin-top);
         left: 50%;
         transform: translate(-50%);
     }
