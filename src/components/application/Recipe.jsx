@@ -17,8 +17,8 @@ export const Recipe = () => {
     const [recipe, loading] = useObjectVal(recipeRef)
 
     if (recipe && !loading) {
-        const { imageLink, values } = recipe;
-        const { description, ingredients, name, preparations, servings } = values;
+        const { imageLink, values } = recipe
+        const { description, ingredients, name, preparations, servings } = values
 
         return (
             <div className='recipe-container'>
@@ -37,7 +37,7 @@ export const Recipe = () => {
                     />
                 </Card>
             </div>
-        );
+        )
     }
 
     return null;

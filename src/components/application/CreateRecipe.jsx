@@ -9,7 +9,7 @@ import { RecipeDescription } from '../generic/RecipeDescription'
 import 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { database, storage, auth } from '../../firebase'
-import { ref, push, update } from 'firebase/database'
+import { ref, push, update, remove } from 'firebase/database'
 import { v4 as uuidv4 } from 'uuid'
 import { RecipeHeadlines } from '../generic/RecipeHeadlines'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -135,6 +135,18 @@ const useRecipe = () => {
       console.log(error)
     }
   }
+  const toggleRecipeVisibilityInFeed = async (data, recipeId) => {
+    const feedRef = ref(database, `feed/recipes/${recipeId}`)
+    try {
+      if (data.values.visibility) {
+          await update(feedRef, data)
+      } else {
+          await remove(feedRef)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const updateRecipe = async (data, imageBlob) => {
     const recipesRef = user?.uid
@@ -152,12 +164,13 @@ const useRecipe = () => {
         const imageUrl = await uploadImage(imageBlob)
         const imageRef = await getDownloadURL(sRef(storage, imageUrl))
         recipeData = {
-          ...data.values,
+          ...data,
           imageLink: imageRef,
           timestamp: new Date().getTime()
-        };
+        }
       }
       await update(recipesRef, recipeData)
+      toggleRecipeVisibilityInFeed({...data, timestamp: new Date().getTime()}, params.recipeId)
     } catch (error) {
       console.log(error)
     }
@@ -165,8 +178,8 @@ const useRecipe = () => {
   }
 
   const pushRecipe = async (data) => {
-
     if (!imageSrc) return
+
     const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
     try {
       if(imageSrc) {
@@ -177,7 +190,8 @@ const useRecipe = () => {
           imageLink: imageRef,
           timestamp: new Date().getTime()
         }
-        await push(recipesRef, recipeData)
+        const newRecipeRef = await push(recipesRef, recipeData)
+        toggleRecipeVisibilityInFeed(recipeData, newRecipeRef.key)
       }
     } catch (error) {
       console.log(error)
@@ -237,7 +251,10 @@ export const CreateRecipe = () => {
                           errors={isSubmitted && errors && errors.preparations}>
                         </AddInput>
                     </div>
-                    <VisibilitySwitch/>
+                    <VisibilitySwitch
+                      handleVisibilityChange={handleChange}
+                      checked={values.visibility}
+                      name="visibility"/>
                     <div className='btn-container'>
                       <Button type='submit'>Save</Button>
                     </div>
