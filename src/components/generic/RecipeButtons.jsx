@@ -9,6 +9,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, database } from '../../firebase'
 import { DeleteConfirmationPopup } from './DeleteConfirmationPopup'
 import { useObjectVal } from 'react-firebase-hooks/database'
+import { Popup } from './Popup'
 
 export const RecipeButtons = ({recipeId, path}) => {
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ export const RecipeButtons = ({recipeId, path}) => {
     const [showPopup, setShowPopup] = useState(false)
     const recipeFeedRef = ref(database, `feed/recipes/${recipeId}`)
     const [recipe, loading] = useObjectVal(recipeFeedRef)
+    const [showSavePopup, setShowSavePopup] = useState(false)
 
     const deleteRecipeFromDB = () => {
         const recipeRef = ref(database, `users/${user?.uid}/recipes/${recipeId}`)
@@ -48,46 +50,72 @@ export const RecipeButtons = ({recipeId, path}) => {
                     visibility: false
                 }
             }
-            console.log({recipeData})
 
             try {
                 await push(recipesRef, recipeData)
-
             } catch (error) {
                 console.log(error)
             }
+            setShowSavePopup(true)
         }
-
+    }
+    const handleCloseSavePopup = () => {
+        setShowSavePopup(false)
     }
 
     return(
+        <>
+        {showPopup &&
+            <DeleteConfirmationPopup
+                title='Confirm Delete'
+                onClick={deleteRecipeFromDB}
+                onClose={handleClosePopup}>
+                    Do you really want to delete this recipe?
+            </DeleteConfirmationPopup>
+        }
+        {showSavePopup &&
+            <Popup
+                title='Recipe Saved'
+                linkText='Go to My Recipes'
+                redirectLink='/my-recipes'
+                linkText2='Go to Feed'
+                redirectLink2='/feed'
+                onClose={handleCloseSavePopup}>
+                    The recipe has been saved to your recipes.
+            </Popup>
+        }
         <div className={`edit-buttons-container ${path === 'feed' ? 'feed-buttons-container' : ''}`}>
-            {showPopup &&
-                <DeleteConfirmationPopup
-                    title="Confirm Delete"
-                    onClick={deleteRecipeFromDB}
-                    onClose={handleClosePopup}>
-                        Do you really want to delete this recipe?
-                </DeleteConfirmationPopup>}
             {path === 'my-recipes' && (
-                <button type="button" className='recipe-delete' onClick={handleDelete}>
-                    <img src={deleteIcon} alt="Delete"></img>
+                <button
+                    type='button'
+                    className='recipe-delete'
+                    onClick={handleDelete}>
+                    <img src={deleteIcon} alt='Delete'></img>
                 </button>
             )}
             {path === 'feed' && (
-                <button type="button" className='recipe-save' onClick={handleSave}>
-                    <img src={saveIcon} alt="Save to my recipes"></img>
+                <button
+                    type='button'
+                    className='recipe-save'
+                    onClick={handleSave}>
+                    <img src={saveIcon} alt='Save to my recipes'></img>
                 </button>
             )}
-            <button type="button" onClick={() => {}}>
+            <button
+                type='button'
+                onClick={() => {}}>
                 <img src={shareIcon} alt="Share"></img>
             </button>
             {path === 'my-recipes' && (
-                <button type="button" className="edit-button" onClick={() => {navigate(`/edit/${recipeId}`)}}>
-                    <img src={editIcon} alt="Edit"></img>
+                <button
+                    type='button'
+                    className="edit-button"
+                    onClick={() => {navigate(`/edit/${recipeId}`)}}>
+                    <img src={editIcon} alt='Edit'></img>
                 </button>
             )}
         </div>
+        </>
 
     )
 }
