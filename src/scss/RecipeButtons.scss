@@ -1,7 +1,7 @@
 .edit-buttons-container{
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr repeat(3, auto);
+    grid-template-columns: 1fr repeat(2, auto);
     justify-content: end;
     gap: 20px;
 
@@ -21,4 +21,8 @@
         background-color: $action;
         line-height: 40px;
     }
+}
+.feed-buttons-container {
+    grid-template-columns: 1fr;
+    justify-items: flex-end;
 }

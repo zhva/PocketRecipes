@@ -1,41 +1,79 @@
 {
-    "rules": {
+  "rules": {
       ".read": true,
       ".write": false,
       "users": {
-        "$uid" : {
-          ".read": "auth.uid === $uid",
-          ".write": "auth.uid === $uid",
-          "name": {
-            ".validate": "newData.isString() && newData.val().length <= 100"
-          },
-          "recipes": {
-            ".indexOn": ["timestamp"],
-            "$recipeId": {
+          "$uid" : {
+              ".read": "auth.uid === $uid",
+              ".write": "auth.uid === $uid",
               "name": {
-                ".validate": "newData.isString() && newData.val().length <= 50"
+                  ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "recipes": {
+                  ".indexOn": ["timestamp"],
+                  "$recipeId": {
+                      "name": {
+                          ".validate": "newData.isString() && newData.val().length <= 50"
+                      },
+                      "description": {
+                          ".validate": "newData.isString() && newData.val().length <= 500"
+                      },
+                      "servings": {
+                          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 100"
+                      },
+                      "ingredients": {
+                          "$ingredient": {
+                              ".validate": "newData.hasChild('name') && newData.child('name').isString() && newData.child('name').val().length <= 400"
+                          }
+                      },
+                      "preparation": {
+                          "$preparation": {
+                              ".validate": "newData.hasChild('name') && newData.child('name').isString() && newData.child('name').val().length <= 400"
+                          }
+                      },
+                      "visibility": {
+                          ".validate": "newData.isBoolean()"
+                      },
+                      "timestamp": {
+                          ".validate": "newData.isNumber()"
+                      }
+                  }
+              }
+          }
+      },
+      "feed": {
+        ".read": true,
+        ".write": "auth != null",
+        "recipes": {
+          ".indexOn": ["timestamp"],
+          "$recipeId": {
+              "name": {
+                  ".validate": "newData.isString() && newData.val().length <= 50"
               },
               "description": {
-                ".validate": "newData.isString() && newData.val().length <= 500"
+                  ".validate": "newData.isString() && newData.val().length <= 500"
               },
               "servings": {
-                ".validate": "newData.isNumber() && newData.val() >= 1"
+                  ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 100"
               },
               "ingredients": {
-                ".validate": "newData.val() != null"
+                  "$ingredient": {
+                      ".validate": "newData.hasChild('name') && newData.child('name').isString() && newData.child('name').val().length <= 400"
+                  }
               },
               "preparation": {
-                ".validate": "newData.val() != null"
+                  "$preparation": {
+                      ".validate": "newData.hasChild('name') && newData.child('name').isString() && newData.child('name').val().length <= 400"
+                  }
               },
               "visibility": {
-                ".validate": "newData.isBoolean()"
+                  ".validate": "newData.isBoolean()"
               },
               "timestamp": {
-                ".validate": "newData.isNumber()"
+                  ".validate": "newData.isNumber()"
               }
-            }
           }
         }
       }
-    }
+  }
 }

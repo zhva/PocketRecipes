@@ -30,6 +30,7 @@ function App() {
         <Route path="/" element={<StartingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/feed/:recipeId" element={<Recipe />}/>
         <Route path="/feed" element={<HomeFeed />} />
         <Route path="/create-recipe" element={
           <ProtectedRoute isAllowed={user}>

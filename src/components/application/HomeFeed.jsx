@@ -1,15 +1,15 @@
 import React from 'react'
 import { useObjectVal } from 'react-firebase-hooks/database'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, database } from '../../firebase'
+import { database } from '../../firebase'
 import { ref } from 'firebase/database'
 import { RecipeCard } from '../generic/RecipeCard'
+import { useNavigate } from 'react-router-dom'
 
 export const HomeFeed = () => {
-  const [user] = useAuthState(auth)
   // Get a reference to the document
-  const recipeRef = ref(database, `users/${user?.uid}/recipes`)
+  const recipeRef = ref(database, `feed/recipes`)
   const [recipes, loading] = useObjectVal(recipeRef)
+  const navigate = useNavigate()
 
   return (
     <div className='home-container'>
@@ -23,11 +23,14 @@ export const HomeFeed = () => {
         {loading && <p>Loading recipes...</p>}
         {!loading && recipes && Object.entries(recipes ?? {}).slice(0, 1).map(([key, recipe]) => {
           return (
-            <div className='first-recipe' key={key}>
+            <div
+              className='first-recipe'
+              key={key}
+              onClick = {() => navigate(`/feed/${key}`)}>
               <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink} />
               <h3>{recipe.values.name}</h3>
-              <span>userX</span>
-              <p>{recipe.description}</p>
+              <span>{recipe.author}</span>
+              <p>{recipe.values.description}</p>
             </div>
           )
         })}
@@ -40,6 +43,7 @@ export const HomeFeed = () => {
                 title={recipe.values.name}
                 author=''
                 description={recipe.values.description}
+                onClick = {() => navigate(`/feed/${key}`)}
               />
             </div>
           )
