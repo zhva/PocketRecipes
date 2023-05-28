@@ -4,16 +4,17 @@
     left: 0;
     width: calc(100% - 10%);
     padding: 5%;
-    background-color: $dark-filter;
+    background-color: transparent;
     .delete-popup-inner-container {
         padding: 20px;
-        height: 50vh;
+        height: $popup-container-height;
         background-color: $light;
         border-radius: $controls-border-radius;
         border: $border;
         display: flex;
         flex-direction: column;
         justify-content: center;
+         box-shadow: $button-shadow;
         > p {
             text-align: center;
             padding-top: $delete-confirmation-text-padding-top;
