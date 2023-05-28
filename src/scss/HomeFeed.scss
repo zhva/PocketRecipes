@@ -15,12 +15,12 @@
         align-items: center;
         padding: 5% 0;
         h1 {
-            color: $on-primary;
+            color: $text-color;
         }
         span {
             font-family: $h2-font-family;
             font-size: $h2-font-size;
-            color: $on-primary;
+            color: $text-color;
         }
     }
     .recipes-container {
@@ -36,7 +36,7 @@
             font-size: $h1-font-size;
             text-align: center;
             margin-bottom: 25px;
-            color: $on-primary;
+            color: $text-color;
         }
         .recipes-list-container {
             display: flex;

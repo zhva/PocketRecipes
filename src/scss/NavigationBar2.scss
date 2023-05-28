@@ -10,13 +10,14 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 25px 25px;
-    background-color: whitesmoke;
+    background-color: rgb(245, 245, 245, 0.7);
     h1{
         color: black;
         text-align: left;
         margin: 0;
         position: relative;
         z-index: 11;
+        font-family: $label-font-family;
     }
 }
 
@@ -34,7 +35,7 @@ nav {
 .hamburger .line {
     background-color: black;
     width: 24px;
-    height: 2px;
+    height: 3px;
     position: absolute;
     display: block;
     transition: 0.2s ease-in-out;

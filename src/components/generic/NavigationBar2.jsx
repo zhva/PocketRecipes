@@ -31,7 +31,7 @@ export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeR
     <nav>
         <div className='navbar-container'>
             <div>
-                <h1>Pocket<br></br>Recipes</h1>
+                <h1>PocketRecipes</h1>
             </div>
             <div>
                 <button

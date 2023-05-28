@@ -40,7 +40,7 @@ $dark-filter: hsl(0, 0, 0, 40%);
 $action: hsl(342, 94, 61, 100%);
 
 @mixin app-backgroung-image {
-    background: linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg) no-repeat;
+    background: /*linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg) no-repeat*/ none;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -73,7 +73,8 @@ $round-button-width: 54px;
 $switch-button-width: 60px;
 $switch-button-height: 29px;
 
-$button-shadow: 4px 4px 3px $button-shadow-color;
+$main-box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+$button-shadow: 4px 4px 10px $button-shadow-color;
 $input-shadow: inset 5px 5px 14px $input-shadow-color;
 $inside-shadow: inset 5px 5px 14px $button-shadow-color;
 $switch-shadow: 1px 1px 4px $button-shadow-color;
