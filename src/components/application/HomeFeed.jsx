@@ -29,7 +29,7 @@ export const HomeFeed = () => {
               onClick = {() => navigate(`/feed/${key}`)}>
               <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink} />
               <h3>{recipe.values.name}</h3>
-              <span>{recipe.author}</span>
+              <span>by {recipe.author}</span>
               <p>{recipe.values.description}</p>
             </div>
           )

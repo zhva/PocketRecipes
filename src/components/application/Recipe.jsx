@@ -9,6 +9,7 @@ import { auth, database } from '../../firebase'
 import { ref } from 'firebase/database'
 import { useParams } from 'react-router-dom'
 import { RecipeButtons } from '../generic/RecipeButtons'
+import { RecipeDescription } from '../generic/RecipeDescription'
 
 export const Recipe = () => {
     const params = useParams()
@@ -37,9 +38,7 @@ export const Recipe = () => {
                     <div className='recipe-button-container'>
                         <RecipeButtons recipeId={params.recipeId} path={pathParts[1]}/>
                     </div>
-                    <div className='description-container'>
-                        <p>{description}</p>
-                    </div>
+                    <RecipeDescription description={description} mode="display"/>
                     <IngredientPreparationLists
                         ingredients={ingredients}
                         preparationSteps={preparations}
