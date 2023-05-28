@@ -2,11 +2,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% - 10%);
-    padding: 5%;
+    width: $delete-pop-up-width;
+    padding: $delete-pop-up-padding;
     background-color: $dark-filter;
     .delete-popup-inner-container {
-        padding: 20px;
         height: 50vh;
         background-color: $light;
         border-radius: $controls-border-radius;

@@ -62,7 +62,7 @@ $nav-button-width: 74px;
 
 $nav-border-radius: 33px;
 $controls-border-radius: 27px;
-$cards-border-radius: 33px;
+$cards-border-radius: 1rem;
 
 $input-height: 41px;
 $input-output-height: 30px;
@@ -100,3 +100,20 @@ $edit-recipe-input-padding: 10px 55px 10px $edit-recipe-number-width;
 
 $delete-confirmation-text-padding-top: 10px;
 $delete-confirmation-text-padding-bottom: 25px;
+
+$add-button-spacing: 10px;
+$add-button-radius: 50%;
+
+$back-button-height: 21px;
+$back-button-width: 21px;
+
+$button-bot-spacing: 20px;
+
+$card-z-index: 9;
+$card-margin-top: -40px;
+
+$delete-pop-up-padding: 5%;
+$delete-pop-up-width: calc(100% - 10%);
+
+$page-start-padding: 40px;
+

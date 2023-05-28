@@ -5,21 +5,14 @@
         border: none;
         outline: none;
     }
-
-    img{
-        width: 13px;
-        height: 13px;
-        vertical-align: middle;
-        margin-right: 8px;
-    }
     .custom-link {
         font-family: $link-font-family;
         font-size: $link-font-size;
     }
     .back-btn {
         img {
-            width: 21px;
-            height: 21px;
+            width: $back-button-width;
+            height: $back-button-height;
             filter: brightness(0) invert(1);
         }
     }
