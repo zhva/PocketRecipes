@@ -64,6 +64,8 @@ const useRecipe = () => {
   const [user] = useAuthState(auth)
   const recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
   const [recipe, loading] = useObjectVal(recipeRef)
+  const userNameRef = ref(database, `users/${user?.uid}/name`)
+  const [userName]= useObjectVal(userNameRef)
 
 
   useEffect(() => {
@@ -170,7 +172,7 @@ const useRecipe = () => {
         }
       }
       await update(recipesRef, recipeData)
-      toggleRecipeVisibilityInFeed({...data, timestamp: new Date().getTime()}, params.recipeId)
+      toggleRecipeVisibilityInFeed({...recipeData, author: userName, timestamp: new Date().getTime()}, params.recipeId)
     } catch (error) {
       console.log(error)
     }
