@@ -1,6 +1,6 @@
 .create-recipe-container {
     .image-container {
-        min-height: $img-container-max-height;
+        min-height: 33vh;
     }
 }
 .recipe-card-container {
@@ -17,7 +17,7 @@
 
 .ingredients-list-container,
 .preparations-list-container {
-    margin-bottom: $main-padding;
+    margin-bottom: 25px;
     width: 100%;
     > div {
         display: flex;
@@ -30,11 +30,11 @@
 }
 
 .ingredients-list-container,
-.preparations-list-container {
+.preparations-list-containe {
     h1 {
         text-align: center;
-        padding-bottom: $main-padding;
-        padding-top: $main-padding;
+        padding-bottom: 20px;
+        padding-top: 20px;
     }
 }
 

@@ -1,10 +1,10 @@
 @import './variables.scss';
 
 .home-container {
-    width: 100%;
+    width: calc(100% - (2 * $main-padding));
     min-height: calc(100% - $navbar-height);
     height: auto;
-    height: auto;
+    padding: $page-start-padding $main-padding;
     @include app-backgroung-image;
     // .home-heading-container {
     //     position: relative;
@@ -27,16 +27,13 @@
         font-size: $h1-font-size;
         text-align: left;
         padding-bottom: calc($main-padding - 5px);
-        padding-top: $page-start-padding;
-        padding-left: $main-padding;
         color: $text-color;
     }
     .recipes-container {
         position: relative;
-        width: calc(100% - (2 * $main-padding));
+        width: 100%;
         height: auto;
         z-index: 1;
-        padding: 0 $main-padding;
         > div {
             cursor: pointer;
         }
@@ -58,7 +55,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            background-color: $beige1;
+            background-color: $accent-color;
             border-radius: $cards-border-radius;
             padding-bottom: $main-padding;
             h3, span, p {
