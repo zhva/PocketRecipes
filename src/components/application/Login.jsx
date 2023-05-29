@@ -6,7 +6,7 @@ import { object, string } from 'yup'
 import { auth } from '../../firebase'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
-import imgSrc from '../../images/home-img.jpg'
+import imgSrc from '../../images/auth-img.jpg'
 
 const validationSchema = object({
   email: string().email('Invalid email format'),
@@ -45,7 +45,7 @@ export const Login = () => {
       <div className='login-img-container'>
         <div>
           <img src={imgSrc}></img>
-          <a href="https://www.freepik.com/free-vector/people-learning-how-cook-from-books-internet_7795595.htm#query=cooking&position=14&from_view=search&track=sph">Image by pikisuperstar</a>
+          <a href="https://www.freepik.com/free-vector/female-chef-concept-illustration_32318741.htm#query=cooking&position=23&from_view=search&track=sph">Image by storyset</a>
         </div>
       </div>
       <div className='login-container content-container'>
