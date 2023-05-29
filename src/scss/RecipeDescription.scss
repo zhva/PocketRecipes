@@ -8,11 +8,11 @@
         min-height: $text-area-min-height;
         max-height: $text-area-max-height;
         width: 100%;
-        border-radius: $nav-border-radius;
+        border-radius: $cards-border-radius;
         background-color: $on-primary;
-        box-shadow: $inside-shadow;
+        // box-shadow: $inside-shadow;
         outline: none;
-        padding: $main-padding;
+        padding: $input-padding;
         overflow: hidden;
         font-family: $text-font-family;
         font-size: $text-font-size;

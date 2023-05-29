@@ -1,3 +1,15 @@
+.input-button-pair{
+    display: flex;
+    align-items: center;
+    button{
+        height: 30px;
+        width: 30px;
+        margin-left: $main-padding;
+        transform: translateY(calc($label-spacing / (-2)));
+        border-radius: $cards-border-radius;
+    }
+}
+
 .recipe-input-container {
     width: 100%;
     height: auto;
@@ -15,13 +27,13 @@
         min-height: $edit-recipe-input-min-height;
         max-height: $edit-recipe-input-max-height;
         width: 100%;
-        border-radius: $nav-border-radius;
+        border-radius: $cards-border-radius;
         background-color: $on-primary;
-        -webkit-appearance: none;
-        -webkit-box-shadow: $inside-shadow;
-        box-shadow: $inside-shadow;
+        // -webkit-appearance: none;
+        // -webkit-box-shadow: $inside-shadow;
+        // box-shadow: $inside-shadow;
         outline: none;
-        padding: $edit-recipe-input-padding;
+        padding: $input-padding;
         overflow: hidden;
         font-family: $text-font-family;
         font-size: $text-font-size;

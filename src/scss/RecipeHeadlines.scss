@@ -11,11 +11,11 @@
         border: 0;
         min-height: $edit-recipe-input-min-height;
         max-height: $edit-recipe-input-max-height;
-        border-radius: $nav-border-radius;
+        border-radius: $cards-border-radius;
         background-color: $on-primary;
-        box-shadow: $inside-shadow;
+        // box-shadow: $inside-shadow;
         outline: none;
-        padding: $create-recipe-input-padding;
+        padding: $input-padding;
         overflow: hidden;
         font-family: $text-font-family;
         font-size: $text-font-size;
@@ -28,7 +28,10 @@
         width: 70px;
     }
     #recipeServings {
-        margin-left: 10px;
+        // background: none;
+        padding: 0px 10px;
+
+        width: 50px;
     }
 }
 // .servings {

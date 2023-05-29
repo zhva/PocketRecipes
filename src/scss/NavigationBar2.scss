@@ -66,13 +66,13 @@ nav > ul {
     // right: 0;
     // top: 0;
     bottom: 0;
-    margin-bottom: $navbar-height;
-    height: calc(100vh - $navbar-height);
+    margin-bottom: $navbar-height-plus-padding;
+    height: calc(100vh - $navbar-height-plus-padding);
     z-index: 9;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    background-color: whitesmoke;
+    background-color: $nav-bar-color;
     //transform: translateY(0%);
 }
 
@@ -113,5 +113,5 @@ nav > ul.transition {
 }
 
 nav > ul.transition {
-    transform: translateY(calc(100% + $navbar-height));
+    transform: translateY(calc(100% + $navbar-height-plus-padding));
 }
