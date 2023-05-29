@@ -22,6 +22,8 @@ export const Recipe = () => {
         recipeRef = ref(database, `users/${user?.uid}/recipes/${params.recipeId}`)
     } else if(pathParts[1] === 'feed') {
         recipeRef = ref(database, `feed/recipes/${params.recipeId}`)
+    } else if(pathParts[1] === 'share') {
+        recipeRef = ref(database, `shared/recipes/${params.recipeId}`)
     }
 
     const [recipe, loading] = useObjectVal(recipeRef)
@@ -48,5 +50,5 @@ export const Recipe = () => {
         )
     }
 
-    return null;
-};
+    return null
+}
