@@ -1,22 +1,22 @@
 .edit-buttons-container{
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: 1fr repeat(2, auto);
-    justify-content: end;
-    gap: 20px;
+    // grid-template-columns: 1fr repeat(2, auto);
+    justify-content: center;
+    gap: 15px;
 
     > button {
-        height: 40px;
-        width: 40px;
-        border-radius: 30px;
+        height: $recipe-button-height;
+        width: $recipe-button-width;
+        border-radius: $recipe-button-radius;
         background-color: $primary;
         border: none;
         box-shadow: $button-shadow;
         cursor: pointer;
     }
-    .edit-button img {
-        height: 18px;
-        width: 18px;
+    .edit-button {
+        height: $recipe-button-height;
+        width: $recipe-button-width;
     }
     .recipe-delete {
         background-color: $action;

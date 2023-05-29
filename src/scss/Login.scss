@@ -1,10 +1,10 @@
 .login-page {
     width: 100%;
     max-width: $page-max-width;
-    min-height: 100vh;
-    background-image: url(../images/BG.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    max-height: calc(100vh - $navbar-height);
+    // background-image: url(../images/BG.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
     .login-container {
         max-width: inherit;
         h1 {

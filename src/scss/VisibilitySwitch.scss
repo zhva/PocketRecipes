@@ -1,20 +1,20 @@
 .visibility-switch-container {
     display: flex;
     flex-direction: row;
-    width: calc(100% - 10%);
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    height: 39px;
+    height: $visibility-switch-height;
     border-radius: $nav-border-radius;
-    box-shadow: $button-shadow;
+    // box-shadow: $button-shadow;
     background-color: $on-primary;
     span {
         font-family: $text-font-family;
         font-size: $text-font-size;
-        margin-left: 15px;
+        margin-left: $visibility-switch-padding;
     }
     div {
-        margin-right: 15px;
+        margin-right: $visibility-switch-padding;
     }
 
     input[type="checkbox"] {
@@ -38,7 +38,7 @@
       border-radius: $nav-border-radius;
       cursor: pointer;
       background-color: $medium;
-      box-shadow: $switch-shadow-inset;
+      // box-shadow: $switch-shadow-inset;
       color: transparent;
       vertical-align: middle;
 
@@ -46,12 +46,12 @@
         transition: all 200ms ease-in-out;
         content: " ";
         position: absolute;
-        height: calc($switch-button-height + 2px);
-        width: calc($switch-button-height + 2px);
+        height: calc($switch-button-height);
+        width: calc($switch-button-height);
         border-radius: 50%;
         background-color: $on-primary;
-        top: -2px;
-        left: -2px;
+        top: 0px;
+        left: -1px;
         right: auto;
         box-shadow: $switch-shadow;
       }

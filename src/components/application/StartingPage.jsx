@@ -4,12 +4,12 @@ import { SubHeadline } from '../generic/SubHeadline'
 import { InfoText } from '../generic/InfoText'
 import { Button } from '../generic/Button'
 import { useNavigate } from 'react-router-dom'
-import { SignOutButton } from '../generic/SignoutButton'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '../../firebase'
+// import { SignOutButton } from '../generic/SignoutButton'
+// import { useAuthState } from 'react-firebase-hooks/auth'
+// import { auth } from '../../firebase'
 
 export const StartingPage = () => {
-  const [user] = useAuthState(auth)
+  // const [user] = useAuthState(auth)
   const navigate = useNavigate()
   return (
         <div className="starting-page-container">
@@ -32,14 +32,14 @@ export const StartingPage = () => {
             so you can whip up a storm from wherever you are.
             <br></br>
             <br></br>
-            Let&apos;s get cooking!
+            So get started and create an account now!
             </InfoText>
             <div className='buttons-container'>
-              <Button type='button' variant='secondary' onClick={() => navigate('/feed')}>Get Started</Button>
-              { user
+              <Button type='button' variant='primary' onClick={() => navigate('/feed')}>Get Started</Button>
+              {/* { user
                 ? <SignOutButton></SignOutButton>
                 : <Button type='button' onClick={() => navigate('/signup')}>Create account</Button>
-              }
+              } */}
             </div>
             </div>
         </div>

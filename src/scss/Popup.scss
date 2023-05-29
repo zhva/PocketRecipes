@@ -1,6 +1,9 @@
 .popup-inner-container {
     p {
-        margin-bottom: 53px;
+        margin-bottom: $pop-up-text-margin-bot;
+    }
+    h1{
+        text-align: left;
     }
     span {
         color: $primary;
@@ -9,7 +12,7 @@
         cursor: pointer;
     }
     .backlink-container {
-        margin-top: 17px;
+        margin-top: $backlink-margin-top;
     }
 }
 

@@ -4,14 +4,14 @@
 
 .card-container {
     // border: $border;
-    background-color: $light;
+    background-color: $beige1;
     border-radius: $cards-border-radius;
     display: flex;
     flex-direction: row;
     max-height: $card-container-height;
     overflow: hidden;
     .recipe-card-image-container {
-        height: inherit;
+        height: $smaller-images-height;
         flex: 1;
         overflow: hidden;
         img {
@@ -27,15 +27,15 @@
         h3 {
             font-family: $recipe-card-heading-font-family;
             font-size: $recipe-card-heading-font-size;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            // margin-top: 0px;
+            // margin-bottom: 0px;
         }
         span {
             font-family: $label-font-family;
             font-size: $label-font-size;
         }
         p {
-            margin-top: 10px;
+            margin-top: $recipe-card-info-text-padding;
         }
     }
 }

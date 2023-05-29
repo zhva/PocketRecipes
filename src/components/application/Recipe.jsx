@@ -35,14 +35,14 @@ export const Recipe = () => {
                 <RecipeImage imageLink={imageLink} />
                 <Card>
                     <RecipeHeadlines servings={servings} recipeName={name} />
-                    <div className='recipe-button-container'>
-                        <RecipeButtons recipeId={params.recipeId} path={pathParts[1]}/>
-                    </div>
                     <RecipeDescription description={description} mode="display"/>
                     <IngredientPreparationLists
                         ingredients={ingredients}
                         preparationSteps={preparations}
                     />
+                    <div className='recipe-button-container'>
+                        <RecipeButtons recipeId={params.recipeId} path={pathParts[1]}/>
+                    </div>
                 </Card>
             </div>
         )

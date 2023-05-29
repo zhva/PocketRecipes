@@ -2,47 +2,55 @@
 
 .home-container {
     width: 100%;
-    min-height: 100vh;
-    padding-bottom: 5%;
+    min-height: calc(100% - $navbar-height);
+    height: auto;
     height: auto;
     @include app-backgroung-image;
-    .home-heading-container {
-        position: relative;
-        width: 100%;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 5% 0;
-        h1 {
-            color: $on-primary;
-        }
-        span {
-            font-family: $h2-font-family;
-            font-size: $h2-font-size;
-            color: $on-primary;
-        }
+    // .home-heading-container {
+    //     position: relative;
+    //     width: 100%;
+    //     z-index: 1;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     padding: 5% 0;
+    //     h1 {
+    //         color: $text-color;
+    //     }
+    //     span {
+    //         font-family: $h2-font-family;
+    //         font-size: $h2-font-size;
+    //         color: $text-color;
+    //     }
+    // }
+    h1 {
+        font-size: $h1-font-size;
+        text-align: left;
+        padding-bottom: calc($main-padding - 5px);
+        padding-top: $page-start-padding;
+        padding-left: $main-padding;
+        color: $text-color;
     }
     .recipes-container {
         position: relative;
-        width: calc(100% - 10%);
+        width: calc(100% - (2 * $main-padding));
         height: auto;
         z-index: 1;
-        padding: 0 5%;
+        padding: 0 $main-padding;
         > div {
             cursor: pointer;
         }
-        h2 {
-            font-size: $h1-font-size;
-            text-align: center;
-            margin-bottom: 25px;
-            color: $on-primary;
+        h1{
+            padding-left: 0;
+        }
+        >p{
+            text-align: left;
+            padding-bottom: calc($main-padding * 2);
         }
         .recipes-list-container {
             display: flex;
             flex-direction: column;
             gap: 25px;
-            padding-bottom: 75px;
         }
         .first-recipe {
             width: 100%;
@@ -50,29 +58,27 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            background-color: $light;
+            background-color: $beige1;
             border-radius: $cards-border-radius;
-            padding-bottom: 25px;
+            padding-bottom: $main-padding;
             h3, span, p {
-                margin-left: 25px;
+                padding-left: $main-padding;
             }
             img {
-                height: 100%;
+                max-height: $first-img-feed-height;
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
-                max-height: 50vh;
             }
             h3 {
                 font-family: $recipe-card-heading-font-family;
                 font-size: $recipe-card-heading-font-size;
-                margin-top: 25px;
-                margin-bottom: 0px;
+                padding-top: $main-padding;
             }
             span {
                 font-family: $label-font-family;
                 font-size: $label-font-size;
-                margin-bottom: 15px;
+                padding-bottom: $main-padding;
             }
         }
     }

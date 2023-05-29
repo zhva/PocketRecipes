@@ -2,43 +2,43 @@ nav {
     position: sticky;
     top: 0;
     z-index: 10;
-    //margin-bottom: -124px;
 }
 
 .navbar-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 25px;
-    background-color: whitesmoke;
+    padding: $main-padding;
+    background-color: $nav-bar-color;
     h1{
         color: black;
         text-align: left;
         margin: 0;
         position: relative;
-        z-index: 11;
+        z-index: $navbar-index;
+        font-family: $label-font-family;
     }
 }
 
 .hamburger {
-    width: 24px;
-    height: 24px;
+    width: $hamburger-width;
+    height: $hamburger-height;
     border: none;
     background-color: transparent;
-    z-index: 11;
+    z-index: $navbar-index;
     padding: 0;
     position: relative;
-    margin-top: 10px;
+    margin-top: $hamburger-margin-top;
 }
 
 .hamburger .line {
     background-color: black;
-    width: 24px;
-    height: 2px;
+    width: $hamburger-width;
+    height: $hamburger-line-height;
     position: absolute;
     display: block;
     transition: 0.2s ease-in-out;
-    border-radius: 1rem;
+    border-radius: $hamburger-radius;
 }
 
 .hamburger:hover {
@@ -62,22 +62,22 @@ nav > ul {
     position: absolute;
     //width: 100vw;
     width: 100%;
-    max-width: 1024px;
+    max-width: $page-max-width;
     // right: 0;
     // top: 0;
     bottom: 0;
-    margin-bottom: 114px;
-    height: calc(100vh - 114px);
+    margin-bottom: $navbar-height-plus-padding;
+    height: calc(100vh - $navbar-height-plus-padding);
     z-index: 9;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    background-color: whitesmoke;
+    background-color: $nav-bar-color;
     //transform: translateY(0%);
 }
 
 nav > ul li {
-    margin-top:40px;
+    margin-top: $page-start-padding;
 }
 
 nav > ul li:last-child {
@@ -85,7 +85,7 @@ nav > ul li:last-child {
 }
 
 nav > ul li button {
-    font-size: 1.45rem;
+    font-size: $hamburger-list-item-fontsize;
     display: inline;
     color: black;
     background: none;
@@ -103,7 +103,7 @@ nav > ul.transition {
 }
 
 .hamburger.opened .line-2 {
-    transform: translateX(-6px) rotate(-45deg);
+    transform: translateX(-7px) rotate(-45deg);
     transform-origin: center right;
     top: 0px;
 }
@@ -113,5 +113,5 @@ nav > ul.transition {
 }
 
 nav > ul.transition {
-    transform: translateY(calc(100% + 114px));
+    transform: translateY(calc(100% + $navbar-height-plus-padding));
 }
