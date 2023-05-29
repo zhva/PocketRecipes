@@ -193,7 +193,7 @@ const useRecipe = () => {
           timestamp: new Date().getTime()
         }
         const newRecipeRef = await push(recipesRef, recipeData)
-        toggleRecipeVisibilityInFeed(recipeData, newRecipeRef.key)
+        toggleRecipeVisibilityInFeed({...recipeData, author: userName, timestamp: new Date().getTime()}, newRecipeRef.key)
       }
     } catch (error) {
       console.log(error)
