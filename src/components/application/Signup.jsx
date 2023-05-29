@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignIn
 import { auth, database } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
 import { set, ref as sref } from 'firebase/database'
+import imgSrc from '../../images/auth-img.jpg'
 
 const validationSchema = object().shape({
   name: string()
@@ -83,6 +84,12 @@ export const Signup = () => {
 
   return (
     <div className='signup-page'>
+      <div className='login-img-container'>
+        <div>
+          <img src={imgSrc}></img>
+          <a href="https://www.freepik.com/free-vector/female-chef-concept-illustration_32318741.htm#query=cooking&position=23&from_view=search&track=sph">Image by storyset</a>
+        </div>
+      </div>
       <div className='signup-container content-container'>
         <form onSubmit={handleSubmit} className='form-signup'>
           <h1>Sign Up</h1>

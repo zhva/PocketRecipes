@@ -6,6 +6,7 @@ import { object, string } from 'yup'
 import { auth } from '../../firebase'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
+import imgSrc from '../../images/auth-img.jpg'
 
 const validationSchema = object({
   email: string().email('Invalid email format'),
@@ -41,10 +42,15 @@ export const Login = () => {
   const { handleChange, handleSubmit, handleBlur, values, errors, errorMessage } = useLogin()
   return (
     <div className='login-page'>
+      <div className='login-img-container'>
+        <div>
+          <img src={imgSrc}></img>
+          <a href="https://www.freepik.com/free-vector/female-chef-concept-illustration_32318741.htm#query=cooking&position=23&from_view=search&track=sph">Image by storyset</a>
+        </div>
+      </div>
       <div className='login-container content-container'>
         <form onSubmit={handleSubmit} className='form-login'>
           <h1>Log In</h1>
-          <h2>Welcome to PocketRecipes</h2>
           <div className='login-inner-container'>
             {errorMessage && <div className='formik-errors'>{errorMessage}</div>}
             <TextInput

@@ -7,7 +7,7 @@ $h2-font-family: 'Montserrat Bold', sans-serif;
 $h2-font-size: 20px;
 
 $button-font-family: 'Montserrat SemiBold', sans-serif;
-$button-font-size: 20px;
+$button-font-size: 16px;
 
 $input-font-family: 'Caviar Dreams', sans-serif;
 $input-font-size: 18px;
@@ -42,10 +42,7 @@ $text-color: hsl(0, 0, 0, 100%);
 $dark-filter: hsl(0, 0, 0, 40%);
 $action: hsl(342, 94, 61, 100%);
 
-$beige1: rgb(255, 235, 205);
-$beige2: rgb(245, 222, 179);
-$beige3: rgb(195, 154, 107);
-
+$accent-color: rgb(247, 235, 217);
 
 @mixin app-backgroung-image {
     background: /*linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg) no-repeat*/ none;
@@ -60,8 +57,8 @@ $page-max-width: 1024px;
 $page-min-width: 390px;
 
 $button-height: 44px;
-$button-horizontal-padding: 55px;
-$button-vertical-padding: 10px;
+$button-horizontal-padding: 30px;
+$button-vertical-padding: 12px;
 
 $navbar-height: 35px;
 
@@ -93,7 +90,7 @@ $content-container-padding: 47px 48px; /* later we will replace it with percenta
 
 $border: 1px solid $dark;
 
-$card-container-height: 40vh;
+$card-container-height: 15vh;
 $card-info-padding: 13px 15px 13px 6px;
 
 $recipe-card-paddind: 40px 26px;
@@ -134,7 +131,7 @@ $main-padding: 25px;
 
 $first-img-feed-height: 200px;
 
-$nav-bar-color: white;
+$nav-bar-color: $accent-color;
 
 $hamburger-margin-top: 10px;
 $hamburger-line-height: 3px;
@@ -163,8 +160,7 @@ $text-area-max-height: 300px;
 
 $create-recipe-input-padding: 10px;
 
-$img-container-max-height: 300px;
-$smaller-images-height: 100px;
+$img-container-max-height: 33vh; //how can I solve this with % - when I use % it doesnt apply the value properly and the image is still as big as before
 
 $label-spacing: 15px;
 
@@ -179,3 +175,4 @@ $popup-container-height: 30vh;
 $input-padding: 10px 20px;
 
 $navbar-height-plus-padding: calc($navbar-height + (2 * $main-padding));
+

@@ -4,14 +4,14 @@
 
 .card-container {
     // border: $border;
-    background-color: $beige1;
+    background-color: $accent-color;
     border-radius: $cards-border-radius;
     display: flex;
     flex-direction: row;
     max-height: $card-container-height;
     overflow: hidden;
     .recipe-card-image-container {
-        height: $smaller-images-height;
+        max-height: $card-container-height;
         flex: 1;
         overflow: hidden;
         img {

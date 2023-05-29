@@ -12,12 +12,12 @@
 .text-input {
     padding: $login-text-input-padding;
     border: 0px;
-    background-color: $light;
+    background-color: white;
     font-family: $input-font-family;
     font-size: $input-font-size;
     outline: 0;
     border-radius: $controls-border-radius;
-    box-shadow: $input-shadow;
+    // box-shadow: $input-shadow;
     width: calc(100% - 38px);
 }
 .text-input::placeholder,

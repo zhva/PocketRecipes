@@ -18,7 +18,7 @@ export const MyRecipes = () => {
   if(!loading && !nameLoading) {
     return (
       <div className='home-container'>
-        <h1>MyRecipes</h1>
+        <h1>My Recipes</h1>
         <div className='recipes-container'>
         <div className='recipes-list-container' >
           {!loading && recipes && Object.entries(recipes ?? {}).map(([key, recipe]) => {
