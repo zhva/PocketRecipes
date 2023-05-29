@@ -7,7 +7,7 @@ $h2-font-family: 'Montserrat Bold', sans-serif;
 $h2-font-size: 20px;
 
 $button-font-family: 'Montserrat SemiBold', sans-serif;
-$button-font-size: 20px;
+$button-font-size: 16px;
 
 $input-font-family: 'Caviar Dreams', sans-serif;
 $input-font-size: 18px;
@@ -60,8 +60,8 @@ $page-max-width: 1024px;
 $page-min-width: 390px;
 
 $button-height: 44px;
-$button-horizontal-padding: 55px;
-$button-vertical-padding: 10px;
+$button-horizontal-padding: 30px;
+$button-vertical-padding: 12px;
 
 $navbar-height: 35px;
 
@@ -163,7 +163,7 @@ $text-area-max-height: 300px;
 
 $create-recipe-input-padding: 10px;
 
-$img-container-max-height: 300px;
+$img-container-max-height: 300px; //how can I solve this with % - when I use % it doesnt apply the value properly and the image is still as big as before
 $smaller-images-height: 100px;
 
 $label-spacing: 15px;
