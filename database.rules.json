@@ -1,6 +1,6 @@
 {
   "rules": {
-      ".read": true,
+      ".read": false,
       ".write": false,
       "users": {
           "$uid" : {
@@ -72,8 +72,42 @@
               "timestamp": {
                   ".validate": "newData.isNumber()"
               }
-          }
+            }
+        }
+      },
+      "shared": {
+        ".read": true,
+        ".write": "auth != null",
+        "recipes": {
+          ".indexOn": ["timestamp"],
+          "$recipeId": {
+              "name": {
+                  ".validate": "newData.isString() && newData.val().length <= 50"
+              },
+              "description": {
+                  ".validate": "newData.isString() && newData.val().length <= 500"
+              },
+              "servings": {
+                  ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 100"
+              },
+              "ingredients": {
+                  "$ingredient": {
+                      ".validate": "newData.hasChild('name') && newData.child('name').isString() && newData.child('name').val().length <= 400"
+                  }
+              },
+              "preparation": {
+                  "$preparation": {
+                      ".validate": "newData.hasChild('name') && newData.child('name').isString() && newData.child('name').val().length <= 400"
+                  }
+              },
+              "visibility": {
+                  ".validate": "newData.isBoolean()"
+              },
+              "timestamp": {
+                  ".validate": "newData.isNumber()"
+              }
+            }
         }
       }
-  }
+    }
 }

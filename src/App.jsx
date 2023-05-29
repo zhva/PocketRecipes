@@ -52,6 +52,7 @@ function App() {
             <CreateRecipe />
           </ProtectedRoute>
         }/>
+        <Route path="/share/:recipeId" element={<Recipe />} />
       </Routes>
       </div>
     )
