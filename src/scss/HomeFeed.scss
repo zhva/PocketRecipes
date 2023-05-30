@@ -132,9 +132,9 @@
             }
             h2{
                 padding-top: $img-spacer;
-                white-space: nowrap;      /* Ensures the content is on a single line */
-                overflow: hidden;         /* Hides content that goes beyond the container's width */
-                text-overflow: ellipsis;  /* Replaces overflowed content with an ellipsis */
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 width: 100%;
                 font-size: 16px;
                 text-align: left;
@@ -166,47 +166,62 @@
 .recipe-list-container{
     display: flex;
     width: 100%;
-    gap: $main-padding;
-    .left-column{
+
+    .column{
         display: flex;
         flex-direction: column;
         width: 50%;
         gap: $main-padding;
-        .left-recipe{
+        .recipe{
+            display: flex;
+            flex-direction: column;
             height: auto;
-            min-height: 270px;
-            width: 100%;
+            background-color: $accent-color;
+            border-radius: $cards-border-radius;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            h2, p{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 90%;
+                text-align: center;
+                padding: 10px 5%;
+            }
             .recipe-img-container{
                 height: 70%;
-                width: 100%;
+                width: 90%;
                 img{
                     object-fit: cover;
                     height: 100%;
                     width: 100%;
                     border-radius: $cards-border-radius;
                 }
+            }
+            .recipe-text{
+                display:flex;
+                flex-direction: column;
+                height: 30%;
+                width: 90%;
             }
         }
     }
+
+    .left-column{
+        align-items: flex-start;
+        .recipe{
+            min-height: 210px;
+            width: calc(100% - 13px);
+        }
+    }
+    
     .right-column{
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        gap: $main-padding;
-        .right-recipe{
-            height: auto;
-            min-height: 400px;
-            width: 100%;
-            .recipe-img-container{
-                height: 70%;
-                width: 100%;
-                img{
-                    object-fit: cover;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: $cards-border-radius;
-                }
-            }
+        align-items: flex-end;
+        padding-top: $page-start-padding;
+        .recipe{
+            min-height: 280px;
+            width: calc(100% - 13px);
         }
     }
 }
