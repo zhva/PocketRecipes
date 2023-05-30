@@ -36,6 +36,7 @@
   width: 100vw;
   max-width: $page-max-width;
   min-width: $page-min-width;
+  min-height: 100vh;
   margin: 0 auto;
   z-index: 5;
 }

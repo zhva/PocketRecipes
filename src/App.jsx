@@ -25,6 +25,7 @@ function App() {
         myRecipesRoute = {'/my-recipes'}
         feedRoute = {'/feed'}
         newRecipeRoute = {'/create-recipe'}
+        createAccountRoute = {'/signup'}
         user={user}/>
       <Routes>
         <Route path="/" element={<StartingPage />} />
