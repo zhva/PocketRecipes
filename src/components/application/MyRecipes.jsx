@@ -19,6 +19,24 @@ export const MyRecipes = () => {
     return (
       <div className='home-container'>
         <h1>My Recipes</h1>
+        <p className='myrecipe-text'>
+          {`Welcome to your personal recipe library!`}
+          <br></br>
+          <br></br>
+          {`This is your "MyRecipes" section - a culinary 
+          sanctuary where your creativity comes to life. 
+          Here, you'll find all the recipes you've meticulously 
+          crafted and lovingly saved. Each recipe represents 
+          a piece of your unique journey through the world 
+          of cooking.`}
+          <br></br>
+          <br></br>
+          {`Every dish you've added, from family favorites to 
+          experimental dishes, is stored right here for easy 
+          access. You can revisit them anytime you want to 
+          recreate a meal, share your delicious creations with 
+          others, or refine your recipes with new inspirations.`}
+        </p>
         <div className='recipes-container'>
         <div className='recipes-list-container' >
           {!loading && recipes && Object.entries(recipes ?? {}).map(([key, recipe]) => {
