@@ -57,8 +57,8 @@ export const HomeFeed = () => {
                       <h2>{recipe.values.name}</h2>
                   </div>)})}
             </div>
-            <Button onClick={toggleSeeMore}>See more..</Button>
       </div>
+      {seeMore ? '' : <Button onClick={toggleSeeMore}>See more..</Button>}
       <div className='recipes-list-container' >
         {/* {loading && <p>Loading recipes...</p>}
         {!loading && recipes && Object.entries(recipes ?? {}).slice(0, 1).map(([key, recipe]) => {
