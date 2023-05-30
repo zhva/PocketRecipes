@@ -1,12 +1,25 @@
 .input-button-pair{
     display: flex;
     align-items: center;
+    gap: $label-spacing;
     button{
-        height: 30px;
-        width: 30px;
-        margin-left: $main-padding;
-        transform: translateY(calc($label-spacing / (-2)));
+        height: $delete-button-height;
+        width: $delete-button-width;
         border-radius: $cards-border-radius;
+    }
+    .input-index {
+        height: $delete-button-height;
+        width: $delete-button-width;
+        background-color: $on-primary;
+        border-radius: 50%;
+        span {
+            width: $delete-button-width;
+            font-family: $text-font-family;
+            font-size: $text-font-size;
+            display: block;
+            text-align: center;
+            line-height: $delete-button-width;
+        }
     }
 }
 
@@ -16,7 +29,6 @@
     label {
         width: 100%;
         position: relative;
-        margin-bottom: $label-spacing;
         display: inline-block;
         height: auto;
     }
@@ -29,9 +41,6 @@
         width: 100%;
         border-radius: $cards-border-radius;
         background-color: $on-primary;
-        // -webkit-appearance: none;
-        // -webkit-box-shadow: $inside-shadow;
-        // box-shadow: $inside-shadow;
         outline: none;
         padding: $input-padding;
         overflow: hidden;

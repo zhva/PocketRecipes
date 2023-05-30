@@ -14,7 +14,8 @@ export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, e
               handleChange={handleChange}
               handleDelete={() => handleDelete(item.id, name)}
               value={item.name}
-              inputError={itemError}>
+              inputError={itemError}
+              index={index}>
             </RecipeInput>
           )
         })}

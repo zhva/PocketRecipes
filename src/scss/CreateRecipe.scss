@@ -23,8 +23,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: $label-spacing;
         >div {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: $label-spacing;
         }
     }
 }

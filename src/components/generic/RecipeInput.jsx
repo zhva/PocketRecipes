@@ -1,8 +1,9 @@
 import React from 'react'
 
-export const RecipeInput = ({ value, uuid, handleDelete, name, handleChange, inputError }) => {
+export const RecipeInput = ({ value, uuid, handleDelete, name, handleChange, inputError, index }) => {
   return (
     <div className='input-button-pair'>
+      <div className='input-index'><span>{index + 1}. </span></div>
       <div className="recipe-input-container" >
         <label htmlFor={uuid}>
           <textarea
