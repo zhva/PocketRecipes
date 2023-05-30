@@ -67,9 +67,9 @@ describe('<Popup />', () => {
 
 
   test('redirects to the correct route when the second button is clicked', () => {
-    const tryAgainButton = screen.getByRole('button', { name: linkText2 });
-    fireEvent.click(tryAgainButton);
-    expect(mockNavigate).toHaveBeenCalledWith(redirectLink2);
-  });
+    const tryAgainButton = screen.getByRole('button', { name: linkText2 })
+    fireEvent.click(tryAgainButton)
+    expect(mockNavigate).toHaveBeenCalledWith(redirectLink2)
+  })
 
 })
