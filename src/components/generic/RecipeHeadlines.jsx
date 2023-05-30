@@ -7,6 +7,7 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode, name
               ? (
                 <label htmlFor='recipeName' >
                   <input
+                    aria-label="recipeName"
                     value={recipeName || ''}
                     type='text'
                     name='name'
@@ -21,6 +22,7 @@ export const RecipeHeadlines = ({ recipeName, servings, handleChange, mode, name
                 ? (
                   <label htmlFor='recipeServings'>
                     <input
+                      aria-label="recipeServings"
                       value={servings || ''}
                       type='number'
                       min = {0}
