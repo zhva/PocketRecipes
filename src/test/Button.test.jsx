@@ -42,7 +42,7 @@ describe('<Button />', () => {
   });
 
   test('has correct className with non-secondary variant', () => {
-    variant = 'not-secondary'; // or simply 'default'
+    variant = 'not-secondary';
     const { getByRole } = render(
       <Button variant={variant} onClick={onClick}>Button Text</Button>
     );
