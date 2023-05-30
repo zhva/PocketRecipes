@@ -1,9 +1,30 @@
 import { render, screen } from '@testing-library/react'
-import App from './App'
 import React from 'react'
+import App from './App'
+import ProtectedRoute from './components/generic/ProtectedRoute'
+import { StartingPage } from './components/application/StartingPage'
 
-test('renders learn react link', () => {
-  render(<App />)
-  const linkElement = screen.getByText(/learn react/i)
-  expect(linkElement).toBeInTheDocument()
-})
+
+jest.mock('react-router-dom', () => ({
+  useNavigate: () => jest.fn(),
+  useParams: () => ({}),
+  Routes: ({children}) => <div>{children}</div>,
+  Route: ({path, element}) => <div>{element}</div>,
+}));
+
+jest.mock('./components/generic/ProtectedRoute', () => {
+  return ({children}) => <div>{children}</div>;
+});
+
+jest.mock('./firebase', () => ({
+  auth: jest.fn(),
+}));
+
+test('renders protected route', async () => {
+  await render(
+    <ProtectedRoute isAllowed={'test user'}>
+      <StartingPage />
+    </ProtectedRoute>
+  );
+});
+
