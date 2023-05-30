@@ -67,24 +67,7 @@ const useRecipe = () => {
   const userNameRef = ref(database, `users/${user?.uid}/name`)
   const [userName]= useObjectVal(userNameRef)
 
-
-  useEffect(() => {
-    if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
-      initialValues = {
-        name: recipe.values.name,
-        description: recipe.values.description,
-        servings: recipe.values.servings,
-        ingredients: recipe.values.ingredients,
-        preparations: recipe.values.preparations,
-        visibility: recipe.values.visibility,
-        imageSrc: recipe.imageLink
-      };
-      setImageSrc(initialValues.imageSrc)
-    }
-    formik.setValues(initialValues)
-  }, [recipe])
-
-  let initialValues = {
+  const initialValues = {
     name: '',
     description: '',
     servings: null,
@@ -93,6 +76,16 @@ const useRecipe = () => {
     visibility: false,
     imageSrc: null
   }
+
+  useEffect(() => {
+    if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
+      formik.setValues({...recipe.values, imageSrc: recipe.imageLink})
+      setImageSrc(initialValues.imageSrc)
+    } else {
+      formik.setValues(initialValues)
+    }
+  }, [recipe])
+
 
   const formik = useFormik({
     initialValues: initialValues,
