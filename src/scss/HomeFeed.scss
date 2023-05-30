@@ -162,3 +162,51 @@
 .myrecipe-text{
     padding-bottom: $page-start-padding;
 }
+
+.recipe-list-container{
+    display: flex;
+    width: 100%;
+    gap: $main-padding;
+    .left-column{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: $main-padding;
+        .left-recipe{
+            height: auto;
+            min-height: 270px;
+            width: 100%;
+            .recipe-img-container{
+                height: 70%;
+                width: 100%;
+                img{
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: $cards-border-radius;
+                }
+            }
+        }
+    }
+    .right-column{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: $main-padding;
+        .right-recipe{
+            height: auto;
+            min-height: 400px;
+            width: 100%;
+            .recipe-img-container{
+                height: 70%;
+                width: 100%;
+                img{
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: $cards-border-radius;
+                }
+            }
+        }
+    }
+}
