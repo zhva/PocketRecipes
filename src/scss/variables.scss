@@ -22,7 +22,7 @@ $link-font-family: 'Caviar Dreams', sans-serif;
 $link-font-size: 14px;
 
 $text-font-family: 'Caviar Dreams', sans-serif;
-$text-font-size: 16px;
+$text-font-size: 20px;
 
 $list-numbers-font-family: 'Caviar Dreams Bold', sans-serif;
 $list-numbers-font-size: 16px;
@@ -54,7 +54,7 @@ $button-shadow-color: hsl(0, 0, 0, 25%);
 $input-shadow-color: hsl(38, 31, 83, 100%);
 
 $page-max-width: 1024px;
-$page-min-width: 390px;
+$page-min-width: 320px;
 
 $button-height: 44px;
 $button-horizontal-padding: 30px;
@@ -179,3 +179,7 @@ $input-padding: 10px 20px;
 
 $navbar-height-plus-padding: calc($navbar-height + (2 * $main-padding));
 
+$img-spacer: 5px;
+$main-recipe-fontsize: 26px;
+$main-recipe-padding: 10px;
+$recipe-gallery-padding: 40px $main-padding;

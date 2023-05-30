@@ -14,7 +14,7 @@ const useCustomSignOut = (onSuccess) => {
     return handleSignOut
 }
 
-export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeRoute, user}) => {
+export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeRoute, createAccountRoute, user}) => {
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
     const handleSignOut = useCustomSignOut(() => navigate('/login'))
@@ -54,6 +54,7 @@ export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeR
             : 
             <li><button onClick={() => {closeMenu(); navigate('/login') }}>Login</button></li>
         }
+        {!user && <li><button onClick={() => {closeMenu(); navigate(createAccountRoute) }}>Create Account</button></li>}
       </ul>
     </nav>
   )

@@ -22,7 +22,7 @@ a {
 p {
     margin: 0px;
     font-family: $text-font-family;
-    font-family: $text-font-size;
+    font-size: $text-font-size;
     color: $text-color;
 }
 
@@ -42,7 +42,6 @@ ol {
     height: 50%;
     bottom: 0;
     border-radius: $cards-border-radius;
-    // box-shadow: 0px -2px 31px 0px rgba(0,0,0,0.15);
 
     .login-inner-container,
     .signup-inner-container {
