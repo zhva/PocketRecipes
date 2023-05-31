@@ -180,13 +180,13 @@
             border-radius: $cards-border-radius;
             justify-content: center;
             align-items: center;
-            padding: 10px 0;
+            padding: 5% 0;
             h2, p{
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 width: 90%;
-                text-align: center;
+                text-align: left;
                 padding: 10px 5%;
             }
             .recipe-img-container{
