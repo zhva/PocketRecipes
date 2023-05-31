@@ -110,7 +110,7 @@ export const RecipeButtons = ({recipeId, path}) => {
         <>
         {showPopup &&
             <DeleteConfirmationPopup
-                title='Confirm Delete'
+                title='Delete Recipe'
                 onClick={deleteRecipeFromDB}
                 onClose={handleClosePopup}>
                     Do you really want to delete this recipe?
