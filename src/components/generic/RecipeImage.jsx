@@ -3,9 +3,9 @@ import React from 'react'
 
 export const RecipeImage = (imageLink) => {
   return (
-        <div className='img-container'>
+        <div className='img-container'  data-testid='img-container'>
           <BackLink className='back-btn' />
-          <img src={imageLink.imageLink}></img>
+          <img src={imageLink.imageLink}  alt="recipe image" ></img>
         </div>
   )
 }

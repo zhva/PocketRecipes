@@ -6,7 +6,7 @@ export const RecipeDescription = ({ description, descriptionErrors, handleChange
         <h2>Description</h2>
         <label htmlFor="descriptionId"></label>
         {mode === 'display' && (
-          <p>description</p>
+          <p>{description}</p>
         )}
         {mode === 'edit' && (
           <textarea

@@ -10,14 +10,14 @@ export const Popup = ({ title, children, linkText, redirectLink, linkText2, redi
           <h1>{title}</h1>
           <p>{children}</p>
           <div className='backlink-container'>
-            <button onClick= {() => navigate(redirectLink)}>
+            <button aria-label={linkText} onClick= {() => navigate(redirectLink)}>
               <img src={arrow} alt="back arow"/>
               {<span>{linkText}</span>}
             </button>
           </div>
           {linkText2 && (
           <div className='backlink-container'>
-            <button onClick= {() => navigate(redirectLink2)}>
+            <button aria-label={linkText2} onClick= {() => navigate(redirectLink2)}>
               <img src={arrow} alt="back arow"/>
               {<span>{linkText2}</span> }
             </button>
