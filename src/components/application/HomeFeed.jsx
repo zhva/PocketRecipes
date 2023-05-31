@@ -39,7 +39,7 @@ export const HomeFeed = () => {
             </div>)})}
             <div className='other-recipes'>
             {loading && <p>Loading recipes...</p>}
-            {!loading && recipes && 
+            {!loading && recipes &&
                 Object.entries(recipes ?? {})
                     .slice(1, seeMore ? undefined : 5)
                     .map(([key, recipe]) => (
@@ -56,36 +56,6 @@ export const HomeFeed = () => {
       <div className='see-more-container'>
         {seeMore ? <Button onClick={toggleSeeMore}>See less..</Button> : <Button onClick={toggleSeeMore}>See more..</Button>}
       </div>
-      <div className='recipes-list-container' >
-        {/* {loading && <p>Loading recipes...</p>}
-        {!loading && recipes && Object.entries(recipes ?? {}).slice(0, 1).map(([key, recipe]) => {
-          return (
-            <div
-              className='first-recipe'
-              key={key}
-              onClick = {() => navigate(`/feed/${key}`)}>
-              <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink} />
-              <h3>{recipe.values.name}</h3>
-              <span>by {recipe.author}</span>
-              <p>{recipe.values.description}</p>
-            </div>
-          )
-        })} */}
-        {/* {loading && <p>Loading recipes...</p>}
-        {!loading && recipes && Object.entries(recipes ?? {}).slice(1).map(([key, recipe]) => {
-          return (
-            <div key={key}>
-              <RecipeCard
-                imageSrc={recipe.imageLink && recipe.imageLink}
-                title={recipe.values.name}
-                author={recipe.author}
-                description={recipe.values.description}
-                onClick = {() => navigate(`/feed/${key}`)}
-              />
-            </div>
-          )
-        })} */}
-        </div>
       </div>
     </div>
 
