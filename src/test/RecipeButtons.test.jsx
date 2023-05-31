@@ -1,93 +1,96 @@
-import React from 'react'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { useNavigate } from 'react-router-dom'
-import { RecipeButtons } from '../components/generic/RecipeButtons'
-import { getDatabase, ref, remove } from 'firebase/database'
-import 'firebase/database'
-
-// jest.mock('firebase/database', () => {
-//   const recipeRef = {}
-//   const mockRef = jest.fn().mockReturnValue(recipeRef)
-//   const mockRemove = jest.fn().mockResolvedValue()
-//   const mockGetDatabase = jest.fn(() => ({
-//     ref: mockRef,
-//     remove: mockRemove,
-//   }))
-
-//   return {
-//     getDatabase: mockGetDatabase,
-//     ref: mockRef,
-//     remove: mockRemove,
-//   }
-// })
+import { render, fireEvent, waitFor, findByText } from '@testing-library/react';
+import { RecipeButtons } from '../components/generic/RecipeButtons';
+import { useObjectVal } from 'react-firebase-hooks/database';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import clipboardCopy from 'clipboard-copy';
 
 
-const mockUser = {
-  uid: '123456'
-}
+jest.mock('clipboard-copy', () => jest.fn());
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useContext: () => mockUser
-}))
+jest.mock('react-firebase-hooks/auth', () => ({
+  useAuthState: jest.fn(),
+}));
+
+jest.mock('react-firebase-hooks/database', () => ({
+  useObjectVal: jest.fn(),
+}));
+
+const mockNavigate = jest.fn(); // Define the mock navigate function
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
-}))
+    useNavigate: () => mockNavigate, // Use it here
+}));
 
-let mockNavigate
 
-beforeEach(() => {
-  mockNavigate = jest.fn()
-  useNavigate.mockImplementation(() => mockNavigate)
-})
+describe('RecipeButtons', () => {
+  const mockNavigate = useNavigate();
 
-afterEach(() => {
-  jest.clearAllMocks()
-})
+  beforeEach(() => {
+    useAuthState.mockImplementation(() => [{ uid: '1' }]);
+    useObjectVal.mockImplementation(() => [
+      {
+        imageLink: 'test-imageLink',
+        values: {
+            description: 'test-description',
+            name: 'test-name',
+            visibility: true,
+        },
+        timestamp: new Date().getTime(),
+      },
+      false,
+    ]);
+  });
 
-describe('<RecipyButtons />', () => {
+  afterEach(() => {
+    useAuthState.mockClear();
+    useObjectVal.mockClear();
+    clipboardCopy.mockClear();
+  });
 
-  test('renders RecipeButtons component without crashing', () => {
-    render(
-      <RecipeButtons recipeId="1" path="feed" />
-    )
-  })
+  it('renders without crashing', () => {
+    const { getByAltText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
+    expect(getByAltText('Delete')).toBeInTheDocument();
+    expect(getByAltText('Share')).toBeInTheDocument();
+    expect(getByAltText('Edit')).toBeInTheDocument();
+  });
 
-  test('shows delete confirmation popup when delete button is clicked', () => {
-    render(
-      <RecipeButtons recipeId="1" path="my-recipes" />
-    )
-    const deleteButton = screen.getByRole('button', { name: /delete/i })
-    fireEvent.click(deleteButton)
+  it('opens delete confirmation popup when delete button is clicked', () => {
+    const { getByAltText, getByText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
+    fireEvent.click(getByAltText('Delete'));
+    expect(getByText('Confirm Delete')).toBeInTheDocument();
+    expect(getByText('Do you really want to delete this recipe?')).toBeInTheDocument();
+  });
 
-    const deletePopup = screen.getByText(/do you really want to delete this recipe/i)
-    expect(deletePopup).toBeInTheDocument()
-  })
-
-  // test('calls Firebase remove function when delete button is clicked', async () => {
-  //   render(
-  //     <RecipeButtons recipeId="1" path="my-recipes" />
-  //   )
-
-  //   const deleteButton = screen.getByRole('button', { name: /delete/i })
-  //   fireEvent.click(deleteButton)
-  //   const confirmButton = screen.getByRole('button', { name: /confirm/i })
-  //   fireEvent.click(confirmButton)
-
-  //   await waitFor(() => {
-  //     expect(remove).toHaveBeenCalledWith(recipeRef)
-  //   })
-  // })
-
-  test('calls navigate function with correct parameter when edit button is clicked', () => {
-    render(
-      <RecipeButtons recipeId="1" path="my-recipes" />
-    )
-    const editButton = screen.getByRole('button', { name: /edit/i })
-    fireEvent.click(editButton)
-
-    expect(mockNavigate).toHaveBeenCalledWith(`/edit/1`)
-  })
-})
+  it('opens save popup when save button is clicked', async () => {
+    const { getByAltText, findByText } = render(<RecipeButtons recipeId="1" path="feed" />);
+    fireEvent.click(getByAltText('Save to my recipes'));
+    
+    const recipeSavedText = await findByText('Recipe Saved');
+    expect(recipeSavedText).toBeInTheDocument();
+    
+    const savedToYourRecipesText = await findByText('The recipe has been saved to your recipes.');
+    expect(savedToYourRecipesText).toBeInTheDocument();
+  });
+  
+  it('opens share popup and copies link to clipboard when share button is clicked', async () => {
+    const { getByAltText, findByText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
+    fireEvent.click(getByAltText('Share'));
+  
+    const recipeSharedText = await findByText('Recipe Shared');
+    expect(recipeSharedText).toBeInTheDocument();
+    
+    const sharedLinkCopiedText = await findByText('The recipe has been shared. The link has been copied to your clipboard.');
+    expect(sharedLinkCopiedText).toBeInTheDocument();
+    
+    expect(clipboardCopy).toHaveBeenCalled();
+  });
+  
+  it('navigates to edit recipe when edit button is clicked', async () => {
+    const { getByAltText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
+    fireEvent.click(getByAltText('Edit'));
+    
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/edit/1'));
+  });
+  
+});
