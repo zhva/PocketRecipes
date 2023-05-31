@@ -1,10 +1,17 @@
 .edit-buttons-container{
     display: flex;
-    width: 100%;
-    // grid-template-columns: 1fr repeat(2, auto);
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    padding-top: $page-start-padding;
+    transform: translateX(-$main-padding);
+    
+    width: 100%;
+    gap: 15px;
     > button {
         height: $recipe-button-height;
         width: $recipe-button-width;
