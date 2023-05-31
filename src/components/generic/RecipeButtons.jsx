@@ -56,7 +56,7 @@ export const RecipeButtons = ({recipeId, path}) => {
             try {
                 await push(recipesRef, recipeData)
             } catch (error) {
-                console.log(error)
+                alert(`An error occurred while saving the recipe to your recipe list: ${error}`)
             }
             setShowSavePopup(true)
         }
@@ -87,7 +87,7 @@ export const RecipeButtons = ({recipeId, path}) => {
                 try {
                     await set(newSharedRecipeRef, recipeData)
                 } catch (error) {
-                    console.log(error)
+                    alert(`An error occurred while sharing the recipe: ${error}`)
                 }
             }
                     // create shareable URL
