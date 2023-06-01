@@ -4,8 +4,6 @@ import { database } from '../../firebase'
 import { ref } from 'firebase/database'
 import { Button } from '../generic/Button'
 import { useNavigate } from 'react-router-dom'
-import recipeBig from '../../images/recipe_Big.png'
-import recipeSmall from '../../images/recipe_small.png'
 
 export const HomeFeed = () => {
   // Get a reference to the document
@@ -55,10 +53,6 @@ export const HomeFeed = () => {
         </div>
         <div className='see-more-container'>
           {seeMore ? <Button onClick={toggleSeeMore}>See less..</Button> : <Button onClick={toggleSeeMore}>See more..</Button>}
-        </div>
-        <div>
-          <div><img src={recipeBig} alt="recipe screenshot" /></div>
-          <div><img src={recipeSmall} alt="recipe screenshot" /></div>
         </div>
       </div>
     </div>

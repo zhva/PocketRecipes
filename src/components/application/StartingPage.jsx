@@ -4,6 +4,8 @@ import { InfoText } from '../generic/InfoText'
 import { Button } from '../generic/Button'
 import { useNavigate } from 'react-router-dom'
 import imgSrc from '../../images/home-img.jpg'
+import recipeBig from '../../images/recipe_Big.png'
+import recipeSmall from '../../images/recipe_small.png'
 
 export const StartingPage = () => {
   const navigate = useNavigate()
@@ -32,6 +34,10 @@ export const StartingPage = () => {
               so you can whip up a storm from wherever you are.`} */}
               Get started and create an <a href='/signup'>account</a> now!
             </InfoText>
+            <div>
+            <div><img src={recipeBig} alt="recipe screenshot" /></div>
+              <div><img src={recipeSmall} alt="recipe screenshot" /></div>
+            </div>
             </div>
         </div>
   )
