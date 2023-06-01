@@ -9,9 +9,10 @@
     .delete-popup-inner-container {
         padding: 20px;
         height: auto;
-        background-color: $light;
         border-radius: $controls-border-radius;
-        border: $border;
+        border-bottom: $bottom-left-border-glass;
+        border-top: $top-right-border-glass;
+        backdrop-filter: blur(16px);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -44,7 +45,7 @@
         :last-child{
             border-radius: $cancel-btn-radius;
             background-color: transparent;
-            border: solid 2px $dark;
+            border: solid 2px $light-grey;
             color: black;
         }
     }
