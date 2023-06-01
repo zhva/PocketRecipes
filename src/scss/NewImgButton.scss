@@ -5,17 +5,13 @@
     color: $on-primary;
     padding: $button-vertical-padding $button-vertical-padding;
     border-radius: $controls-border-radius;
-    // box-shadow: $button-shadow;
     text-align: center;
-    // margin-bottom: 15px;
     cursor: pointer;
     span {
         font-family: $button-font-family;
         font-size: $button-font-size;
     }
     .image-upload {
-        // position: absolute;
-        // top: -1000px;
         display: none;
     }
 }
