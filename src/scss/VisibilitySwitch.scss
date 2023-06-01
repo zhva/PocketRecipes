@@ -6,8 +6,8 @@
     align-items: center;
     height: $visibility-switch-height;
     border-radius: $nav-border-radius;
-    // box-shadow: $button-shadow;
     background-color: $on-primary;
+    border: $border-glass;
     span {
         font-family: $text-font-family;
         font-size: $text-font-size;
@@ -37,8 +37,7 @@
       width: $switch-button-width;
       border-radius: $nav-border-radius;
       cursor: pointer;
-      background-color: $accent-color;
-      // box-shadow: $switch-shadow-inset;
+      background-color: $light-grey;
       color: transparent;
       vertical-align: middle;
 

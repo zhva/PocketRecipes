@@ -10,7 +10,6 @@
         width: 100%;
         border-radius: $cards-border-radius;
         background-color: $on-primary;
-        // box-shadow: $inside-shadow;
         outline: none;
         padding: $input-padding;
         overflow: hidden;
@@ -18,6 +17,7 @@
         font-size: $text-font-size;
         border: 0;
         word-wrap: break-word;
+        border: $border-glass;
     }
     h2{
         text-align: center;
