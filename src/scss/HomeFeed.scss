@@ -193,21 +193,21 @@
         .recipe{
             display: flex;
             flex-direction: column;
-            height: auto;
+            max-height: 180px;
             width: calc(50% - 5px);
             border-radius: $cards-border-radius;
-            justify-content: center;
             align-items: center;
             padding: 10px 0;
             border-radius: $cards-border-radius;
             border-bottom-left-radius: 0.6rem;
+            border-bottom-right-radius: 0.6rem;
             backdrop-filter: blur(2px);
             // border-top: $top-right-border-glass;
             // border-right: $top-right-border-glass;
             // border-bottom: $bottom-left-border-glass;
             // border-left: $bottom-left-border-glass;
             box-shadow: $button-shadow;
-            h2, p{
+            h2{
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -216,11 +216,11 @@
                 padding: 10px 2px;
             }
             .recipe-img-container{
-                height: 70%;
+                height: 80%;
                 width: 90%;
                 img{
                     object-fit: cover;
-                    height: 100%;
+                    height: 120px;
                     width: 100%;
                     border-radius: 0.6rem;
                 }

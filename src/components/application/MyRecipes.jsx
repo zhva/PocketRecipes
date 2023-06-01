@@ -14,17 +14,13 @@ export const MyRecipes = () => {
   const [recipes, loading] = useObjectVal(recipeRef)
   const navigate = useNavigate()
 
-  // const navToCreate = () => {
-  //   useNavigate('/create-recipe')
-  // }
-
   if(!loading) {
     return (
       <div className='home-container'>
         <h1>My Recipes</h1>
         <p className='myrecipe-text'>
-          {`Welcome to your "MyRecipes" section, your personal 
-          culinary hub`}
+          {`Welcome to your recipe section, your personal 
+          culinary hub.`}
           <br></br>
           <br></br>
           {`Here you'll find all your crafted 
@@ -50,7 +46,6 @@ export const MyRecipes = () => {
                     </div>
                     <div className='recipe-text'>
                       <h2>{recipe.values.name}</h2>
-                      <p>{recipe.values.description}</p>
                     </div>
                   </div>
               ))}
