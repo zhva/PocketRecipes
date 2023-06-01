@@ -50,10 +50,16 @@ export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeR
         <li><button onClick={() => {closeMenu(); navigate(myRecipesRoute)}}>My Recipes</button></li>
         <li><button onClick={() => {closeMenu(); navigate(feedRoute)}}>Feed</button></li>
         <li><button onClick={() => {closeMenu(); navigate(newRecipeRoute)}}>Create Recipe</button></li>
+        <hr></hr>
         {user ?
-            <li><button onClick={() => {closeMenu(); handleSignOut()}}>Logout</button></li>
+            <li id='login-signup-nav'><button onClick={() => {closeMenu(); handleSignOut()}}>Logout</button></li>
             :
-            <li><button onClick={() => {closeMenu(); navigate('/login') }}>Login</button></li>
+            (
+              <>
+                <li id='login-signup-nav1'><button onClick={() => {closeMenu(); navigate('/login') }}>Login</button></li>
+                <li id='login-signup-nav1'><button onClick={() => {closeMenu(); navigate('/signup') }}>Sign up</button></li>
+              </>
+            )
         }
       </ul>
     </nav>
