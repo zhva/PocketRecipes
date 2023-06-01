@@ -76,7 +76,15 @@
         width: 100%;
         height: auto;
         gap: $img-spacer;
-        padding-bottom: $page-start-padding;
+        padding: $main-padding $main-padding $page-start-padding;
+        margin-bottom: $main-padding;
+        backdrop-filter: blur(2px);
+        border-radius: $cards-border-radius;
+        border-top: 2px solid white;
+        border-right: 2px solid white;
+        border-bottom: 2px solid rgb(225, 225, 225);
+        border-left: 2px solid rgb(225, 225, 225);
+        box-shadow: $button-shadow;
         h2{
             padding-bottom: calc($img-spacer * 3);
             margin-bottom: 0;
@@ -101,8 +109,16 @@
         width: 100%;
         gap: $recipe-gallery-padding;
         .small-recipe{
-            width: calc(50% - 13px);
+            width: calc(50% - 13px - 9%);
             max-height: 100px;
+            padding: 4% 4% 10%;
+            backdrop-filter: blur(2px);
+            border-radius: $cards-border-radius;
+            border-top: 2px solid white;
+            border-right: 2px solid white;
+            border-bottom: 2px solid rgb(225, 225, 225);
+            border-left: 2px solid rgb(225, 225, 225);
+            box-shadow: $button-shadow;
             .img-container{
                 width: 100%;
                 height: 100%;
@@ -159,18 +175,25 @@
             display: flex;
             flex-direction: column;
             height: auto;
-            background-color: $accent-color;
+            // background-color: $accent-color;
             border-radius: $cards-border-radius;
             justify-content: center;
             align-items: center;
             padding: 5% 0;
+            border-radius: $cards-border-radius;
+            backdrop-filter: blur(2px);
+            border-top: $top-right-border-glass;
+            border-right: $top-right-border-glass;
+            border-bottom: $bottom-left-border-glass;
+            border-left: $bottom-left-border-glass;
+            box-shadow: $button-shadow;
             h2, p{
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 width: 90%;
                 text-align: left;
-                padding: 10px 5%;
+                padding: 10px 2px;
             }
             .recipe-img-container{
                 height: 70%;
