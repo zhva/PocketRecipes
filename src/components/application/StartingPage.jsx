@@ -21,9 +21,9 @@ export const StartingPage = () => {
               delete recipes with ease, and discover
               what's hot in the food world with our
               culinary creations.`}
-              <div className='buttons-container'>
+              <span className='buttons-container'>
                 <Button type='button' variant='primary' onClick={() => navigate('/feed')}>Discover Recipes</Button>
-              </div>
+              </span>
               {/* {`Don't forget to sign up for an
               account to keep track of your personal recipes.
               Whether you're a newbie in the kitchen or a seasoned
