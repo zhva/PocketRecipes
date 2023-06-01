@@ -84,7 +84,18 @@ nav > ul {
     background-color: white;
     background-position: left calc(0px - $navbar-height-plus-padding);
 }
+hr {
+    height: 2px;
+    background-color: $light-grey;
+    border: none;
+}
 
+hr.burger {
+    height: 1px;
+    background-color: $light-grey;
+    border: none;
+    width: 90%;
+}
 nav > ul li {
     margin: 0;
     padding: 0;
@@ -121,10 +132,6 @@ nav > ul li button {
 
 nav > ul.transition {
     transform: translateY(calc(100% + $navbar-height-plus-padding));
-}
-
-hr{
-    color: rgb(225, 225, 225);
 }
 
 #login-signup-nav1{
