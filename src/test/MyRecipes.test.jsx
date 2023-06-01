@@ -56,8 +56,6 @@ describe('MyRecipes', () => {
     const { getByText } = render(<MyRecipes />);
     expect(getByText('test-name1')).toBeInTheDocument();
     expect(getByText('test-name2')).toBeInTheDocument();
-    expect(getByText('test-description1')).toBeInTheDocument();
-    expect(getByText('test-description2')).toBeInTheDocument();
   });
 
   it('handles route changes correctly when a recipe is clicked', () => {

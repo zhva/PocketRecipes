@@ -14,7 +14,7 @@ describe('<AddInput />', () => {
   const handleChange = jest.fn()
 
   it('renders the AddInput component', () => {
-    const { getByText } = render(
+    const { getByAltText } = render(
       <AddInput
         items={items}
         handleAdd={handleAdd}
@@ -24,11 +24,11 @@ describe('<AddInput />', () => {
         errors={errors}
       />
     )
-    expect(getByText('+')).toBeInTheDocument()
+    expect(getByAltText('add-btn')).toBeInTheDocument()
   })
 
   it('calls handleAdd when add button is clicked', () => {
-    const { getByText } = render(
+    const { getByAltText } = render(
       <AddInput
         items={items}
         handleAdd={handleAdd}
@@ -38,7 +38,7 @@ describe('<AddInput />', () => {
         errors={errors}
       />
     )
-    fireEvent.click(getByText('+'))
+    fireEvent.click(getByAltText('add-btn'))
     expect(handleAdd).toHaveBeenCalled()
   })
 
