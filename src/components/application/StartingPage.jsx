@@ -26,18 +26,15 @@ export const StartingPage = () => {
               <span className='buttons-container'>
                 <Button type='button' variant='primary' onClick={() => navigate('/feed')}>Discover Recipes</Button>
               </span>
-              {/* {`Don't forget to sign up for an
-              account to keep track of your personal recipes.
-              Whether you're a newbie in the kitchen or a seasoned
-              pro, PocketRecipes has got your back. And guess
-              what? It's all made to be used on your smartphone,
-              so you can whip up a storm from wherever you are.`} */}
               Get started and create an <a href='/signup'>account</a> now!
             </InfoText>
-            <div>
-            <div><img src={recipeBig} alt="recipe screenshot" /></div>
-              <div><img src={recipeSmall} alt="recipe screenshot" /></div>
+            <div className='screenshots-container'>
+              <div className='first-img'><img src={recipeBig} alt="recipe screenshot" /></div>
+              <div className='second-img'><img src={recipeSmall} alt="recipe screenshot" /></div>
             </div>
+            <InfoText>
+              <span><a href='/create-recipe'>Create</a> your own recipe!</span>
+            </InfoText>
             </div>
         </div>
   )
