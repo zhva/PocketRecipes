@@ -3,7 +3,7 @@ import { SubHeadline } from '../generic/SubHeadline'
 import { InfoText } from '../generic/InfoText'
 import { Button } from '../generic/Button'
 import { useNavigate } from 'react-router-dom'
-import imgSrc from '../../images/home-img.jpg'
+import imgSrc from '../../images/Starting_page.jpg'
 import recipeBig from '../../images/recipe_Big.png'
 import recipeSmall from '../../images/recipe_small.png'
 
