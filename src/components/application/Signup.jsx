@@ -87,7 +87,6 @@ export const Signup = () => {
       <div className='login-img-container'>
         <div>
           <img src={imgSrc}></img>
-          <a href="https://www.freepik.com/free-vector/female-chef-concept-illustration_32318741.htm#query=cooking&position=23&from_view=search&track=sph">Image by storyset</a>
         </div>
       </div>
       <div className='signup-container content-container'>

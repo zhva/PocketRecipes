@@ -12,6 +12,7 @@
         width: $delete-button-width;
         background-color: $on-primary;
         border-radius: 50%;
+        border: $border-glass;
         span {
             width: $delete-button-width;
             font-family: $text-font-family;
@@ -47,6 +48,7 @@
         font-family: $text-font-family;
         font-size: $text-font-size;
         border: 0;
+        border: $border-glass;
     }
     .delete-button {
         position: absolute;

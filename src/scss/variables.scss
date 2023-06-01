@@ -41,11 +41,12 @@ $light-transparent: hsl(43, 62, 96, 90%);
 $text-color: hsl(0, 0, 0, 100%);
 $dark-filter: hsl(0, 0, 0, 40%);
 $action: hsl(342, 94, 61, 100%);
+$light-grey: hsl(0, 0%, 88%);
 
 $accent-color: rgb(247, 235, 217);
 
 @mixin app-backgroung-image {
-    background: /*linear-gradient($dark-filter,$dark-filter), url(../images/BG.jpg) no-repeat*/ none;
+    background: none;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -192,6 +193,8 @@ $recipe-gallery-padding: $main-padding;
 
 $arrow-padding: 10px;
 
-$bottom-left-border-glass: 2px solid rgb(225, 225, 225);
+$bottom-left-border-glass: 2px solid $light-grey;
 $top-right-border-glass: 2px solid white;
 
+
+$border-glass: 1px solid $light-grey;
