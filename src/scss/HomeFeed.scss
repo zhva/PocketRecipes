@@ -1,16 +1,22 @@
 @import './variables.scss';
 
 .home-container {
+    display: flex;
+    flex-direction: column;
     width: calc(100% - (2 * $main-padding));
     min-height: calc(100% - $navbar-height);
     height: auto;
     padding: $page-start-padding $main-padding;
     @include app-backgroung-image;
     h1 {
-        font-size: $h1-font-size;
-        text-align: left;
+        font-size: 32px;
+        text-align: center;
+        line-height: 110%;
         padding-bottom: calc($main-padding - 5px);
         color: $text-color;
+    }
+    p{
+        text-align: center;
     }
     .recipes-container {
         position: relative;
@@ -181,29 +187,31 @@
 
     .column{
         display: flex;
-        flex-direction: column;
-        width: 50%;
-        gap: $main-padding;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 10px;
         .recipe{
             display: flex;
             flex-direction: column;
             height: auto;
+            width: calc(50% - 5px);
             border-radius: $cards-border-radius;
             justify-content: center;
             align-items: center;
-            padding: 5% 0;
+            padding: 10px 0;
             border-radius: $cards-border-radius;
+            border-bottom-left-radius: 0.6rem;
             backdrop-filter: blur(2px);
-            border-top: $top-right-border-glass;
-            border-right: $top-right-border-glass;
-            border-bottom: $bottom-left-border-glass;
-            border-left: $bottom-left-border-glass;
+            // border-top: $top-right-border-glass;
+            // border-right: $top-right-border-glass;
+            // border-bottom: $bottom-left-border-glass;
+            // border-left: $bottom-left-border-glass;
             box-shadow: $button-shadow;
             h2, p{
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                width: 90%;
+                width: calc(100% - 20px);
                 text-align: left;
                 padding: 10px 2px;
             }
@@ -225,21 +233,26 @@
             }
         }
     }
-
-    .left-column{
-        align-items: flex-start;
-        .recipe{
-            min-height: 210px;
-            width: calc(100% - 13px);
+}
+.call-to-action-myrecipes{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: $page-start-padding;
+    button{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 15px;
+        padding-right: 15px;
+        p{
+            color: white;
+            margin-left: 10px;
+            font-family: $button-font-family;
         }
-    }
-
-    .right-column{
-        align-items: flex-end;
-        padding-top: $page-start-padding;
-        .recipe{
-            min-height: 280px;
-            width: calc(100% - 13px);
+        img{
+            height: 21px;
+            width: 21px;
         }
     }
 }

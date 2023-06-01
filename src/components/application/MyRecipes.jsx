@@ -5,41 +5,44 @@ import { auth, database } from '../../firebase'
 import { ref } from 'firebase/database'
 // import { RecipeCard } from '../generic/RecipeCard'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '../generic/Button'
+import plusIcon from '../../icons/plus-icon-white.svg'
 
 export const MyRecipes = () => {
   const [user] = useAuthState(auth)
-  // Get a reference to the document
   const recipeRef = ref(database, `users/${user?.uid}/recipes`)
-  // const userNameRef = ref(database, `users/${user?.uid}/name`)
   const [recipes, loading] = useObjectVal(recipeRef)
-  // const [userName, nameLoading ]= useObjectVal(userNameRef)
   const navigate = useNavigate()
+
+  // const navToCreate = () => {
+  //   useNavigate('/create-recipe')
+  // }
 
   if(!loading) {
     return (
       <div className='home-container'>
         <h1>My Recipes</h1>
         <p className='myrecipe-text'>
-          {`Welcome to your personal recipe library!`}
+          {`Welcome to your "MyRecipes" section, your personal 
+          culinary hub`}
           <br></br>
           <br></br>
-          {`This is your "MyRecipes" section - a culinary 
-          sanctuary where your creativity comes to life. 
-          Here, you'll find all the recipes you've meticulously 
-          crafted.`}
-          <br></br>
-          <br></br>
-          {`Every dish you've created, from family favorites to 
-          experimental dishes, is stored right here for easy access.
-          You can revisit them anytime you want to 
-          recreate a meal, share your delicious creations with 
-          others, or refine your recipes with new inspirations.`}
+          {`Here you'll find all your crafted 
+          recipes, from family favorites to experimental 
+          dishes, ready for easy access. Revisit, share, 
+          or refine your creations anytime you wish.`}
         </p>
+
+        <div className='call-to-action-myrecipes'>
+          <Button type='button' variant='primary' onClick={() => navigate('/create-recipe')}>
+            <img src={plusIcon}></img>
+            <p>Create recipe</p>
+          </Button>
+        </div>
         <div className='recipes-container'>
           <div className='recipe-list-container'>
-            <div className='column left-column'>
+            <div className='column'>
               {!loading && recipes && Object.entries(recipes ?? {})
-                .filter((_, index) => index % 2 === 0)
                 .map(([key, recipe]) => (
                   <div key={key} onClick = {() => navigate(`/my-recipes/${key}`)} className='recipe'>
                     <div className='recipe-img-container'>
@@ -52,7 +55,7 @@ export const MyRecipes = () => {
                   </div>
               ))}
             </div>
-            <div className='column right-column'>
+            {/* <div className='column right-column'>
               {!loading && recipes && Object.entries(recipes ?? {})
                 .filter((_, index) => index % 2 === 1)
                 .map(([key, recipe]) => (
@@ -66,7 +69,7 @@ export const MyRecipes = () => {
                     </div>
                   </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
