@@ -48,7 +48,7 @@ export const NavBar = ({startingPageRoute, myRecipesRoute, feedRoute, newRecipeR
       <ul className={isOpen ? "transition" : ""}  aria-label="menu">
         <li><button onClick={() => {closeMenu(); navigate(startingPageRoute)}}>Home</button></li>
         <li><button onClick={() => {closeMenu(); navigate(myRecipesRoute)}}>My Recipes</button></li>
-        <li><button onClick={() => {closeMenu(); navigate(feedRoute)}}>Feed</button></li>
+        <li><button onClick={() => {closeMenu(); navigate(feedRoute)}}>Discover Recipes</button></li>
         <li><button onClick={() => {closeMenu(); navigate(newRecipeRoute)}}>Create Recipe</button></li>
         <hr className='burger'></hr>
         {user ?

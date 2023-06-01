@@ -20,10 +20,9 @@ export const HomeFeed = () => {
   return (
     <div className='home-container'>
       <div className='recipes-container'>
-      <h1>Homefeed</h1>
+      <h1>Discover <br></br>Culinary Creations</h1>
         <p>
-          Discover Culinary Creations: A community feed of shared recipes at your fingertips!
-          <br></br>
+          A community feed of shared recipes at your fingertips!
           Check them out now!
         </p>
       <div className='recipe-feed'>
@@ -31,10 +30,10 @@ export const HomeFeed = () => {
         {!loading && recipes && Object.entries(recipes ?? {}).slice(0, 1).map(([key, recipe]) => {
           return (
             <div key = {key} onClick = {() => navigate(`/feed/${key}`)} className='main-recipe'>
-                <h2>{recipe.values.name}</h2>
                 <div className='main-recipe-img'>
                   <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink}></img>
                 </div>
+                <h2>{recipe.values.name}</h2>
                 <p>{recipe.values.description}</p>
             </div>)})}
             <div className='other-recipes'>
