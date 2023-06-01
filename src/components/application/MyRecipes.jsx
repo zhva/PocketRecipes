@@ -19,13 +19,13 @@ export const MyRecipes = () => {
       <div className='home-container'>
         <h1>My Recipes</h1>
         <p className='myrecipe-text'>
-          {`Welcome to your recipe section, your personal 
+          {`Welcome to your recipe section, your personal
           culinary hub.`}
           <br></br>
           <br></br>
-          {`Here you'll find all your crafted 
-          recipes, from family favorites to experimental 
-          dishes, ready for easy access. Revisit, share, 
+          {`Here you'll find all your crafted
+          recipes, from family favorites to experimental
+          dishes, ready for easy access. Revisit, share,
           or refine your creations anytime you wish.`}
         </p>
 
@@ -50,21 +50,6 @@ export const MyRecipes = () => {
                   </div>
               ))}
             </div>
-            {/* <div className='column right-column'>
-              {!loading && recipes && Object.entries(recipes ?? {})
-                .filter((_, index) => index % 2 === 1)
-                .map(([key, recipe]) => (
-                  <div key={key} onClick = {() => navigate(`/my-recipes/${key}`)} className='recipe'>
-                    <div className='recipe-img-container'>
-                      <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink}></img>
-                    </div>
-                    <div className='recipe-text'>
-                      <h2>{recipe.values.name}</h2>
-                      <p>{recipe.values.description}</p>
-                    </div>
-                  </div>
-              ))}
-            </div> */}
           </div>
         </div>
       </div>
