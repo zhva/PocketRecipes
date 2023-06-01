@@ -28,7 +28,7 @@ export const RecipeButtons = ({recipeId, path}) => {
                 navigate('/my-recipes')
             })
             .catch((error) => {
-                console.error('Error deleting recipe:', error)
+                alert(`An error occurred while deleteing the recipe: ${error}`)
             })
     }
 
