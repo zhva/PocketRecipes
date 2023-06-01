@@ -119,9 +119,9 @@
         width: 100%;
         gap: 15px;
         .small-recipe{
-            width: calc(50% - 4px - 20px);
+            width: calc(50% - 20px - 15px);
             max-height: 120px;
-            padding: 2% 2% 10%;
+            padding: 10px 10px 10%;
             backdrop-filter: blur(2px);
             border-radius: $cards-border-radius;
             border-bottom-left-radius: 0.6rem;
@@ -203,7 +203,7 @@
             }
             .recipe-img-container{
                 height: 80%;
-                width: 90%;
+                width: calc(100% - 20px);
                 img{
                     object-fit: cover;
                     height: 120px;
