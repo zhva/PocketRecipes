@@ -63,11 +63,14 @@ ol {
 }
 .signup-container,
 .login-container {
-   background-color: $accent-color;
+   background-color: white;
    background-image: url('../images/BG_utensils.png');
    background-repeat:  repeat;
    background-size: 80%;
    background-position: left calc($navbar-height-plus-padding + 50px);
+   border-top: $bottom-left-border-glass;
+   border-right: $bottom-left-border-glass;
+   border-left: $bottom-left-border-glass;
 }
 .popup-container {
     width: calc(100% - 10%);
@@ -84,7 +87,7 @@ ol {
         // background-color: $light;
         border-radius: $cards-border-radius;
         // border: $border;
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(2px);
         border-top: $top-right-border-glass;
         border-right: $top-right-border-glass;
         border-bottom: $bottom-left-border-glass;
