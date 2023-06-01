@@ -73,6 +73,9 @@ ol {
    border-right: $bottom-left-border-glass;
    border-left: $bottom-left-border-glass;
 }
+.protected-route-container {
+    height: calc(100vh - $navbar-height-plus-padding - $footer-height);
+}
 .popup-container {
     width: calc(100% - 10%);
     height: auto;
@@ -83,7 +86,6 @@ ol {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: calc(100vh - 10%);
         padding: $main-padding;
         border-radius: $cards-border-radius;
         backdrop-filter: blur(16px);
