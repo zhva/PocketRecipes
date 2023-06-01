@@ -3,7 +3,6 @@
 
 
 .card-container {
-    // border: $border;
     background-color: $accent-color;
     border-radius: $cards-border-radius;
     display: flex;
@@ -27,8 +26,6 @@
         h3 {
             font-family: $recipe-card-heading-font-family;
             font-size: $recipe-card-heading-font-size;
-            // margin-top: 0px;
-            // margin-bottom: 0px;
         }
         span {
             font-family: $label-font-family;
