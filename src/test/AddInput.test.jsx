@@ -24,7 +24,7 @@ describe('<AddInput />', () => {
         errors={errors}
       />
     )
-    expect(getByAltText('add')).toBeInTheDocument()
+    expect(getByAltText('add-btn')).toBeInTheDocument()
   })
 
   it('calls handleAdd when add button is clicked', () => {
@@ -38,7 +38,7 @@ describe('<AddInput />', () => {
         errors={errors}
       />
     )
-    fireEvent.click(getByAltText('add'))
+    fireEvent.click(getByAltText('add-btn'))
     expect(handleAdd).toHaveBeenCalled()
   })
 
