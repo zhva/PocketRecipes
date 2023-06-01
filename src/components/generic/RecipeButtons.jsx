@@ -53,7 +53,7 @@ export const RecipeButtons = ({recipeId, path}) => {
             setShowSavePopup(true)
         }
     }
-    
+
     const handleDelete = () => {
         setShowPopup(true)
     }
@@ -148,7 +148,7 @@ export const RecipeButtons = ({recipeId, path}) => {
                     <img src={deleteIcon} alt='Delete'></img>
                 </button>
             )}
-            {path === 'feed' && (
+            {path === 'feed' && user &&(
                 <button
                     type='button'
                     className='recipe-save'
