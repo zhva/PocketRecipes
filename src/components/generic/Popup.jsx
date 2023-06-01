@@ -8,6 +8,7 @@ export const Popup = ({ title, children, linkText, redirectLink, linkText2, redi
     <div className='popup-container'>
       <div className='popup-inner-container'>
           <h1>{title}</h1>
+          <hr></hr>
           <p>{children}</p>
           <div className='backlink-container'>
             <button aria-label={linkText} onClick= {() => navigate(redirectLink)}>

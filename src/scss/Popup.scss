@@ -1,9 +1,12 @@
 .popup-inner-container {
-    p {
-        margin-bottom: $pop-up-text-margin-bot;
+    > p {
+        padding-top: $delete-confirmation-text-padding-top;
+        padding-bottom: $delete-confirmation-text-padding-bottom;
+        font-size: 18px;
     }
     h1{
         text-align: left;
+        margin-bottom: 0;
     }
     span {
         color: $primary;
@@ -13,6 +16,9 @@
     }
     .backlink-container {
         margin-top: $backlink-margin-top;
+        span{
+            padding-left: $arrow-padding;
+        }
     }
 }
 

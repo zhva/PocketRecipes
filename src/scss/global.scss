@@ -71,9 +71,10 @@ ol {
 }
 .popup-container {
     width: calc(100% - 10%);
-    height: 100vh;
+    height: auto;
     padding: 5%;
-    background-color: $dark-filter;
+    position: absolute;
+    top: 30%;
     .popup-inner-container {
         height: calc(100vh - 10%);
         padding: 20px;
@@ -85,7 +86,7 @@ ol {
         justify-content: center;
         p {
             font-family: $link-font-family;
-            font-size: $link-font-size;
+            font-size: 18px;
         }
     }
 }
