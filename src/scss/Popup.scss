@@ -1,9 +1,25 @@
 .popup-inner-container {
-    p {
-        margin-bottom: $pop-up-text-margin-bot;
+    .closing-headline-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button{
+            all: unset;
+            font-family: $button-font-family;
+            img{
+                height: 18px;
+                width: 18px;
+            }
+        }
+    }
+    > p {
+        padding-top: $delete-confirmation-text-padding-top;
+        padding-bottom: $delete-confirmation-text-padding-bottom;
+        font-size: 18px;
     }
     h1{
         text-align: left;
+        margin-bottom: 0;
     }
     span {
         color: $primary;
@@ -13,6 +29,9 @@
     }
     .backlink-container {
         margin-top: $backlink-margin-top;
+        span{
+            padding-left: $arrow-padding;
+        }
     }
 }
 

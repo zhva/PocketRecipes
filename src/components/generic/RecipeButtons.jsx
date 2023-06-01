@@ -32,14 +32,6 @@ export const RecipeButtons = ({recipeId, path}) => {
             })
     }
 
-    const handleDelete = () => {
-        setShowPopup(true)
-    }
-
-    const handleClosePopup = () => {
-        setShowPopup(false)
-    }
-
     const handleSave = async () => {
         const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
 
@@ -61,6 +53,15 @@ export const RecipeButtons = ({recipeId, path}) => {
             setShowSavePopup(true)
         }
     }
+    
+    const handleDelete = () => {
+        setShowPopup(true)
+    }
+
+    const handleClosePopup = () => {
+        setShowPopup(false)
+    }
+
     const handleCloseSavePopup = () => {
         setShowSavePopup(false)
     }
