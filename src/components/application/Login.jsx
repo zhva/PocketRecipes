@@ -6,6 +6,7 @@ import { object, string } from 'yup'
 import { auth } from '../../firebase'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
+import { Popup } from '../generic/Popup'
 import imgSrc from '../../images/auth-img.jpg'
 
 const validationSchema = object({
@@ -30,16 +31,21 @@ const useLogin = () => {
           setErrorMessage('Incorrect email or password')
         }
       } catch (error) {
-        setErrorMessage('An error occurred while signing in')
+        setErrorMessage('An error occurred while signing in. Try again.')
       }
     }
   })
-  const { errors } = formik
-  return { handleChange: formik.handleChange, handleSubmit: formik.handleSubmit, handleBlur: formik.handleBlur, values: formik.values, errors, errorMessage}
+
+  return { handleChange: formik.handleChange, handleSubmit: formik.handleSubmit, handleBlur: formik.handleBlur, values: formik.values, errorMessage, setErrorMessage}
 }
 
 export const Login = () => {
-  const { handleChange, handleSubmit, handleBlur, values, errors, errorMessage } = useLogin()
+  const { handleChange, handleSubmit, handleBlur, values, errorMessage, setErrorMessage } = useLogin()
+
+  const handleClosePopup = () => {
+    setErrorMessage('')
+  }
+
   return (
     <div className='login-page'>
       <div className='login-img-container'>
@@ -48,11 +54,19 @@ export const Login = () => {
         </div>
       </div>
       <div className='login-container content-container'>
+        {errorMessage && (
+          <Popup
+            title='Incorrect email or password'
+            linkText='Go to Sign-up'
+            redirectLink='/signup'
+            onClose={handleClosePopup}>
+              {errorMessage}
+          </Popup>
+        )}
         <form onSubmit={handleSubmit} className='form-login'>
-          <h1>Log In</h1>
+          <h1>Sign-in</h1>
           <h2>Welcome! We are glad you are here!</h2>
           <div className='login-inner-container'>
-            {errorMessage && <div className='formik-errors'>{errorMessage}</div>}
             <TextInput
               type='email'
               name='email'
@@ -64,9 +78,6 @@ export const Login = () => {
               value={values.email}
               placeholder="E-Mail"
             />
-            <span className='formik-errors'>
-              {errors.email}
-            </span>
             <TextInput
               type='password'
               name='password'
@@ -78,9 +89,6 @@ export const Login = () => {
               value={values.password}
               placeholder="Password"
             />
-            <span className='formik-errors'>
-              {errors.password}
-            </span>
             <Button type="submit" variant="Log in">Log in</Button>
             <a href={'/signup'}>Don&apos;t have an account yet?</a>
           </div>
