@@ -180,12 +180,12 @@
             justify-content: center;
             align-items: center;
             padding: 5% 0;
-            backdrop-filter: blur(2px);
             border-radius: $cards-border-radius;
-            border-top: 2px solid white;
-            border-right: 2px solid white;
-            border-bottom: 2px solid rgb(225, 225, 225);
-            border-left: 2px solid rgb(225, 225, 225);
+            backdrop-filter: blur(2px);
+            border-top: $top-right-border-glass;
+            border-right: $top-right-border-glass;
+            border-bottom: $bottom-left-border-glass;
+            border-left: $bottom-left-border-glass;
             box-shadow: $button-shadow;
             h2, p{
                 white-space: nowrap;
