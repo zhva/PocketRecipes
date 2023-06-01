@@ -1,5 +1,5 @@
 .recipe-description {
-    width: 100%;
+    width: calc(100% - $delete-button-width - 10px);
     height: auto;
     > textarea {
         resize: vertical;
