@@ -17,9 +17,8 @@
     font-size: $input-font-size;
     outline: 0;
     border-radius: $controls-border-radius;
-    // box-shadow: $input-shadow;
     width: calc(100% - 38px);
-    border: $bottom-left-border-glass;
+    border: $border-glass;
 }
 .text-input::placeholder,
 .text-input::-ms-input-placeholder,
