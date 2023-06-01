@@ -10,8 +10,10 @@ import { Recipe } from './components/application/Recipe'
 import { HomeFeed } from './components/application/HomeFeed'
 import { MyRecipes } from './components/application/MyRecipes'
 import { ProtectedRoute } from './components/generic/ProtectedRoute'
+import { Footer } from './components/generic/Footer'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from './firebase'
+
 
 
 function App() {
@@ -55,6 +57,7 @@ function App() {
         }/>
         <Route path="/share/:recipeId" element={<Recipe />} />
       </Routes>
+      <Footer />
       </div>
     )
   } else {

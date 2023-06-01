@@ -1,0 +1,22 @@
+.footer-container {
+    width: 100%;
+    overflow-x: hidden;
+    background-image: url('../images/BG_utensils.png');
+    background-repeat: repeat;
+    background-size: 80%;
+    > div {
+        display: flex;
+        flex-direction: column;
+        padding: $footer-padding;
+        backdrop-filter: blur(2px);
+        border-top: 2px solid rgb(225, 225, 225);
+    }
+    small {
+        text-align: center;
+        display: block;
+        font-size: small;
+        > a {
+            font-size: $footer-links-font-size;
+        }
+    }
+}
