@@ -75,6 +75,8 @@ ol {
 }
 .protected-route-container {
     height: calc(100vh - $navbar-height-plus-padding - $footer-height);
+    max-width: $page-max-width;
+    min-width: $page-min-width;
 }
 .popup-container {
     width: calc(100% - 10%);
