@@ -58,39 +58,39 @@ describe('RecipeButtons', () => {
   it('opens delete confirmation popup when delete button is clicked', () => {
     const { getByAltText, getByText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
     fireEvent.click(getByAltText('Delete'));
-    expect(getByText('Confirm Delete')).toBeInTheDocument();
+    expect(getByText('Delete Recipe')).toBeInTheDocument();
     expect(getByText('Do you really want to delete this recipe?')).toBeInTheDocument();
   });
 
   it('opens save popup when save button is clicked', async () => {
     const { getByAltText, findByText } = render(<RecipeButtons recipeId="1" path="feed" />);
     fireEvent.click(getByAltText('Save to my recipes'));
-    
+
     const recipeSavedText = await findByText('Recipe Saved');
     expect(recipeSavedText).toBeInTheDocument();
-    
+
     const savedToYourRecipesText = await findByText('The recipe has been saved to your recipes.');
     expect(savedToYourRecipesText).toBeInTheDocument();
   });
-  
+
   it('opens share popup and copies link to clipboard when share button is clicked', async () => {
     const { getByAltText, findByText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
     fireEvent.click(getByAltText('Share'));
-  
+
     const recipeSharedText = await findByText('Recipe Shared');
     expect(recipeSharedText).toBeInTheDocument();
-    
+
     const sharedLinkCopiedText = await findByText('The recipe has been shared. The link has been copied to your clipboard.');
     expect(sharedLinkCopiedText).toBeInTheDocument();
-    
+
     expect(clipboardCopy).toHaveBeenCalled();
   });
-  
+
   it('navigates to edit recipe when edit button is clicked', async () => {
     const { getByAltText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
     fireEvent.click(getByAltText('Edit'));
-    
+
     await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/edit/1'));
   });
-  
+
 });

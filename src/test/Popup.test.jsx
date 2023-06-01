@@ -50,8 +50,9 @@ describe('<Popup />', () => {
     expect(backButton[1]).toBeInTheDocument()
 
     const titleElement = screen.getByRole('heading', { name: title })
-    const childrenElement = titleElement.nextElementSibling
     expect(titleElement.textContent).toBe(title)
+
+    const childrenElement = screen.getByText(children)
     expect(childrenElement.textContent).toBe(children)
   })
 
