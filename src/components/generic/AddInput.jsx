@@ -1,5 +1,6 @@
 import React from 'react'
 import { RecipeInput } from './RecipeInput'
+import plusIcon from '../../icons/plus-icon.svg'
 
 export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, errors }) => {
   return (
@@ -24,7 +25,7 @@ export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, e
         className='add-button'
         type='button'
         onClick={() => handleAdd(name)}>
-        +
+        <img src={plusIcon}></img>
       </button>
       {errors && typeof errors === 'string' && <div className='formik-errors'>{errors}</div>}
     </div>

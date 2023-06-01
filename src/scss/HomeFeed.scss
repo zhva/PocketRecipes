@@ -7,10 +7,14 @@
     padding: $page-start-padding $main-padding;
     @include app-backgroung-image;
     h1 {
-        font-size: $h1-font-size;
-        text-align: left;
+        font-size: 32px;
+        text-align: center;
+        line-height: 110%;
         padding-bottom: calc($main-padding - 5px);
         color: $text-color;
+    }
+    p{
+        text-align: center;
     }
     .recipes-container {
         position: relative;
