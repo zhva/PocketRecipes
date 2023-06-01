@@ -182,7 +182,16 @@ $navbar-height-plus-padding: calc($navbar-height + (2 * $main-padding));
 $img-spacer: 5px;
 $main-recipe-fontsize: 26px;
 $main-recipe-padding: 10px;
+
 $recipe-gallery-padding: 40px $main-padding;
 
 $footer-padding: 15px 0px;
 $footer-links-font-size: 10px;
+
+$recipe-gallery-padding: $main-padding;
+
+$arrow-padding: 10px;
+
+$bottom-left-border-glass: 2px solid rgb(225, 225, 225);
+$top-right-border-glass: 2px solid white;
+

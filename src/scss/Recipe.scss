@@ -9,12 +9,15 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 2;
+        z-index: 10;
         background-color: transparent;
-        height: $popup-container-height;
+        height: auto;
         .popup-inner-container {
             box-shadow: $button-shadow;
             height: inherit;
+            p{
+                font-size: 16px;
+            }
         }
     }
 }

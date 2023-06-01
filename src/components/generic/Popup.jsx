@@ -1,13 +1,23 @@
 import React from 'react'
 import arrow from '../../icons/Arrow.svg'
+import removeIcon from '../../icons/remove-icon.svg'
 import { useNavigate } from 'react-router-dom'
+import { Button } from './Button'
 
-export const Popup = ({ title, children, linkText, redirectLink, linkText2, redirectLink2}) => {
+export const Popup = ({ title, children, linkText, redirectLink, linkText2, redirectLink2, onClose, mode}) => {
   const navigate = useNavigate()
   return (
     <div className='popup-container'>
       <div className='popup-inner-container'>
-          <h1>{title}</h1>
+          <div className='closing-headline-container'>
+            <h1>{title}</h1>
+              {mode !== 'protected' &&(
+                <Button onClick={onClose}>
+                  <img src={removeIcon}></img>
+                </Button>
+              )}
+          </div>
+          <hr></hr>
           <p>{children}</p>
           <div className='backlink-container'>
             <button aria-label={linkText} onClick= {() => navigate(redirectLink)}>
