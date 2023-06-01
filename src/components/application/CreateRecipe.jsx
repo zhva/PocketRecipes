@@ -104,7 +104,7 @@ const useRecipe = () => {
           navigate('/my-recipes')
         }
       } catch (error) {
-        console.log(error)
+        alert(`An error occurred while saving/updating the recipe: ${error}`)
       }
     }
   })
@@ -127,7 +127,7 @@ const useRecipe = () => {
       await uploadBytes(storageRef, imageSrc.blob)
       return storageRef.fullPath
     } catch (error) {
-      console.log(error)
+      alert(`An error occurred while uploading the image to the DB: ${error}`)
     }
   }
   const toggleRecipeVisibilityInFeed = async (data, recipeId) => {
@@ -139,7 +139,7 @@ const useRecipe = () => {
           await remove(feedRef)
       }
     } catch (error) {
-      console.log(error)
+      alert(`An error occurred while toggling recipe visibility in feed: ${error}`)
     }
   }
 
@@ -167,7 +167,7 @@ const useRecipe = () => {
       await update(recipesRef, recipeData)
       toggleRecipeVisibilityInFeed({...recipeData, author: userName, timestamp: new Date().getTime()}, params.recipeId)
     } catch (error) {
-      console.log(error)
+      alert(`An error occurred while updating the recipe: ${error}`)
     }
     return recipesRef
   }
@@ -189,7 +189,7 @@ const useRecipe = () => {
         toggleRecipeVisibilityInFeed({...recipeData, author: userName, timestamp: new Date().getTime()}, newRecipeRef.key)
       }
     } catch (error) {
-      console.log(error)
+      alert(`An error occurred while saving the recipe to your recipe list: ${error}`)
     }
     return recipesRef
   }
