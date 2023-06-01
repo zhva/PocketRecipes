@@ -88,7 +88,7 @@ it('marks the hamburger menu as opened based on the state', async () => {
     expect(navigate).toHaveBeenCalledWith(myRecipesRoute)
 
     act(() => {
-      fireEvent.click(screen.getByRole('button', { name: 'Feed' }))
+      fireEvent.click(screen.getByRole('button', { name: 'Discover Recipes' }))
     })
     expect(navigate).toHaveBeenCalledWith(feedRoute)
 
