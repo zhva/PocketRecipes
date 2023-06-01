@@ -9,7 +9,7 @@
         flex-direction: column;
         padding: $footer-padding;
         backdrop-filter: blur(2px);
-        border-top: 2px solid rgb(225, 225, 225);
+        border-top: $bottom-left-border-glass;
     }
     small {
         text-align: center;
