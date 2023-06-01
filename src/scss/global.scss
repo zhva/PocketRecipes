@@ -87,10 +87,6 @@ ol {
         padding: $main-padding;
         border-radius: $cards-border-radius;
         backdrop-filter: blur(16px);
-        border-top: $top-right-border-glass;
-        border-right: $top-right-border-glass;
-        border-bottom: $bottom-left-border-glass;
-        border-left: $bottom-left-border-glass;
         box-shadow: $button-shadow;
         p {
             font-family: $link-font-family;
