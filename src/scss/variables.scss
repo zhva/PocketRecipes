@@ -9,29 +9,29 @@ $h2-font-size: 20px;
 $button-font-family: 'Montserrat SemiBold', sans-serif;
 $button-font-size: 16px;
 
-$input-font-family: 'Caviar Dreams', sans-serif;
+$input-font-family: 'Montserrat', sans-serif;
 $input-font-size: 18px;
 
-$recipe-card-heading-font-family: 'Caviar Dreams Bold', sans-serif;
+$recipe-card-heading-font-family: 'Montserrat Bold', sans-serif;
 $recipe-card-heading-font-size: 18px;
 
-$label-font-family: 'Caviar Dreams Bold', sans-serif;
+$label-font-family: 'Montserrat Bold', sans-serif;
 $label-font-size: 14px;
 
-$link-font-family: 'Caviar Dreams', sans-serif;
+$link-font-family: 'Montserrat', sans-serif;
 $link-font-size: 14px;
 
-$text-font-family: 'Caviar Dreams', sans-serif;
+$text-font-family: 'Montserrat', sans-serif;
 $text-font-size: 16px;
 
-$list-numbers-font-family: 'Caviar Dreams Bold', sans-serif;
+$list-numbers-font-family: 'Montserrat Bold', sans-serif;
 $list-numbers-font-size: 16px;
 
-$starting-page-text-font: 'Caviar Dreams', sans-serif;
+$starting-page-text-font: 'Montserrat', sans-serif;
 $starting-page-text-font-size: 18px;
 
 
-$primary: hsl(195, 37, 52, 100%);
+$primary: #3a9897;
 $on-primary: hsl(0, 0, 100, 100%);
 $dark: hsl(38, 31, 83, 100%);
 $medium: hsl(44, 28, 90, 100%);
@@ -198,3 +198,4 @@ $top-right-border-glass: 2px solid white;
 
 
 $border-glass: 1px solid $light-grey;
+$footer-height: 71px;

@@ -22,10 +22,13 @@
         }
         h1{
             padding-left: 0;
+            font-size: 32px;
+            text-align: center;
+            line-height: 110%;
         }
         >p{
-            text-align: left;
-            padding-bottom: calc($main-padding * 2);
+            text-align: center;
+            padding: 0 20px calc($main-padding * 2);
         }
         .recipes-list-container {
             display: flex;
@@ -76,66 +79,76 @@
         width: 100%;
         height: auto;
         gap: $img-spacer;
-        padding: $main-padding $main-padding $page-start-padding;
+        padding: 10px 10px $page-start-padding;
         margin-bottom: $main-padding;
         backdrop-filter: blur(2px);
-        border-radius: $cards-border-radius;
-        border-top: 2px solid white;
-        border-right: 2px solid white;
-        border-bottom: 2px solid rgb(225, 225, 225);
-        border-left: 2px solid rgb(225, 225, 225);
+        border-radius: 0.6rem;
+        border-bottom-left-radius: 0.6rem;
+        border-bottom-right-radius: 0.6rem;
+        // border-top: 2px solid white;
+        // border-right: 2px solid white;
+        // border-bottom: 2px solid rgb(225, 225, 225);
+        // border-left: 2px solid rgb(225, 225, 225);
         box-shadow: $button-shadow;
         h2{
-            padding-bottom: calc($img-spacer * 3);
+            padding: 15px 0;
             margin-bottom: 0;
             font-size: $main-recipe-fontsize;
             text-align: left;
-
+            padding-left: 10px;
+            padding-right: 10px;
         }
         img{
             width: 100%;
             max-height: 200px;
             object-fit: cover;
-            border-radius: $cards-border-radius;
+            border-radius: 0.6rem;
         }
         p{
             padding-top: calc($main-recipe-padding / 2);
             text-align: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.3rem;
         }
     }
     .other-recipes{
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        gap: $recipe-gallery-padding;
+        gap: 15px;
         .small-recipe{
-            width: calc(50% - 13px - 9%);
-            max-height: 100px;
-            padding: 4% 4% 10%;
+            width: calc(50% - 4px - 20px);
+            max-height: 120px;
+            padding: 2% 2% 10%;
             backdrop-filter: blur(2px);
             border-radius: $cards-border-radius;
-            border-top: 2px solid white;
-            border-right: 2px solid white;
-            border-bottom: 2px solid rgb(225, 225, 225);
-            border-left: 2px solid rgb(225, 225, 225);
+            border-bottom-left-radius: 0.6rem;
+            border-bottom-right-radius: 0.6rem;
+            // border-top: 2px solid white;
+            // border-right: 2px solid white;
+            // border-bottom: 2px solid rgb(225, 225, 225);
+            // border-left: 2px solid rgb(225, 225, 225);
             box-shadow: $button-shadow;
             .img-container{
                 width: 100%;
-                height: 100%;
+                height: 90%;
                 img{
                     object-fit: cover;
                     width: 100%;
                     height: 100%;
-                    border-radius: $cards-border-radius;
+                    border-radius: 0.6rem;
                 }
             }
             h2{
-                padding-top: $img-spacer;
+                padding-top: 18px;
+                padding-bottom: 20px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 width: 100%;
-                font-size: 16px;
+                font-size: 14px;
                 text-align: left;
             }
         }
@@ -201,7 +214,7 @@
                     object-fit: cover;
                     height: 100%;
                     width: 100%;
-                    border-radius: $cards-border-radius;
+                    border-radius: 0.6rem;
                 }
             }
             .recipe-text{

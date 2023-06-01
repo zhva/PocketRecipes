@@ -4,29 +4,40 @@
     }
     h1, h2 {
         color: $text-color;
-        text-align: left;
+        text-align: center;
+        font-size: 32px;
+        line-height: 110%;
     }
-    min-height: calc(100% - $navbar-height);
     height: auto;
+    min-height: calc(100vh - $navbar-height-plus-padding - $footer-height - $page-start-padding);
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding-top: $page-start-padding;
-    padding-bottom: $page-start-padding;
     @include app-backgroung-image();
     .buttons-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        
+        padding-top: 40px;
+        padding-bottom: 40px;
+        button{
+            margin-bottom: 0;
+        }
     }
     p{
         line-height: 1.4rem;
         font-family: $starting-page-text-font;
         color: $text-color;
-        text-align: left;
+        text-align: center;
         font-size: $starting-page-text-font-size;
+        a{
+            font-size: inherit;
+            text-decoration: underline;
+        }
     }
 }
 
