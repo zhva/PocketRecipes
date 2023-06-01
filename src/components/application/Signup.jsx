@@ -6,6 +6,7 @@ import { object, string, ref } from 'yup'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail} from 'firebase/auth'
 import { auth, database } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
+import { Popup } from '../generic/Popup'
 import { set, ref as sref } from 'firebase/database'
 import imgSrc from '../../images/auth-img.jpg'
 
@@ -38,21 +39,21 @@ const useSigup = () => {
     onSubmit: async (values) => {
       setIsEmailTaken(false); // Reset the email taken state
       try {
-        const emailExists = await fetchSignInMethodsForEmail(auth, values.email);
+        const emailExists = await fetchSignInMethodsForEmail(auth, values.email)
         if (emailExists.length) {
-          setIsEmailTaken(true);
+          setIsEmailTaken(true)
           return;
         }
-        const { user } = await createUserWithEmailAndPassword(auth, values.email, values.password);
+        const { user } = await createUserWithEmailAndPassword(auth, values.email, values.password)
         setIsSignUpSuccessful(true);
 
         // Save the user's name to the database
-        const nameRef = sref(database, `users/${user.uid}/name`);
-        await set(nameRef, values.name);
+        const nameRef = sref(database, `users/${user.uid}/name`)
+        await set(nameRef, values.name)
 
-        await signInWithEmailAndPassword(auth, values.email, values.password); // Auto sign-in after successful sign-up
+        await signInWithEmailAndPassword(auth, values.email, values.password) // Auto sign-in after successful sign-up
       } catch (error) {
-        console.error(error);
+        alert(`The error occured while signing-up!: ${error}`)
       }
     }
   })
@@ -75,12 +76,16 @@ const useSigup = () => {
     }
   }, [isSignUpSuccessful, isEmailTaken, navigate])
 
-  return { handleSubmit, handleChange: formik.handleChange, handleBlur: formik.handleBlur, values: formik.values, submitCount: formik.submitCount, errors }
+  return { handleSubmit, handleChange: formik.handleChange, handleBlur: formik.handleBlur, values: formik.values, submitCount: formik.submitCount, errors, isEmailTaken, setIsEmailTaken }
 }
 
 export const Signup = () => {
-  const { handleSubmit, handleChange, handleBlur, values, submitCount, errors } = useSigup()
+  const { handleSubmit, handleChange, handleBlur, values, submitCount, errors, isEmailTaken, setIsEmailTaken } = useSigup()
   const isSubmitted = submitCount > 0
+
+  const handleClosePopup = () => {
+    setIsEmailTaken(false)
+}
 
   return (
     <div className='signup-page'>
@@ -90,6 +95,15 @@ export const Signup = () => {
         </div>
       </div>
       <div className='signup-container content-container'>
+        { isEmailTaken && (
+          <Popup
+            title='The email is taken'
+            linkText='Go to Sign-in'
+            redirectLink='/login'
+            onClose={handleClosePopup}>
+              The email is already taken! Try to sign in with this email.
+          </Popup>
+        )}
         <form onSubmit={handleSubmit} className='form-signup'>
           <h1>Sign Up</h1>
           <h2>Welcome to PocketRecipes</h2>
