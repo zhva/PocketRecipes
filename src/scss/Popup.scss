@@ -7,15 +7,15 @@
             all: unset;
             font-family: $button-font-family;
             img{
-                height: 18px;
-                width: 18px;
+                height: $icon-width-height;
+                width: $icon-width-height;
             }
         }
     }
     > p {
         padding-top: $delete-confirmation-text-padding-top;
         padding-bottom: $delete-confirmation-text-padding-bottom;
-        font-size: 18px;
+        font-size: $popup-text-font-size;
     }
     h1{
         text-align: left;
