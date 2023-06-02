@@ -31,16 +31,18 @@ $starting-page-text-font: 'Montserrat', sans-serif;
 $starting-page-text-font-size: 18px;
 
 
-$primary: #3a9897;
+// $primary: hsl(179, 45%, 41%);
+$primary: hsl(194, 28, 42%);
+$primary-hover: hsl(194, 28, 31%);
 $on-primary: hsl(0, 0, 100, 100%);
 $dark: hsl(38, 31, 83, 100%);
-$medium: hsl(44, 28, 90, 100%);
-$light: hsl(43, 62, 96, 100%);
 $on-light: hsl(0, 0, 64, 100%);
 $light-transparent: hsl(43, 62, 96, 90%);
 $text-color: hsl(0, 0, 0, 100%);
 $dark-filter: hsl(0, 0, 0, 40%);
-$action: hsl(342, 94, 61, 100%);
+// $action: hsl(342, 94, 61, 100%);
+$action: hsl(8, 100, 68, 100%);
+$action-hover: hsl(6, 59, 53, 100%);
 $light-grey: hsl(0, 0%, 88%);
 
 $accent-color: rgb(247, 235, 217);
