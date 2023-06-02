@@ -159,6 +159,7 @@ export const RecipeButtons = ({recipeId, path}) => {
             {path !== 'share' && (
                 <button
                     type='button'
+                    className="share-button"
                     onClick={handleShare}>
                     <img src={shareIcon} alt="Share"></img>
                 </button>
