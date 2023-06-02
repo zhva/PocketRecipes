@@ -4,10 +4,10 @@
     justify-content: space-between;
     width: 100%;
     max-width: $page-max-width;
-    background-color: white;
+    background-color: $white-background;
     .login-container {
         max-width: inherit;
-        min-height: 450px;
+        min-height: $login-container-min-height;
         height: 50%;
         position: relative;
         h1 {
@@ -30,13 +30,13 @@
         align-items: center;
         img{
             padding-top: $page-start-padding;
-            height: 70%;
-            width: 70%;
-            border-radius: 4rem;
+            height: $login-container-img-height-width;
+            width: $login-container-img-height-width;
+            border-radius: $login-img-border-radius;
             object-fit: cover;
         }
         a{
-            font-size: 10px;
+            font-size: $home-anchor-textsize;
         }
     }
 }
