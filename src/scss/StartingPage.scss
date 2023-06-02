@@ -5,8 +5,8 @@
     h1, h2 {
         color: $text-color;
         text-align: center;
-        font-size: 32px;
-        line-height: 110%;
+        font-size: $h1-font-size;
+        line-height: $headline-lineheight;
     }
     height: auto;
     min-height: calc(100vh - $navbar-height-plus-padding - $footer-height - $page-start-padding);
@@ -22,14 +22,13 @@
         flex-direction: column;
         align-items: center;
 
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding: $home-button-container-padding;
         button{
             margin-bottom: 0;
         }
     }
     p{
-        line-height: 1.4rem;
+        line-height: $hometext-lineheight;
         font-family: $starting-page-text-font;
         color: $text-color;
         text-align: center;
@@ -51,14 +50,14 @@
             box-shadow: $button-shadow;
         }
         .first-img {
-            border-radius: 0.6rem;
+            border-radius: $cards-img-border-radius;
             grid-column-start: 1;
             grid-column-end: 8;
             grid-row-start: 1;
             grid-row-end: 9;
         }
         .second-img {
-            border-radius: 1rem;
+            border-radius: $cards-border-radius;
             grid-column-start: 6;
             grid-column-end: 10;
             grid-row-start: 3;
@@ -87,11 +86,11 @@
         img{
             height: 100%;
             width: 100%;
-            border-radius: 30%;
+            border-radius: $home-img-container-radius;
             object-fit: cover;
         }
         a{
-            font-size: 10px;
+            font-size: $home-anchor-textsize;
         }
     }
 }
