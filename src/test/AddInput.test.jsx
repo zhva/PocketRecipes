@@ -62,7 +62,7 @@ describe('<AddInput />', () => {
       { id: '2', name: 'item2' },
     ]
     const handleDelete = jest.fn()
-    const { getAllByText } = render(
+    const { getAllByAltText } = render(
       <AddInput
         items={items}
         handleAdd={handleAdd}
@@ -72,11 +72,12 @@ describe('<AddInput />', () => {
         errors={errors}
       />
     )
-    getAllByText('X').forEach((button) => {
+    getAllByAltText('Delete').forEach((button) => {
       fireEvent.click(button)
     })
     expect(handleDelete).toHaveBeenCalledTimes(items.length)
   })
+
 
   it('renders RecipeInput error for each item correctly', () => {
     const items = [
