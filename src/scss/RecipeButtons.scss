@@ -12,7 +12,7 @@
 
     width: 100%;
     gap: $edit-buttons-container-gap;
-    z-index: 9;
+    z-index: $recipebuttons-z-index;
     > button {
         height: $recipe-button-height;
         width: $recipe-button-width;
