@@ -28,7 +28,6 @@
     }
     .recipe-delete {
         background-color: $action;
-        line-height: 40px;
     }
     .recipe-save {
         background-color: $action;
@@ -55,6 +54,6 @@
         text-align: left;
     }
     p {
-        margin-bottom: 25px;
+        margin-bottom: $description-margin;
     }
 }
