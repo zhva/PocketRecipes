@@ -2,7 +2,7 @@
     padding-bottom: $main-padding;
     width: 100%;
     label {
-        margin-left: 5px;
+        margin-left: $recipeheadline-margin;
     }
     input {
         resize: none;
@@ -32,7 +32,7 @@
         width: 50px;
     }
     p span {
-        margin-left: 5px
+        margin-left: $recipeheadline-margin;
     }
 }
 
