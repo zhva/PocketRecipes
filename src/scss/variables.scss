@@ -244,3 +244,51 @@ $login-container-img-height-width: 70%;
 $login-img-border-radius: 4rem;
 
 $starting-page-text-bottom-padding: calc($main-padding + 10px);
+
+$image-upload-container-height: 30%;
+$home-container-width: calc(100% - (2 * $main-padding));
+$home-container-min-height: calc(100% - $navbar-height);
+$home-container-h1-padding-bottom: calc($main-padding - 5px);
+
+$recipe-container-text-padding: 0 20px calc($main-padding * 2);
+$recipe-list-container-gap: 25px;
+
+$recipe-feed-padding-bottom: calc($page-start-padding + 10px);
+$main-recipe-card-padding: 10px 10px $page-start-padding;
+
+$main-recipe-card-h2-padding: 15px 10px;
+$main-recipe-card-p-padding: calc($main-recipe-padding / 2) 10px 10px;
+
+$main-recipe-img-max-height: 200px;
+
+$main-recipe-p-line-height: 1.3rem;
+
+$other-recipes-gap: 15px;
+
+$small-recipe-width: calc(50% - 20px - 10px);
+$small-recipe-max-height: 120px;
+$small-recipe-padding: 10px 10px 0;
+
+$small-recipe-img-container-height: 70%;
+$small-recipe-img-container-width: 100%;
+
+$small-recipe-h2-padding: 10px 0 0;
+$small-recipe-text-size: 14px;
+
+$recipe-list-container-gap: 10px;
+$recipe-list-container-max-height: 180px;
+$recipe-list-container-width: calc(50% - 5px);
+$recipe-list-container-recipe-padding: 10px 0;
+
+$myrecipe-inner-container-height: 85%;
+$myrecipe-inner-container-width: calc(100% - 20px);
+$myrecipe-img-height: 120px;
+$myrecipe-h2-width: calc(100% - 20px);
+$myrecipe-h2-font-size: 14px;
+$myrecipe-h2-padding: 5px 2px;
+
+$myrecipe-text-height: 15%;
+$myrecipe-text-width: 90%;
+
+$call-to-action-button-myrecipes-padding: 10px 15px;
+$call-to-action-icon-height-width: 21px;

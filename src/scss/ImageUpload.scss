@@ -1,7 +1,7 @@
 .upload-image-container {
     position: relative;
     background-color: $dark-filter;
-    height: 30%;
+    height: $image-upload-container-height;
     .back-btn {
         position: absolute;
         top: 5%;
