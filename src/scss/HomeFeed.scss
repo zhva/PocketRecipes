@@ -121,15 +121,15 @@
         .small-recipe{
             width: calc(50% - 20px - 10px);
             max-height: 120px;
-            padding: 10px 10px 10%;
+            padding: 10px 10px 0;
             backdrop-filter: blur(2px);
             border-radius: $cards-border-radius;
             border-bottom-left-radius: 0.6rem;
             border-bottom-right-radius: 0.6rem;
             box-shadow: $button-shadow;
             .img-container{
+                height: 70%;
                 width: 100%;
-                height: 90%;
                 img{
                     object-fit: cover;
                     width: 100%;
@@ -138,8 +138,8 @@
                 }
             }
             h2{
-                padding-top: 18px;
-                padding-bottom: 20px;
+                padding-top: 10px;
+                padding-bottom: 0px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -183,26 +183,17 @@
         .recipe{
             display: flex;
             flex-direction: column;
-            max-height: 180px;
-            width: calc(50% - 5px);
-            border-radius: $cards-border-radius;
             align-items: center;
-            padding: 10px 0;
             border-radius: $cards-border-radius;
             border-bottom-left-radius: 0.6rem;
             border-bottom-right-radius: 0.6rem;
             backdrop-filter: blur(2px);
             box-shadow: $button-shadow;
-            h2{
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                width: calc(100% - 20px);
-                text-align: left;
-                padding: 10px 2px;
-            }
+            padding: 10px 0;
+            max-height: 180px;
+            width: calc(50% - 5px);
             .recipe-img-container{
-                height: 80%;
+                height: 85%;
                 width: calc(100% - 20px);
                 img{
                     object-fit: cover;
@@ -211,10 +202,19 @@
                     border-radius: 0.6rem;
                 }
             }
+            h2{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: calc(100% - 20px);
+                text-align: left;
+                font-size: 14px;
+                padding: 5px 2px;
+            }
             .recipe-text{
                 display:flex;
                 flex-direction: column;
-                height: 30%;
+                height: 15%;
                 width: 90%;
             }
         }
