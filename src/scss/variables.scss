@@ -223,3 +223,19 @@ $description-margin: 25px;
 $recipebuttons-z-index: 9;
 
 $icon-width-height: 18px;
+
+$nav-z-index: 11;
+$background-size: 80%;
+$white-background: white;
+
+$light-blur: blur(2px);
+$high-blur: blur(16px);
+$nav-border: 2px solid rgb(225, 225, 225);
+$background-position-ul: left calc(0px - $navbar-height-plus-padding);
+$nav-ul-z-index: 9;
+$ul-height: calc(100vh - $navbar-height-plus-padding);
+
+$hr-height: 2px;
+$first-ul-padding: 50px;
+
+$login-signup-ul-padding: 10px $main-padding;
