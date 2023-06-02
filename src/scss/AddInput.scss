@@ -3,14 +3,17 @@
     width: $add-button-size;
     height: $add-button-size;
     border-radius: $add-button-radius;
-    background-color: $on-primary;
+    background-color: $primary;
     border: none;
     margin-bottom: $add-button-spacing;
     color: $text-color;
-    border: $border-glass;
     img{
         height: 100%;
         width: 100%;
+        filter: invert(1);
+    }
+    &:hover {
+        background-color: $primary-hover;
     }
 }
 
