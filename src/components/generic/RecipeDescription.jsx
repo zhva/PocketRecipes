@@ -8,14 +8,19 @@ export const RecipeDescription = ({ description, descriptionErrors, handleChange
       textareaRef.current.style.height = 'auto'
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
     }
-    const textareaElement = textareaRef.current
-    textareaElement.addEventListener('input', handleInput)
 
-    // Cleanup function to remove the event listener when the component unmounts
-    return () => {
-      textareaElement.removeEventListener('input', handleInput)
+    // Check if the textarea exists (i.e., the component is in 'edit' mode)
+    if (textareaRef.current) {
+      const textareaElement = textareaRef.current
+      textareaElement.addEventListener('input', handleInput)
+
+      // Cleanup function to remove the event listener when the component unmounts
+      return () => {
+        textareaElement.removeEventListener('input', handleInput)
+      }
     }
   }, [])
+
   return (
     <div className={`recipe-description ${mode === 'display' ? 'display-description': ''}`}>
         <h2>Description</h2>
