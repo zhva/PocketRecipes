@@ -225,7 +225,7 @@ export const CreateRecipe = () => {
                       descriptionErrors = {isSubmitted && errors && errors.description}
                       handleChange = {handleChange} />
                     <div className='ingredients-list-container'>
-                        <h1>Ingredients</h1>
+                        <h2>Ingredients</h2>
                         <AddInput
                           items={values && values.ingredients}
                           name='ingredients'
@@ -236,14 +236,15 @@ export const CreateRecipe = () => {
                         </AddInput>
                     </div>
                     <div className='preparations-list-container'>
-                        <h1>Preparations</h1>
+                        <h2>Preparations</h2>
                         <AddInput
                           items={values && values.preparations}
                           name='preparations'
                           handleAdd={handleAdd}
                           handleChange={handleChange}
                           handleDelete={handleDelete}
-                          errors={isSubmitted && errors && errors.preparations}>
+                          errors={isSubmitted && errors && errors.preparations}
+                          classP={'preparattions'}>
                         </AddInput>
                     </div>
                     <VisibilitySwitch

@@ -2,7 +2,7 @@ import React from 'react'
 import { RecipeInput } from './RecipeInput'
 import plusIcon from '../../icons/plus-icon.svg'
 
-export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, errors }) => {
+export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, errors, classP }) => {
   return (
     <div>
       <div>
@@ -16,7 +16,8 @@ export const AddInput = ({ items, handleAdd, handleDelete, handleChange, name, e
               handleDelete={() => handleDelete(item.id, name)}
               value={item.name}
               inputError={itemError}
-              index={index}>
+              index={index}
+              classP={classP}>
             </RecipeInput>
           )
         })}

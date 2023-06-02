@@ -56,6 +56,10 @@
         border: 0;
         border: $border-glass;
     }
+    textarea.preparattions {
+        min-height: calc($edit-recipe-input-min-height * 2);
+        max-height: calc($edit-recipe-input-max-height * 2);
+    }
     .recipe-number {
         position: absolute;
         height: 100%;
