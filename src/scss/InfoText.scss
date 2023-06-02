@@ -1,6 +1,3 @@
 .starting-page-text{
-    text-align: center;
-    color: #ffffff;
-    padding-bottom: calc($main-padding + 10px);
-    font-family: 'Caviar Dreams Bold';
+    padding-bottom: $starting-page-text-bottom-padding;
 }

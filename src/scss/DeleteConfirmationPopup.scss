@@ -2,15 +2,15 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% - 10%);
-    padding: 5%;
+    width: $delete-popup-width;
+    padding: $delete-popup-padding;
     background-color: transparent;
-    z-index: 10;
+    z-index: $delete-popup-z-index;
     .delete-popup-inner-container {
-        padding: 20px;
+        padding: $delete-popup-inner-padding;
         height: auto;
         border-radius: $controls-border-radius;
-        backdrop-filter: blur(16px);
+        backdrop-filter: $high-blur;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -19,7 +19,7 @@
             text-align: left;
             padding-top: $delete-confirmation-text-padding-top;
             padding-bottom: $delete-confirmation-text-padding-bottom;
-            font-size: 16px;
+            font-size: $text-font-size;
         }
         h1{
             margin-bottom: 0;
