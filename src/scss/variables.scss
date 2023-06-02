@@ -30,6 +30,7 @@ $list-numbers-font-size: 16px;
 $starting-page-text-font: 'Montserrat', sans-serif;
 $starting-page-text-font-size: 18px;
 
+$home-anchor-textsize: 10px;
 
 // $primary: hsl(179, 45%, 41%);
 $primary: hsl(194, 28, 42%);
@@ -72,6 +73,9 @@ $nav-button-width: 74px;
 $nav-border-radius: 33px;
 $controls-border-radius: 27px;
 $cards-border-radius: 1rem;
+$cards-img-border-radius: 0.6rem;
+$home-img-container-radius: 30%;
+
 $confirm-btn-radius: 0 1rem 1rem 0;
 $cancel-btn-radius: 1rem 0 0 1rem;
 
@@ -201,3 +205,14 @@ $top-right-border-glass: 2px solid white;
 
 $border-glass: 1px solid $light-grey;
 $footer-height: 71px;
+$headline-lineheight: 110%;
+$home-button-container-padding: 40px 0;
+$hometext-lineheight: 1.4rem;
+
+$recipeheadline-margin: 5px;
+$recipeservings-padding: 0px 10px;
+$recipeservings-width: 50px;
+$recipeservings-input-width-number: 70px;
+$recipeservings-input-width-text: 100%;
+
+$edit-buttons-container-gap: 15px;

@@ -2,7 +2,7 @@
     padding-bottom: $main-padding;
     width: 100%;
     label {
-        margin-left: 5px;
+        margin-left: $recipeheadline-margin;
     }
     input {
         resize: none;
@@ -22,17 +22,17 @@
         border: $border-glass;
     }
     input[type='text'] {
-        width: 100%;
+        width: $recipeservings-input-width-text;
     }
     input[type='number'] {
-        width: 70px;
+        width: $recipeservings-input-width-number;
     }
     #recipeServings {
-        padding: 0px 10px;
-        width: 50px;
+        padding: $recipeservings-padding;
+        width: $recipeservings-width;
     }
     p span {
-        margin-left: 5px
+        margin-left: $recipeheadline-margin;
     }
 }
 
