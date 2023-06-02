@@ -22,6 +22,12 @@
             line-height: $delete-button-width;
         }
     }
+    .delete-button {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
 .recipe-input-container {
@@ -50,11 +56,9 @@
         border: 0;
         border: $border-glass;
     }
-    .delete-button {
-        position: absolute;
-        top: 50%;
-        left: calc(100% - 40px);
-        transform: translate(0, -50%);
+    textarea.preparattions {
+        min-height: calc($edit-recipe-input-min-height * 2);
+        max-height: calc($edit-recipe-input-max-height * 2);
     }
     .recipe-number {
         position: absolute;

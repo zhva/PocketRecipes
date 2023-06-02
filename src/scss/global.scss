@@ -50,11 +50,6 @@ ol {
         flex-direction: column;
         align-items: center;
         gap: 3px;
-
-        Button {
-            margin-top: 20px;
-            margin-bottom: 18px;
-        }
     }
     .form-login,
     .form-signup {
@@ -114,7 +109,9 @@ ol {
     color: $on-primary;
     outline: none;
 }
-
+.delete-button:hover {
+    background-color: $action-hover;
+}
 .formik-errors {
     font-family: $text-font-family;
     font-size: $text-font-size;
