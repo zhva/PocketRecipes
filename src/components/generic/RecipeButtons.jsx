@@ -4,7 +4,7 @@ import shareIcon from '../../icons/shareIcon.svg'
 import editIcon from '../../icons/editIcon.svg'
 import saveIcon from '../../icons/saveIcon.svg'
 import { useNavigate } from 'react-router-dom'
-import { ref, remove, push, set } from 'firebase/database'
+import { ref, remove, push, set} from 'firebase/database'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, database } from '../../firebase'
 import { DeleteConfirmationPopup } from './DeleteConfirmationPopup'
@@ -17,12 +17,15 @@ export const RecipeButtons = ({recipeId, path}) => {
     const [user] = useAuthState(auth)
     const [showPopup, setShowPopup] = useState(false)
     const recipeFeedRef = ref(database, `feed/recipes/${recipeId}`)
-    const [recipe, loading] = useObjectVal(recipeFeedRef)
+    const recipeRef = user?.uid ? ref(database, `users/${user.uid}/recipes/${recipeId}`) : null
+    const [recipe, loading] = useObjectVal(recipeRef)
+    const [recipeFeed, loadingFeed] = useObjectVal(recipeFeedRef)
     const [showSavePopup, setShowSavePopup] = useState(false)
     const [showSharePopup, setShowSharePopup] = useState(false)
 
+
     const deleteRecipeFromDB = () => {
-        const recipeRef = ref(database, `users/${user?.uid}/recipes/${recipeId}`)
+
         remove(recipeRef)
             .then(() => {
                 navigate('/my-recipes')
@@ -33,20 +36,20 @@ export const RecipeButtons = ({recipeId, path}) => {
     }
 
     const handleSave = async () => {
-        const recipesRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
+        const newRecipeRef = user?.uid ? ref(database, `users/${user.uid}/recipes`) : null
 
-        if(!loading && recipe) {
+        if(!loadingFeed && recipeFeed) {
             const recipeData = {
-                imageLink: recipe.imageLink,
+                imageLink: recipeFeed.imageLink,
                 timestamp: new Date().getTime(),
                 values: {
-                    ...recipe.values,
+                    ...recipeFeed.values,
                     visibility: false
                 }
             }
 
             try {
-                await push(recipesRef, recipeData)
+                await push(newRecipeRef, recipeData)
             } catch (error) {
                 alert(`An error occurred while saving the recipe to your recipe list: ${error}`)
             }
@@ -122,7 +125,7 @@ export const RecipeButtons = ({recipeId, path}) => {
                 title='Recipe Saved'
                 linkText='Go to My Recipes'
                 redirectLink='/my-recipes'
-                linkText2='Go to Feed'
+                linkText2='Go to Discover recipes'
                 redirectLink2='/feed'
                 onClose={handleCloseSavePopup}>
                     The recipe has been saved to your recipes.
@@ -130,13 +133,13 @@ export const RecipeButtons = ({recipeId, path}) => {
         }
         {showSharePopup &&
             <Popup
-                title='Recipe Shared'
+                title='Share Recipe'
                 linkText='Go to My Recipes'
                 redirectLink='/my-recipes'
-                linkText2='Go to Feed'
+                linkText2='Go to Discover recipes'
                 redirectLink2='/feed'
                 onClose={handleCloseSharePopup}>
-                    The recipe has been shared. The link has been copied to your clipboard.
+                    The link has been copied to your clipboard. You are now able to share the recipe link.
             </Popup>
         }
         <div className={`edit-buttons-container ${path === 'feed' ? 'feed-buttons-container' : ''}`}>
