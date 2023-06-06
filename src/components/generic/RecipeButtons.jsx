@@ -133,13 +133,13 @@ export const RecipeButtons = ({recipeId, path}) => {
         }
         {showSharePopup &&
             <Popup
-                title='Recipe Shared'
+                title='Share Recipe'
                 linkText='Go to My Recipes'
                 redirectLink='/my-recipes'
                 linkText2='Go to Discover recipes'
                 redirectLink2='/feed'
                 onClose={handleCloseSharePopup}>
-                    The recipe has been shared. The link has been copied to your clipboard.
+                    The link has been copied to your clipboard. You are now able to share the recipe link.
             </Popup>
         }
         <div className={`edit-buttons-container ${path === 'feed' ? 'feed-buttons-container' : ''}`}>
