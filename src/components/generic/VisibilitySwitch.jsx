@@ -3,7 +3,7 @@ import React from 'react'
 export const VisibilitySwitch = ({ handleVisibilityChange, checked, name }) => {
   return (
     <div className='visibility-switch-container'>
-      <span>Visibility in Homefeed</span>
+      <span>Make the recipe public</span>
       <div>
         <input
           type="checkbox"
