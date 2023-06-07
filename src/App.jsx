@@ -25,7 +25,6 @@ function App() {
       <div className="App">
         <Helmet>
           <title>PocketRecipes</title>
-          <link rel="icon" href='%PUBLIC_URL%/favicon.ico' />
         </Helmet>
       <NavBar
         startingPageRoute = {'/'}
