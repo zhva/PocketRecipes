@@ -13,7 +13,6 @@ import { ProtectedRoute } from './components/generic/ProtectedRoute'
 import { Footer } from './components/generic/Footer'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from './firebase'
-import { Helmet } from 'react-helmet'
 
 
 
@@ -23,9 +22,6 @@ function App() {
   if(!loading) {
     return (
       <div className="App">
-        <Helmet>
-          <title>PocketRecipes</title>
-        </Helmet>
       <NavBar
         startingPageRoute = {'/'}
         myRecipesRoute = {'/my-recipes'}
