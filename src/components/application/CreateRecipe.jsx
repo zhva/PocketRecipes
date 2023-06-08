@@ -80,11 +80,13 @@ const useRecipe = () => {
   useEffect(() => {
     if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
       formik.setValues({...recipe.values, imageSrc: recipe.imageLink})
-      setImageSrc(initialValues.imageSrc)
+      // Set the image source in state here
+      setImageSrc({ blob: null, base64: recipe.imageLink, file: 'existing-file' })
     } else {
       formik.setValues(initialValues)
     }
   }, [recipe])
+
 
 
   const formik = useFormik({
@@ -94,13 +96,16 @@ const useRecipe = () => {
       const recipeData = {values}
       try {
         if(Object.keys(params).length === 0 && params.constructor === Object){
-          if(imageSrc)
-          {
-            pushRecipe(recipeData, imageSrc && imageSrc.blob)
+          if(imageSrc && imageSrc.blob){
+            pushRecipe(recipeData, imageSrc.blob)
             navigate('/my-recipes')
           }
         } else {
-          updateRecipe(recipeData, imageSrc && imageSrc.blob)
+          if(imageSrc && imageSrc.blob){
+            updateRecipe(recipeData, imageSrc.blob)
+          } else {
+            updateRecipe(recipeData, null)
+          }
           navigate('/my-recipes')
         }
       } catch (error) {
@@ -130,6 +135,7 @@ const useRecipe = () => {
       alert(`An error occurred while uploading the image to the DB: ${error}`)
     }
   }
+
   const toggleRecipeVisibilityInFeed = async (data, recipeId) => {
     const feedRef = ref(database, `feed/recipes/${recipeId}`)
     try {
