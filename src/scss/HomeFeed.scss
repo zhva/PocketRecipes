@@ -89,23 +89,40 @@
         backdrop-filter: $light-blur;
         border-radius: $cards-img-border-radius;
         box-shadow: $button-shadow;
-        h2{
-            padding: $main-recipe-card-h2-padding;
-            margin-bottom: 0;
-            font-size: $main-recipe-fontsize;
-            text-align: left;
+        .main-recipe-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            h2{
+                padding: $main-recipe-card-h2-padding;
+                margin-bottom: 0;
+                font-size: $main-recipe-fontsize;
+                text-align: left;
+            }
+            p{
+                padding: $main-recipe-card-p-padding;
+                text-align: left;
+                font-family: $starting-page-text-font;
+                line-height: $main-recipe-p-line-height;
+            }
+            span {
+                font-family: $link-font-family;
+                padding-right: 10px;
+                font-size: 12px;
+                align-self: flex-end;
+            }
         }
-        img{
+
+        img {
             width: 100%;
             max-height: $main-recipe-img-max-height;
             object-fit: cover;
             border-radius: $cards-img-border-radius;
         }
-        p{
-            padding: $main-recipe-card-p-padding;
-            text-align: left;
-            font-family: $starting-page-text-font;
-            line-height: $main-recipe-p-line-height;
+        .main-recipe-img {
+            > span {
+                width: 100%;
+            }
         }
     }
     .other-recipes{
@@ -122,9 +139,26 @@
             border-bottom-left-radius: $cards-img-border-radius;
             border-bottom-right-radius: $cards-img-border-radius;
             box-shadow: $button-shadow;
+            .recipe-text {
+                padding-top: $recipe-list-container-gap;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: $small-recipe-gap;
+                > span {
+                     font-family: $link-font-family;
+                     font-size: 12px;
+                     align-self: flex-end;
+                }
+            }
             .img-container{
                 height: $small-recipe-img-container-height;
                 width: $small-recipe-img-container-width;
+                > span {
+                    width: 100%;
+                    height: 100%;
+                    min-height: 100px;
+                }
                 img{
                     object-fit: cover;
                     width: 100%;
@@ -132,14 +166,13 @@
                     border-radius: $cards-img-border-radius;
                 }
             }
-            h2{
-                padding: $small-recipe-h2-padding;
+            h2 {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                width: 100%;
                 font-size: $small-recipe-text-size;
                 text-align: left;
+                padding: 0;
             }
         }
     }
@@ -189,7 +222,10 @@
             .recipe-img-container{
                 height: $myrecipe-inner-container-height;
                 width: $myrecipe-inner-container-width;
-                img{
+                > span {
+                    width: 100%;
+                }
+                img {
                     object-fit: cover;
                     height: $myrecipe-img-height;
                     width: 100%;

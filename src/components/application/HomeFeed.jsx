@@ -4,6 +4,8 @@ import { database } from '../../firebase'
 import { ref } from 'firebase/database'
 import { Button } from '../generic/Button'
 import { useNavigate } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 export const HomeFeed = () => {
   // Get a reference to the document
@@ -33,19 +35,33 @@ export const HomeFeed = () => {
             {limitedRecipes.slice(0, 1).map(([key, recipe]) => (
               <div key={key} onClick={() => navigate(`/feed/${key}`)} className='main-recipe'>
                 <div className='main-recipe-img'>
-                  <img src={recipe.imageLink} alt={recipe.imageLink} />
+                  <LazyLoadImage
+                    effect="blur"
+                    src={recipe.imageLink}
+                    alt={recipe.imageLink}
+                  />
                 </div>
-                <h2>{recipe.values.name}</h2>
-                <p>{recipe.values.description}</p>
+                <div className='main-recipe-text'>
+                  <h2>{recipe.values.name}</h2>
+                  <p>{recipe.values.description}</p>
+                  <span>by {recipe.author}</span>
+                </div>
               </div>
             ))}
             <div className='other-recipes'>
               {limitedRecipes.slice(1).map(([key, recipe]) => (
                 <div key={key} onClick={() => navigate(`/feed/${key}`)} className='small-recipe'>
                   <div className='img-container'>
-                    <img src={recipe.imageLink} alt={recipe.imageLink} />
+                    <LazyLoadImage
+                      effect="blur"
+                      src={recipe.imageLink}
+                      alt={recipe.imageLink}
+                    />
                   </div>
-                  <h2>{recipe.values.name}</h2>
+                  <div className='recipe-text'>
+                    <h2>{recipe.values.name}</h2>
+                    <span>by {recipe.author}</span>
+                  </div>
                 </div>
               ))}
             </div>

@@ -37,11 +37,11 @@
             box-shadow: none;
             margin-bottom: 0;
         }
-        :first-child{
-            border-radius: $confirm-btn-radius;
-        }
         :last-child{
             border-radius: $cancel-btn-radius;
+        }
+        :first-child{
+            border-radius: $confirm-btn-radius;
             background-color: transparent;
             border: solid 2px $light-grey;
             color: black;

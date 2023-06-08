@@ -6,6 +6,8 @@ import { ref } from 'firebase/database'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../generic/Button'
 import plusIcon from '../../icons/plus-icon-white.svg'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 export const MyRecipes = () => {
   const [user] = useAuthState(auth)
@@ -41,7 +43,11 @@ export const MyRecipes = () => {
                 .map(([key, recipe]) => (
                   <div key={key} onClick = {() => navigate(`/my-recipes/${key}`)} className='recipe'>
                     <div className='recipe-img-container'>
-                      <img src={recipe.imageLink && recipe.imageLink} alt={recipe.imageLink}></img>
+                      <LazyLoadImage
+                        effect="blur"
+                        src={recipe.imageLink && recipe.imageLink}
+                        alt={recipe.imageLink}
+                      />
                     </div>
                     <div className='recipe-text'>
                       <h2>{recipe.values.name}</h2>

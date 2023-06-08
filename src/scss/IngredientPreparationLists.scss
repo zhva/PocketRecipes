@@ -6,8 +6,23 @@
         font-family: $link-font-family;
         font-size: $link-font-size;
     }
-    ol{
+    ol {
         list-style-position: outside;
         padding-bottom: $main-padding;
+        span {
+            font-family: $label-font-family;
+            margin-right: $list-padding;
+        }
+        .bullet {
+            width: $bullet-list-size;
+            height: $bullet-list-size;
+            display: inline-block;
+            background-color:black;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        li {
+            line-height: $hometext-lineheight;
+        }
     }
 }
