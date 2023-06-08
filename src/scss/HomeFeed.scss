@@ -95,7 +95,7 @@
             font-size: $main-recipe-fontsize;
             text-align: left;
         }
-        img{
+        img {
             width: 100%;
             max-height: $main-recipe-img-max-height;
             object-fit: cover;
@@ -106,6 +106,11 @@
             text-align: left;
             font-family: $starting-page-text-font;
             line-height: $main-recipe-p-line-height;
+        }
+        .main-recipe-img {
+            > span {
+                width: 100%;
+            }
         }
     }
     .other-recipes{
@@ -125,6 +130,10 @@
             .img-container{
                 height: $small-recipe-img-container-height;
                 width: $small-recipe-img-container-width;
+                > span {
+                    width: 100%;
+                    height: 100%;
+                }
                 img{
                     object-fit: cover;
                     width: 100%;
@@ -189,7 +198,10 @@
             .recipe-img-container{
                 height: $myrecipe-inner-container-height;
                 width: $myrecipe-inner-container-width;
-                img{
+                > span {
+                    width: 100%;
+                }
+                img {
                     object-fit: cover;
                     height: $myrecipe-img-height;
                     width: 100%;
