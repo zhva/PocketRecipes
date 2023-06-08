@@ -5,8 +5,8 @@ export const IngredientPreparationLists = ({ingredients, preparationSteps}) => {
         <div className='ingredients-preparation-list'>
             <h2>Ingredients</h2>
             <ol>
-                {ingredients.map((ingredient, index) => (
-                    <li key={ingredient.id}><span>{(index + 1)}.</span> {ingredient.name}</li>
+                {ingredients.map((ingredient) => (
+                    <li key={ingredient.id}><span className='bullet'></span> {ingredient.name}</li>
                 ))}
             </ol>
             <h2>Preparation</h2>
