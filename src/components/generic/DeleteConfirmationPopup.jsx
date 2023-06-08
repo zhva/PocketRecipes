@@ -10,13 +10,15 @@ export const DeleteConfirmationPopup = ({ title, onClick, onClose, children }) =
           <p>{children}</p>
           <div className='confirmation-buttons'>
             <Button
-              id='confirm'
-              type={'button'}
-              onClick={onClick}>Confirm</Button>
-            <Button
               id='cancel'
               type={'button'}
-              onClick={onClose}>Cancel</Button>
+              onClick={onClose}>Cancel
+            </Button>
+            <Button
+              id='confirm'
+              type={'button'}
+              onClick={onClick}>Confirm
+            </Button>
           </div>
       </div>
     </div>
