@@ -6,9 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import imgSrc from '../../images/Starting_page.jpg'
 import recipeBig from '../../images/recipe_Big.png'
 import recipeSmall from '../../images/recipe_small.png'
+import { auth } from '../../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 export const StartingPage = () => {
   const navigate = useNavigate()
+  const [user] = useAuthState(auth)
   return (
         <div className="starting-page-container">
           <div>
@@ -26,7 +29,9 @@ export const StartingPage = () => {
               <span className='buttons-container'>
                 <Button type='button' variant='primary' onClick={() => navigate('/feed')}>Discover Recipes</Button>
               </span>
-              Get started and create an <a href='/signup'>account</a> now!
+              { !user && (
+                <span>Get started and create an <a href='/signup'>account</a> now!</span>
+              )}
             </InfoText>
             <div className='screenshots-container'>
               <div className='first-img'><img src={recipeBig} alt="recipe screenshot" /></div>
