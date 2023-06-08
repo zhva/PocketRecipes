@@ -41,8 +41,11 @@ export const HomeFeed = () => {
                     alt={recipe.imageLink}
                   />
                 </div>
-                <h2>{recipe.values.name}</h2>
-                <p>{recipe.values.description}</p>
+                <div className='main-recipe-text'>
+                  <h2>{recipe.values.name}</h2>
+                  <p>{recipe.values.description}</p>
+                  <span>by {recipe.author}</span>
+                </div>
               </div>
             ))}
             <div className='other-recipes'>
@@ -55,7 +58,10 @@ export const HomeFeed = () => {
                       alt={recipe.imageLink}
                     />
                   </div>
-                  <h2>{recipe.values.name}</h2>
+                  <div className='recipe-text'>
+                    <h2>{recipe.values.name}</h2>
+                    <span>by {recipe.author}</span>
+                  </div>
                 </div>
               ))}
             </div>
