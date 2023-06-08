@@ -236,7 +236,7 @@ export const CreateRecipe = () => {
                         </AddInput>
                     </div>
                     <div className='preparations-list-container'>
-                        <h2>Preparations</h2>
+                        <h2>Preparation steps</h2>
                         <AddInput
                           items={values && values.preparations}
                           name='preparations'
