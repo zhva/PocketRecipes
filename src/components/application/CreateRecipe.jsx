@@ -73,13 +73,12 @@ const useRecipe = () => {
     servings: null,
     ingredients: [],
     preparations: [],
-    visibility: false,
-    imageSrc: null
+    visibility: false
   }
 
   useEffect(() => {
     if (!loading && recipe && Object.keys(params).length !== 0 && params.constructor === Object) {
-      formik.setValues({...recipe.values, imageSrc: recipe.imageLink})
+      formik.setValues({...recipe.values})
       // Set the image source in state here
       setImageSrc({ blob: null, base64: recipe.imageLink, file: 'existing-file' })
     } else {
