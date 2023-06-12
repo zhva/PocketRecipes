@@ -107,9 +107,8 @@
             }
             span {
                 font-family: $link-font-family;
-                padding-right: 10px;
+                padding: $main-recipe-card-author-padding;
                 font-size: 12px;
-                align-self: flex-end;
             }
         }
 
@@ -148,7 +147,7 @@
                 > span {
                      font-family: $link-font-family;
                      font-size: 12px;
-                     align-self: flex-end;
+                     align-self: flex-start;
                 }
             }
             .img-container{
@@ -173,6 +172,7 @@
                 font-size: $small-recipe-text-size;
                 text-align: left;
                 padding: 0;
+                width: 100%;
             }
         }
     }
