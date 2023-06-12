@@ -17,8 +17,20 @@ jest.mock('./components/generic/ProtectedRoute', () => {
 });
 
 jest.mock('./firebase', () => ({
-  auth: jest.fn(),
+  auth: {
+    onAuthStateChanged: jest.fn(() => () => {}),
+  },
 }));
+
+jest.mock('react-firebase-hooks/auth', () => ({
+  useAuthState: () => [
+    { uid: 'testUser', email: 'test@example.com' },  // mock user
+    false,  // loading state
+    null,  // error
+    () => {},
+  ],
+}));
+
 
 test('renders protected route', async () => {
   await render(

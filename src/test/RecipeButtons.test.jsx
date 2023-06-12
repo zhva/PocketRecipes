@@ -77,10 +77,10 @@ describe('RecipeButtons', () => {
     const { getByAltText, findByText } = render(<RecipeButtons recipeId="1" path="my-recipes" />);
     fireEvent.click(getByAltText('Share'));
 
-    const recipeSharedText = await findByText('Recipe Shared');
+    const recipeSharedText = await findByText('Share Recipe');
     expect(recipeSharedText).toBeInTheDocument();
 
-    const sharedLinkCopiedText = await findByText('The recipe has been shared. The link has been copied to your clipboard.');
+    const sharedLinkCopiedText = await findByText('The link has been copied to your clipboard. You are now able to share the recipe link.');
     expect(sharedLinkCopiedText).toBeInTheDocument();
 
     expect(clipboardCopy).toHaveBeenCalled();

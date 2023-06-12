@@ -12,7 +12,7 @@ describe('VisibilitySwitch component', () => {
   test('renders correctly', () => {
     render(<VisibilitySwitch {...mockProps} />)
 
-    const visibilityLabel = screen.getByText('Visibility in Homefeed')
+    const visibilityLabel = screen.getByText('Make the recipe public')
     expect(visibilityLabel).toBeInTheDocument()
 
     const checkbox = screen.getByRole('checkbox')
