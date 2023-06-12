@@ -257,7 +257,8 @@ $recipe-list-container-gap: 25px;
 $recipe-feed-padding-bottom: calc($page-start-padding + 10px);
 $main-recipe-card-padding: 10px 10px 20px;
 
-$main-recipe-card-h2-padding: 15px 10px;
+$main-recipe-card-h2-padding: 15px 10px 5px 10px;
+$main-recipe-card-author-padding: 0px 0px 5px 10px;
 $main-recipe-card-p-padding: calc($main-recipe-padding / 2) 10px 10px;
 
 $main-recipe-img-max-height: 200px;

@@ -43,8 +43,8 @@ export const HomeFeed = () => {
                 </div>
                 <div className='main-recipe-text'>
                   <h2>{recipe.values.name}</h2>
-                  <p>{recipe.values.description}</p>
                   <span>by {recipe.author}</span>
+                  <p>{recipe.values.description}</p>
                 </div>
               </div>
             ))}
